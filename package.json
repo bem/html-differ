@@ -1,0 +1,36 @@
+{
+  "name": "html-differ",
+  "version": "0.0.0",
+  "description": "Сompares the performance of two html-files",
+  "keywords": [
+    "html-differ"
+  ],
+  "homepage": "https://github.com/eGavr/html-differ",
+  "bugs": "https://github.com/eGavr/html-differ/issues",
+  "author": {
+    "name": "Evgeniy Gavryushin",
+    "email": "job.egabr@yandex.ru",
+    "url": "https://github.com/eGavr"
+  },
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eGavr/html-differ.git"
+  },
+  "dependencies": {
+    "htmlparser": "^1.7.7",
+    "htmlparser-to-html": "0.0.5",
+    "coa": "^0.4.0",
+    "diff": "^1.0.8",
+    "colors": "^0.6.2"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
