@@ -1,35 +1,48 @@
 # html-differ
 
-Сompares the performance of two html-files recieved from ```bemhtml``` and ```bh``` correspondently.
+Сompares the performance of two ```html-files``` recieved from ```bemhtml``` and ```bh``` correspondently.
 
 ## Install
 
 ```
 $ git clone https://github.com/eGavr/html-differ.git
+
+$ npm install
 ```
 
 ## Usage
 
-After cloning the repository:
+Go to the root folder:
 
 ```
 cd html-differ
 ```
 
-Help:
+To run as a programm use ```bin/differ-html```.
 
 ```
+$ bin/differ-html --help
+Compares the performance of two html-files
+
 Usage:
-    bin/html-differ
-        shows usage information
-    bin/html-differ <firsr_html> <second_html>
-        compares the performance of two html-files
-    bin/html-differ -h
-    bin/html-differ --help
-        shows usage information
-    bin/html-differ -v
-    bin/html-differ --version
-        shows the version number
+  bin/html-differ [OPTIONS] [ARGS]
+
+
+Options:
+  -h, --help : Help
+  -v, --version : Shows the version number
+
+Arguments:
+  PATH1 : Path to the 1-st html-file
+  PATH2 : Path to the 2-nd html-file
+```
+
+## Tests
+
+Run:
+
+```
+$ ./node_modules/.bin/mocha test
 ```
 
 ## License
