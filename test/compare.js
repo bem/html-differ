@@ -2,28 +2,30 @@ var path = require('path'),
     fs = require('fs'),
     compare = require(path.join('..', 'lib', 'html-differ')).compare;
 
+function test(f1, f2) {
+    var html1 = fs.readFileSync('test/basis/' + f1),
+        html2 = fs.readFileSync('test/basis/' + f2);
+
+    return compare(html1, html2);
+}
+
 
 describe('\'compare\'', function () {
 
     it('must be equal', function () {
-        var html1 = fs.readFileSync('test/basis/1.html');
-        var html2 = fs.readFileSync('test/basis/_1.html');
-
-        compare(html1, html2).must.be.true();
+        test('1.html', '_1.html').must.be.true();
     });
 
     it('must be equal', function () {
-        var html1 = fs.readFileSync('test/basis/2.html');
-        var html2 = fs.readFileSync('test/basis/_2.html');
-
-        compare(html1, html2).must.be.true();
+        test('2.html', '_2.html').must.be.true();
     });
 
     it('must be equal', function () {
-        var html1 = fs.readFileSync('test/basis/3.html');
-        var html2 = fs.readFileSync('test/basis/_3.html');
+        test('3.html', '_3.html').must.be.true();
+    });
 
-        compare(html1, html2).must.be.true();
+    it('must be equal', function () {
+        test('4.html', '_4.html').must.be.true();
     });
 
 });
