@@ -1,9 +1,11 @@
 {
   "name": "html-differ",
-  "version": "0.0.0",
-  "description": "Сompares the performance of two html-files",
+  "version": "0.0.1",
+  "description": "Compares two html files",
   "keywords": [
-    "html-differ"
+    "html-differ",
+    "html",
+    "differ"
   ],
   "homepage": "https://github.com/eGavr/html-differ",
   "bugs": "https://github.com/eGavr/html-differ/issues",
