@@ -12,12 +12,14 @@
     "email": "job.egabr@yandex.ru",
     "url": "https://github.com/eGavr"
   },
-  "main": "./lib/index.js",
+  "main": "./lib/html-differ.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/eGavr/html-differ.git"
   },
   "dependencies": {
+    "vow": "0.4.3",
+    "vow-fs": "0.3.1",
     "htmlparser": "^1.7.7",
     "htmlparser-to-html": "0.0.5",
     "coa": "^0.4.0",
