@@ -1,7 +1,7 @@
 {
   "name": "html-differ",
   "version": "0.0.1",
-  "description": "Compares two html files",
+  "description": "Compares two html-files",
   "keywords": [
     "html-differ",
     "html",
