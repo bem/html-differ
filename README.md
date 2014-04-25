@@ -41,7 +41,7 @@ equals to
 
 ```
 $ npm install html-differ
-````
+```
 
 **or**
 
@@ -54,6 +54,26 @@ $ npm install
 ```
 
 ## Usage
+
+###As a js-module###
+
+```html-difer``` provides the method ```compare```:<br>
+**@param** *String* - 1-st ```html-code```<br>
+**@param** *String* - 2-st ```html-code```<br>
+**@param** *Boolean* - shows diff log if ```true``` (optional parameter, default - ```false```)<br>
+**@returns** *Boolean*
+
+```
+var compare = require('html-differ').compare,
+    fs = require('fs');
+
+var html1 = fs.readFileSync('1.html'),
+    html2 = fs.readFileSync('2.html');
+
+var res = compare(html1, html2, true);
+```
+
+###As a program###
 
 Go to the root folder:
 
@@ -82,7 +102,7 @@ Arguments:
 
 ## Tests
 
-Run:
+In the root folder run:
 
 ```
 $ ./node_modules/.bin/mocha test
