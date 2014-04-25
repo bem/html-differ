@@ -1,6 +1,5 @@
-var path = require('path'),
-    fs = require('fs'),
-    compare = require(path.join('..', 'lib', 'html-differ')).compare;
+var fs = require('fs'),
+    compare = require('../lib/html-differ').compare;
 
 
 describe('\'compare\'', function () {
