@@ -85,7 +85,7 @@ To run as a programm use ```bin/differ-html```.
 
 ```
 $ bin/differ-html --help
-Compares two html files
+Compares two html-files
 
 Usage:
   bin/html-differ [OPTIONS] [ARGS]
