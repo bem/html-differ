@@ -1,15 +1,15 @@
 var fs = require('fs'),
-    compare = require('../lib/html-differ').compare;
+    diffHtml = require('../lib/html-differ').diffHtml;
 
 function test(f1, f2) {
     var html1 = fs.readFileSync('test/basis/' + f1),
         html2 = fs.readFileSync('test/basis/' + f2);
 
-    return compare(html1, html2);
+    return diffHtml(html1, html2);
 }
 
 
-describe('\'compare\'', function () {
+describe('\'diffHtml\'', function () {
 
     it('must be equal', function () {
         test('1.html', '_1.html').must.be.true();
