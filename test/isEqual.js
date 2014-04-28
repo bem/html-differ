@@ -1,11 +1,11 @@
 var fs = require('fs'),
-    diffHtml = require('../lib/html-differ');
+    htmlDiffer = require('../lib/html-differ');
 
 function test(f1, f2) {
     var html1 = fs.readFileSync('test/basis/' + f1, 'utf-8'),
         html2 = fs.readFileSync('test/basis/' + f2, 'utf-8');
 
-    return diffHtml.isEqual(html1, html2);
+    return htmlDiffer.isEqual(html1, html2, ['id', 'for']);
 }
 
 
