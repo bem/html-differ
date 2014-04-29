@@ -15,6 +15,9 @@
     "url": "https://github.com/eGavr"
   },
   "main": "./lib/html-differ.js",
+  "bin": {
+    "html-differ": "./bin/html-differ"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/eGavr/html-differ.git"
