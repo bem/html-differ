@@ -18,19 +18,19 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must be false', function () {
+    it('must be not equal', function () {
         var files = readFiles('2.html', '_2.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
     });
 
-    it('must be equal', function () {
+    it('must ignore html attrs', function () {
         var files = readFiles('3.html', '_3.html');
 
         htmlDiffer.isEqual(files.html1, files.html2, { ignoreHtmlAttrs: ['id', 'for'] } ).must.be.true();
     });
 
-    it('must be equal', function () {
+    it('must sort class', function () {
         var files = readFiles('4.html', '_4.html');
 
         htmlDiffer.isEqual(files.html1, files.html2, { ignoreHtmlAttrs: ['id', 'for'] } ).must.be.true();
