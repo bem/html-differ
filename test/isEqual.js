@@ -39,7 +39,7 @@ describe('\'isEqual\'', function () {
     it('must sort attrs', function () {
         var files = readFiles('5.html', '_5.html');
 
-        htmlDiffer.isEqual(files.html1, files.html2, { ignoreHtmlAttrs: ['id', 'for'] } ).must.be.true();
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
 });
