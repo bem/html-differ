@@ -52,18 +52,18 @@ $ npm install html-differ
 #####html-differ.diffHtml#####
 **@param** *String* - 1-st ```html-code```<br>
 **@param** *String* - 2-st ```html-code```<br>
-**@param** *{Object}* - sets what respective attributes are always considered to be equal<br> 
+**@param** *{Object}* - sets what respective attributes are always considered to be equal<br>
 (for example, ```{ ignoreHtmlAttrs: ['id', 'for'] }```, optional parameter)<br>
 **@returns** *{Object}* - see [here](https://github.com/kpdecker/jsdiff#examples).
 
 #####html-differ.isEqual#####
 This method has the same parameters as the previous one, but returns ```Boolean```
 
-####diffLogger####
+####diff-logger####
 
-#####diffLogger.log#####
+#####diff-logger.log#####
 Pretty logging of diffs<br>
-**@param** *{Object}* - the result of the work of the method ```diffHtml```<br> 
+**@param** *{Object}* - the result of the work of the method ```diffHtml```<br>
 **@param** *Integer* - the number of characters which will be logged before the diff and after it<br>
 
 ####Example####
