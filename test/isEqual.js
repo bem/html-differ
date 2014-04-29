@@ -30,7 +30,7 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2, { ignoreHtmlAttrs: ['id', 'for'] } ).must.be.true();
     });
 
-    it('must sort class', function () {
+    it('must sort classes', function () {
         var files = readFiles('4.html', '_4.html');
 
         htmlDiffer.isEqual(files.html1, files.html2, { ignoreHtmlAttrs: ['id', 'for'] } ).must.be.true();
