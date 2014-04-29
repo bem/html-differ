@@ -1,15 +1,15 @@
 var fs = require('fs'),
-    compare = require('../lib/html-differ').compare;
+    htmlDiffer = require('../lib/html-differ');
 
 function test(f1, f2) {
-    var html1 = fs.readFileSync('test/basis/' + f1),
-        html2 = fs.readFileSync('test/basis/' + f2);
+    var html1 = fs.readFileSync('test/basis/' + f1, 'utf-8'),
+        html2 = fs.readFileSync('test/basis/' + f2, 'utf-8');
 
-    return compare(html1, html2);
+    return htmlDiffer.isEqual(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] } );
 }
 
 
-describe('\'compare\'', function () {
+describe('\'isEqual\'', function () {
 
     it('must be equal', function () {
         test('1.html', '_1.html').must.be.true();
