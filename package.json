@@ -1,0 +1,45 @@
+{
+  "name": "html-differ",
+  "version": "0.0.1",
+  "description": "Compares two html-files",
+  "keywords": [
+    "html-differ",
+    "html",
+    "differ"
+  ],
+  "homepage": "https://github.com/eGavr/html-differ",
+  "bugs": "https://github.com/eGavr/html-differ/issues",
+  "author": {
+    "name": "Evgeniy Gavryushin",
+    "email": "job.egabr@yandex.ru",
+    "url": "https://github.com/eGavr"
+  },
+  "main": "./lib/html-differ.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eGavr/html-differ.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "vow": "0.4.3",
+    "vow-fs": "0.3.1",
+    "htmlparser": "1.7.7",
+    "htmlparser-to-html": "0.0.5",
+    "coa": "0.4.0",
+    "diff": "1.0.8",
+    "colors": "0.6.2",
+    "mocha": "1.18.2",
+    "must": "0.11.0"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
