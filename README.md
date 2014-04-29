@@ -1,13 +1,13 @@
 # html-differ
 
-Сompares two ```html-files``` recieved from ```bemhtml``` and ```bh``` correspondently.
+Сompares two ```html-files```.
 
 ## The comparison algorithm
 
 ```html-differ``` compares files on the following criteria:
 
-1. Two respective attributes ```id``` and ```for``` are always considered to be equal
-2. Two respective attributes ```class``` are considered to be equal if they refer on same groups of ```CSS-styles```
+1. Two respective attributes ```class``` are considered to be equal if they refer on same groups of ```CSS-styles```
+2. Two respective lists of attributes are considered to be equal even if they go in different order
 
 This code
 
@@ -17,8 +17,8 @@ This code
 <title>Test</title>
 </head>
 <body>
-   <label for="random">label for input</label>
-   <input id="random" class="ab bc cd">
+   <label>label for input</label>
+   <input id="random" class="ab bc cd" for="blah">
 </body>
 </html>
 ```
@@ -31,8 +31,8 @@ equals to
 <title>Test</title>
 </head>
 <body>
-   <label for="sfsdfksdf">label for input</label>
-   <input id="sfsdfksdf" class=" cd  ab bc">
+   <label>label for input</label>
+   <input class=" cd  ab bc" for="blah" id="random">
 </body>
 </html>
 ```
@@ -43,34 +43,41 @@ equals to
 $ npm install html-differ
 ```
 
-**or**
-
-Using ```git```:
-
-```
-$ git clone https://github.com/eGavr/html-differ.git
-
-$ npm install
-```
-
 ## Usage
 
 ###As a js-module###
 
-```html-difer``` provides the method ```compare```:<br>
+####html-difer####
+
+#####html-differ.diffHtml#####
 **@param** *String* - 1-st ```html-code```<br>
 **@param** *String* - 2-st ```html-code```<br>
-**@param** *Boolean* - shows diff log if ```true``` (optional parameter, default - ```false```)<br>
-**@returns** *Boolean*
+**@param** *{Object}* - sets what respective attributes are always considered to be equal<br> 
+(for example, ```{ ignoreHtmlAttrs: ['id', 'for'] }```, optional parameter)<br>
+**@returns** *{Object}* - see [here](https://github.com/kpdecker/jsdiff#examples).
+
+#####html-differ.isEqual#####
+This method has the same parameters as the previous one, but returns ```Boolean```
+
+####diffLogger####
+
+#####diffLogger.log#####
+Pretty logging of diffs<br>
+**@param** *{Object}* - the result of the work of the method ```diffHtml```<br> 
+**@param** *Integer* - the number of characters which will be logged before the diff and after it<br>
+
+####Example####
 
 ```
-var compare = require('html-differ').compare,
-    fs = require('fs');
+var htmlDiffer = require('html-differ'),
+    diffLogger = require('diff-logger');
 
-var html1 = fs.readFileSync('1.html'),
-    html2 = fs.readFileSync('2.html');
+var html1 = fs.readFileSync('1.html', 'utf-8'),
+    html2 = fs.readFileSync('2.html', 'utf-8');
 
-var res = compare(html1, html2, true);
+var res = htmlDiffer.isEqual(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] } );
+
+diffLogger.log(htmlDiffer.diffHtml(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] } ));
 ```
 
 ###As a program###
