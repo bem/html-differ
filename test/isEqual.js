@@ -36,4 +36,10 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2, { ignoreHtmlAttrs: ['id', 'for'] } ).must.be.true();
     });
 
+    it('must sort attrs', function () {
+        var files = readFiles('5.html', '_5.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2, { ignoreHtmlAttrs: ['id', 'for'] } ).must.be.true();
+    });
+
 });
