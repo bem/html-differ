@@ -11,7 +11,7 @@
 
 This code
 
-```
+```html
 <html>
 <head>
 <title>Test</title>
@@ -25,7 +25,7 @@ This code
 
 equals to
 
-```
+```html
 <html>
 <head>
 <title>Test</title>
@@ -39,7 +39,7 @@ equals to
 
 ## Install
 
-```
+```bash
 $ npm install html-differ
 ```
 
@@ -47,50 +47,82 @@ $ npm install html-differ
 
 ###As a js-module###
 
-####html-difer####
+####html-differ####
 
-#####html-differ.diffHtml#####
-**@param** *String* - 1-st ```html-code```<br>
-**@param** *String* - 2-st ```html-code```<br>
+**html-differ.diffHtml**<br>
+**@param** *String* - the 1-st ```html-code```<br>
+**@param** *String* - the 2-nd ```html-code```<br>
 **@param** *{Object}* - sets what respective attributes are always considered to be equal<br>
 (for example, ```{ ignoreHtmlAttrs: ['id', 'for'] }```, optional parameter)<br>
 **@returns** *{Object}* - see [here](https://github.com/kpdecker/jsdiff#examples).
 
-#####html-differ.isEqual#####
+**html-differ.isEqual**<br>
 This method has the same parameters as the previous one, but returns ```Boolean```
 
 ####diff-logger####
 
-#####diff-logger.log#####
+**diff-logger.log**<br>
 Pretty logging of diffs<br>
-**@param** *{Object}* - the result of the work of the method ```diffHtml```<br>
+**@param** *{Object}* - the result of the work of the method ```html-differ.diffHtml```<br>
 **@param** *Integer* - the number of characters which will be logged before the diff and after it<br>
+(optional parameter, default - ```20```)<br>
 
 ####Example####
 
-```
-var htmlDiffer = require('html-differ'),
-    diffLogger = require('diff-logger');
+```js
+var fs = require('fs'),
+    htmlDiffer = require('html-differ'),
+    diffLogger = require('html-differ/lib/diff-logger');
 
 var html1 = fs.readFileSync('1.html', 'utf-8'),
     html2 = fs.readFileSync('2.html', 'utf-8');
 
 var res = htmlDiffer.isEqual(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] } );
 
-diffLogger.log(htmlDiffer.diffHtml(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] } ));
+diffLogger.log(htmlDiffer.diffHtml(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] } ), 20);
 ```
 
 ###As a program###
 
+If you use ```html-differ``` as a program, it will always consider two respective attributes ```id``` and ```for``` to be equal.
+
+This code
+
+```html
+<html>
+<head>
+<title>Test</title>
+</head>
+<body>
+   <label>label for input</label>
+   <input id="random" class="ab bc cd" for="blah">
+</body>
+</html>
+```
+
+equals to
+
+```html
+<html>
+<head>
+<title>Test</title>
+</head>
+<body>
+   <label>label for input</label>
+   <input class=" cd  ab bc" for="xxxxx" id="zzzzz">
+</body>
+</html>
+```
+
 Go to the root folder:
 
-```
+```bash
 $ cd html-differ
 ```
 
-To run as a programm use ```bin/differ-html```.
+To run as a program use ```bin/differ-html```.
 
-```
+```bash
 $ bin/differ-html --help
 Compares two html-files
 
@@ -111,7 +143,7 @@ Arguments:
 
 In the root folder run:
 
-```
+```bash
 $ ./node_modules/.bin/mocha test
 ```
 
