@@ -62,7 +62,7 @@ This method has the same parameters as the previous one, but returns ```Boolean`
 ####diff-logger####
 
 **diff-logger.log**<br>
-Pretty logging of diffs<br>
+Pretty logging of diffs. Red text should be removed from the first html relative to the second one, green text should be added.<br>
 **@param** *{Object}* - the result of the work of the method ```html-differ.diffHtml```<br>
 **@param** *Integer* - the number of characters which will be logged before the diff and after it<br>
 (optional parameter, default - ```20```)<br>
@@ -125,18 +125,18 @@ To run as a program use ```bin/differ-html```.
 ```bash
 $ bin/differ-html --help
 Compares two html-files
+Red text should be removed from the first html relative to the second one, green text should be added
 
 Usage:
-  bin/html-differ [OPTIONS] [ARGS]
-
+  html-differ [OPTIONS] [ARGS]
 
 Options:
   -h, --help : Help
   -v, --version : Shows the version number
 
 Arguments:
-  PATH1 : Path to the 1-st html-file
-  PATH2 : Path to the 2-nd html-file
+  PATH1 : Path to the 1-st html-file (required)
+  PATH2 : Path to the 2-nd html-file (required)
 ```
 
 ## Tests
