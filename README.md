@@ -100,7 +100,7 @@ htmlDiffer.bemDiff(html1, html2);
 
 As a program ```html-differ``` can work in two modes:
 
-* ```for BEM```, see [the comparison algorithm](https://github.com/eGavr/html-differ/tree/bemDiff#the-comparison-algorithm), besides, it will always consider two respective attributes ```id``` and ```for``` to be equal and ```20``` characters will be logged before the diff and after it.
+* ```for BEM```, see [the comparison algorithm](https://github.com/eGavr/html-differ/tree/master#the-comparison-algorithm), besides, it will always consider two respective attributes ```id``` and ```for``` to be equal and ```20``` characters will be logged before the diff and after it.
 
 This code
 
@@ -130,7 +130,7 @@ equals to
 </html>
 ```
 
-* ```for general html```, see [the comparison algorithm](https://github.com/eGavr/html-differ/tree/bemDiff#the-comparison-algorithm).
+* ```for general html```, see [the comparison algorithm](https://github.com/eGavr/html-differ/tree/master#the-comparison-algorithm).
 
 Go to the root folder:
 
