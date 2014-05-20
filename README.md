@@ -1,4 +1,4 @@
-# html-differ
+# html-differ [![Build Status](https://travis-ci.org/eGavr/html-differ.svg)](https://travis-ci.org/eGavr/html-differ)
 
 Сompares two ```html-files```.
 
