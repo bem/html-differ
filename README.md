@@ -1,4 +1,4 @@
-# html-differ [![Build Status](https://travis-ci.org/eGavr/html-differ.svg)](https://travis-ci.org/eGavr/html-differ)
+# html-differ [![Build Status](https://travis-ci.org/bem/html-differ.svg)](https://travis-ci.org/bem/html-differ)
 
 Сompares two ```html-files```.
 
@@ -59,7 +59,7 @@ $ npm install html-differ
 **@returns** *{Object}* - see [here](https://github.com/kpdecker/jsdiff#examples).
 
 **html-differ.isEqual**<br>
-This method has the same parameters as the previous one, but returns ```Boolean```
+This method has the same parameters as the previous one, but returns ```Boolean```.
 
 ####diff-logger####
 
@@ -90,47 +90,13 @@ var html1 = fs.readFileSync('1.html', 'utf-8'),
 var res = htmlDiffer.isEqual(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] } );
 
 // common case
-diffLogger.log(htmlDiffer.diffHtml(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] }, { showCharacters: 20 } ));
+diffLogger.log(htmlDiffer.diffHtml(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] }), { showCharacters: 20 });
 
 // for BEM (you can not set options)
 htmlDiffer.bemDiff(html1, html2);
 ```
 
 ###As a program###
-
-As a program ```html-differ``` can work in two modes:
-
-* ```for BEM```, see [the comparison algorithm](https://github.com/eGavr/html-differ/tree/master#the-comparison-algorithm), besides, it will always consider two respective attributes ```id``` and ```for``` to be equal and ```20``` characters will be logged before the diff and after it.
-
-This code
-
-```html
-<html>
-<head>
-<title>Test</title>
-</head>
-<body>
-   <label>label for input</label>
-   <input id="random" class="ab bc cd" for="blah">
-</body>
-</html>
-```
-
-equals to
-
-```html
-<html>
-<head>
-<title>Test</title>
-</head>
-<body>
-   <label>label for input</label>
-   <input class=" cd  ab bc" for="xxxxx" id="zzzzz">
-</body>
-</html>
-```
-
-* ```for general html```, see [the comparison algorithm](https://github.com/eGavr/html-differ/tree/master#the-comparison-algorithm).
 
 Go to the root folder:
 
@@ -151,7 +117,7 @@ Usage:
 Options:
   -h, --help : Help
   -v, --version : Shows the version number
-  -b, --bem : Compares two html-files in BEM mode
+  --config=CONFIG : Path to configuration JSON-file
 
 Arguments:
   PATH1 : Path to the 1-st html-file (required)
@@ -161,18 +127,25 @@ Arguments:
 ####Example####
 
 ```bash
-$ bin/html-differ PATH_1 PATH_2
+$ bin/html-differ path/to/html1 path/to/html2
 
-$ bin/html-differ --bem PATH_1 PATH_2
+$ bin/html-differ --config=path/to/config path/to/html1 path/to/html2
 ```
 
-## Tests
+####Configuration file###
 
-In the root folder run:
+Study the following ```config.json```:
 
-```bash
-$ ./node_modules/.bin/mocha test
+```js
+{
+    "ignoreHtmlAttrs": [ "id", "for" ],
+    "showCharacters": 20
+}
 ```
+
+* ```ignoreHtmlAttrs: [ Array ]``` - sets what respective attributes are always considered to be equal
+
+* ```showCharacters: Number``` - the number of characters, which will be logged before the diff and after it
 
 ## License
 
