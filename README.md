@@ -1,4 +1,4 @@
-# html-differ [![Build Status](https://travis-ci.org/eGavr/html-differ.svg)](https://travis-ci.org/eGavr/html-differ)
+# html-differ [![Build Status](https://travis-ci.org/bem/html-differ.svg)](https://travis-ci.org/bem/html-differ)
 
 Сompares two ```html-files```.
 
@@ -90,7 +90,7 @@ var html1 = fs.readFileSync('1.html', 'utf-8'),
 var res = htmlDiffer.isEqual(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] } );
 
 // common case
-diffLogger.log(htmlDiffer.diffHtml(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] }, { showCharacters: 20 } ));
+diffLogger.log(htmlDiffer.diffHtml(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] }), { showCharacters: 20 });
 
 // for BEM (you can not set options)
 htmlDiffer.bemDiff(html1, html2);
