@@ -33,13 +33,19 @@ describe('\'isEqual\'', function () {
     it('must sort classes', function () {
         var files = readFiles('4.html', '_4.html');
 
-        htmlDiffer.isEqual(files.html1, files.html2, { ignoreHtmlAttrs: ['id', 'for'] } ).must.be.true();
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
     it('must sort attrs', function () {
         var files = readFiles('5.html', '_5.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must sort content of attrs', function () {
+        var files = readFiles('6.html', '_6.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2, { compareHtmlAttrsAsJSON: [ 'a', 'b' ] } ).must.be.true();
     });
 
 });
