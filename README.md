@@ -54,9 +54,9 @@ $ npm install html-differ
 **@param** *String* - the 2-nd ```html-code```<br>
 **@param** *{Object}* - options:
 * sets what respective attributes are always considered to be equal<br>
-(for example, ```ignoreHtmlAttrs: [ 'id', 'for' ]```, optional parameter)
+(for example, ```ignoreHtmlAttrs: ['id', 'for']```, optional parameter)
 * sets what respective attributes' content will be compared as ```JSONs```, not as ```strings```<br>
-(for example, ```compareHtmlAttrsAsJSON: [ 'data-bem' ]```, optional parameter)
+(for example, ```compareHtmlAttrsAsJSON: ['data-bem']```, optional parameter)
 
 **@returns** *{Object}* - see [here](https://github.com/kpdecker/jsdiff#examples).
 
@@ -77,8 +77,8 @@ Pretty logging of diffs. Red text should be removed from the first html relative
 **html-differ.bemDiff**<br>
 This method does ```diff + log```.<br>
 The options are predefined:
-* ```ignoreHtmlAttrs: [ 'id', 'for' ]```<br>
-* ```compareHtmlAttrsAsJSON: [ 'data-bem' ]```<br>
+* ```ignoreHtmlAttrs: ['id', 'for']```<br>
+* ```compareHtmlAttrsAsJSON: ['data-bem']```<br>
 * ```showCharacters: 20```
 
 **@param** *String* - the 1-st ```html-code```<br>
@@ -94,10 +94,10 @@ var fs = require('fs'),
 var html1 = fs.readFileSync('1.html', 'utf-8'),
     html2 = fs.readFileSync('2.html', 'utf-8');
 
-var res = htmlDiffer.isEqual(html1, html2, { ignoreHtmlAttrs: [ 'id', 'for' ] } );
+var res = htmlDiffer.isEqual(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] } );
 
 // common case
-diffLogger.log(htmlDiffer.diffHtml(html1, html2, { ignoreHtmlAttrs: [ 'id' , 'for' ], compareHtmlAttrsAsJSON: [ 'data-bem' ] }), { showCharacters: 20 });
+diffLogger.log(htmlDiffer.diffHtml(html1, html2, { ignoreHtmlAttrs: ['id' , 'for'], compareHtmlAttrsAsJSON: ['data-bem'] }), { showCharacters: 20 });
 
 // for BEM (you can not set options)
 htmlDiffer.bemDiff(html1, html2);
@@ -145,8 +145,8 @@ Study the following ```config.json```:
 
 ```js
 {
-    "ignoreHtmlAttrs": [ "id", "for" ],
-    "compareHtmlAttrsAsJSON": [ "data-bem" ],
+    "ignoreHtmlAttrs": ["id", "for"],
+    "compareHtmlAttrsAsJSON": ["data-bem"],
     "showCharacters": 20
 }
 ```
