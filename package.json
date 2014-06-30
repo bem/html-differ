@@ -1,6 +1,6 @@
 {
   "name": "html-differ",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Compares two html-files",
   "keywords": [
     "html-differ",
