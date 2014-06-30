@@ -48,4 +48,10 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2, { compareHtmlAttrsAsJSON: [ 'a', 'b' ] } ).must.be.true();
     });
 
+    it('must ignore space characters', function () {
+        var files = readFiles('7.html', '_7.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
 });
