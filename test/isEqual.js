@@ -54,4 +54,10 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
+    it('must sort \'onclick\' and \'ondblclick\' attrs content', function () {
+        var files = readFiles('8.html', '_8.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2, { compareHtmlAttrsAsJSON: [ 'onclick', 'ondblclick' ] } ).must.be.true();
+    });
+
 });
