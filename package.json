@@ -14,7 +14,7 @@
     "email": "job.egabr@yandex.ru",
     "url": "https://github.com/eGavr"
   },
-  "main": "./lib/html-differ.js",
+  "main": "./lib/index.js",
   "bin": {
     "html-differ": "./bin/html-differ"
   },
