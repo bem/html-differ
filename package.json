@@ -23,7 +23,9 @@
     "url": "git://github.com/eGavr/html-differ.git"
   },
   "scripts": {
-    "test": "mocha test"
+    "test": "npm run func-test && npm run cover",
+    "func-test": "mocha test",
+    "cover": "istanbul cover _mocha -- test"
   },
   "dependencies": {
     "vow": "0.4.3",
@@ -33,7 +35,8 @@
     "coa": "0.4.0",
     "diff": "1.0.8",
     "colors": "0.6.2",
-    "lodash": "2.4.1"
+    "lodash": "2.4.1",
+    "istanbul": "0.3.0"
   },
   "devDependencies": {
     "mocha": "1.18.2",
