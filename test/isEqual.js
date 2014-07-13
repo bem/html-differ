@@ -1,10 +1,10 @@
 var fs = require('fs'),
-    HtmlDiffer = require('../lib/html-differ').HtmlDiffer;
+    HtmlDiffer = require('../lib/index').HtmlDiffer;
 
 function readFiles(f1, f2) {
     var files = {};
 
-    files.html1 = fs.readFileSync('test/fixtures/' + f1, 'utf-8'),
+    files.html1 = fs.readFileSync('test/fixtures/' + f1, 'utf-8');
     files.html2 = fs.readFileSync('test/fixtures/' + f2, 'utf-8');
 
     return files;
