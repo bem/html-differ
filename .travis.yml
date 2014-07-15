@@ -3,3 +3,12 @@ language: node_js
 node_js:
   - "0.10"
   - "0.8"
+
+env:
+  global:
+    - GH_REF: github.com/bem/html-differ.git
+    - ISTANBUL_COVERAGE: true
+
+after_success:
+  - npm i coveralls
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
