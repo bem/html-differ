@@ -1,17 +1,17 @@
 {
   "name": "html-differ",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Compares two html-files",
   "keywords": [
     "html-differ",
     "html",
     "differ"
   ],
-  "homepage": "https://github.com/eGavr/html-differ",
-  "bugs": "https://github.com/eGavr/html-differ/issues",
+  "homepage": "https://github.com/bem/html-differ",
+  "bugs": "https://github.com/bem/html-differ/issues",
   "author": {
     "name": "Evgeniy Gavryushin",
-    "email": "job.egabr@yandex.ru",
+    "email": "job.egavr@yandex.ru",
     "url": "https://github.com/eGavr"
   },
   "main": "./lib/index.js",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/eGavr/html-differ.git"
+    "url": "git://github.com/bem/html-differ.git"
   },
   "scripts": {
     "test": "npm run func-test && npm run cover",
