@@ -40,7 +40,7 @@ equals to
 ## Install
 
 ```bash
-$ npm install html-differ
+$ npm install html-differ -g
 ```
 
 ## Usage
@@ -52,69 +52,84 @@ $ npm install html-differ
 **html-differ.diffHtml**<br>
 **@param** *String* - the 1-st ```html-code```<br>
 **@param** *String* - the 2-nd ```html-code```<br>
-**@param** *{Object}* - options:
-* sets what respective attributes are always considered to be equal<br>
-(for example, ```ignoreHtmlAttrs: ['id', 'for']```, optional parameter)
-* sets what respective attributes' content will be compared as ```JSONs```, not as ```strings```<br>
-(for example, ```compareHtmlAttrsAsJSON: ['data-bem']```, optional parameter)
-
-**@returns** *{Object}* - see [here](https://github.com/kpdecker/jsdiff#examples).
+**@returns** *{Array of objects}* - see [here](https://github.com/kpdecker/jsdiff#examples)
 
 **html-differ.isEqual**<br>
 This method has the same parameters as the previous one, but returns ```Boolean```.
 
 ####diff-logger####
 
-**diff-logger.log**<br>
-Pretty logging of diffs. Red text should be removed from the first html relative to the second one, green text should be added.<br>
+**diff-logger.getDiffText**<br>
 **@param** *{Object}* - the result of the work of the method ```html-differ.diffHtml```<br>
 **@param** *{Object}* - options:<br>
-* the number of characters, which will be logged before the diff and after it<br>
-(for example, ```showCharacters: 20```, default - ```20```, optional parameter)
+* the number of characters before the diff and after it<br>
+(for example, ```charsAroundDiff: 20```, default - ```20```, optional parameter)<br>
 
-####For BEM####
+**@returns** *{String}* - diffs
 
-**html-differ.bemDiff**<br>
-This method does ```diff + log```.<br>
-The options are predefined:
-* ```ignoreHtmlAttrs: ['id', 'for']```<br>
-* ```compareHtmlAttrsAsJSON: ['data-bem']```<br>
-* ```showCharacters: 20```
-
-**@param** *String* - the 1-st ```html-code```<br>
-**@param** *String* - the 2-nd ```html-code```
+**diff-logger.log**<br>
+Pretty logging of diffs. Red text should be removed from the first html relative to the second one, green text should be added.<br>
+This method has the same parameters as the previous one.
 
 ####Example####
 
 ```js
 var fs = require('fs'),
-    htmlDiffer = require('html-differ'),
+    HtmlDiffer = require('html-differ').HtmlDiffer,
     diffLogger = require('html-differ/lib/diff-logger');
 
 var html1 = fs.readFileSync('1.html', 'utf-8'),
     html2 = fs.readFileSync('2.html', 'utf-8');
 
-var res = htmlDiffer.isEqual(html1, html2, { ignoreHtmlAttrs: ['id', 'for'] } );
+var options = {
+    ignoreHtmlAttrs: [],
+    compareHtmlAttrsAsJSON: [],
+    verbose: true,
+    ignoreWhitespace: true,
+    bem: false
+}
 
-// common case
-diffLogger.log(htmlDiffer.diffHtml(html1, html2, { ignoreHtmlAttrs: ['id' , 'for'], compareHtmlAttrsAsJSON: ['data-bem'] }), { showCharacters: 20 });
+var htmlDiffer = new HtmlDiffer(options);
 
-// for BEM (you can not set options)
-htmlDiffer.bemDiff(html1, html2);
+var diff = htmlDiffer.diffHtml(html1, html2);
+
+var isEqual = htmlDiffer.isEqual(html1, html2);
+
+var res = diffLogger.getDiffText(diff, { charsAroundDiff: 20 });
+
+diffLogger.log(diff, { charsAroundDiff: 20 });
 ```
+
+where ```options``` is the ```Object```:
+
+* ```ignoreHtmlAttrs: [ Array ]``` - sets what respective attributes are always considered to be equal
+
+* ```compareHtmlAttrsAsJSON: [ Array ]``` - sets what respective attributes' content will be compared as ```JSONs```, not as ```Strings```
+
+* ```verbose: Boolean``` - see [here](https://github.com/tautologistics/node-htmlparser#option-verbose)
+
+* ```ignoreWhitespace: Boolean``` - see [here](https://github.com/tautologistics/node-htmlparser#option-ignorewhitespace)
+
+* ```bem: Boolean``` - predefined options for BEM
+
+
+####For BEM####
+Options for BEM are predefined:
+* ```ignoreHtmlAttrs: ['id', 'for']```
+
+* ```compareHtmlAttrsAsJSON: ['data-bem', 'onclick', 'ondblclick']```
+
+* ```verbose: true```
+
+* ```ignoreWhitespace: true```
+
+* ```charsAroundDiff: 20```
+
 
 ###As a program###
 
-Go to the root folder:
-
 ```bash
-$ cd html-differ
-```
-
-To run as a program use ```bin/html-differ```.
-
-```bash
-$ bin/html-differ --help
+$ html-differ --help
 Compares two html-files
 Red text should be removed from the first html relative to the second one, green text should be added
 
@@ -125,6 +140,7 @@ Options:
   -h, --help : Help
   -v, --version : Shows the version number
   --config=CONFIG : Path to configuration JSON-file
+  --chars-around-diff=CHARSAROUNDDIFF : The number of characters around diff
 
 Arguments:
   PATH1 : Path to the 1-st html-file (required)
@@ -136,7 +152,7 @@ Arguments:
 ```bash
 $ bin/html-differ path/to/html1 path/to/html2
 
-$ bin/html-differ --config=path/to/config path/to/html1 path/to/html2
+$ bin/html-differ --config=path/to/config path/to/html1 path/to/html2 --chars-around-diff=20
 ```
 
 ####Configuration file###
@@ -145,17 +161,13 @@ Study the following ```config.json```:
 
 ```js
 {
-    "ignoreHtmlAttrs": ["id", "for"],
-    "compareHtmlAttrsAsJSON": ["data-bem"],
-    "showCharacters": 20
+    "ignoreHtmlAttrs": [],
+    "compareHtmlAttrsAsJSON": [],
+    "verbose": true,
+    "ignoreWhitespace": true,
+    "bem": false
 }
 ```
-
-* ```ignoreHtmlAttrs: [ Array ]``` - sets what respective attributes are always considered to be equal
-
-* ```compareHtmlAttrsAsJSON: [ Array ]``` - sets what respective attributes' content will be compared as ```JSONs```, not as ```strings```
-
-* ```showCharacters: Number``` - the number of characters, which will be logged before the diff and after it
 
 ## License
 
