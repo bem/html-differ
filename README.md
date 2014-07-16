@@ -140,7 +140,7 @@ Options:
   -h, --help : Help
   -v, --version : Shows the version number
   --config=CONFIG : Path to configuration JSON-file
-  --chars-around-diff=CHARSAROUNDDIFF : The number of characters around diff
+  --chars-around-diff=CHARSAROUNDDIFF : The number of characters around the diff
 
 Arguments:
   PATH1 : Path to the 1-st html-file (required)
