@@ -61,7 +61,7 @@ describe('\'isEqual\'', function () {
     });
 
     it('must ignore space characters', function () {
-        var htmlDiffer = new HtmlDiffer(),
+        var htmlDiffer = new HtmlDiffer({ ignoreWhitespaces: true }),
 
             files = readFiles('7.html', '_7.html');
 
@@ -72,6 +72,14 @@ describe('\'isEqual\'', function () {
         var htmlDiffer = new HtmlDiffer({ compareHtmlAttrsAsJSON: [ 'onclick', 'ondblclick' ] }),
 
             files = readFiles('8.html', '_8.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must work \'bem\' option', function() {
+        var htmlDiffer = new HtmlDiffer({ bem: true }),
+
+            files = readFiles('9.html', '_9.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
