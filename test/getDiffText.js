@@ -39,7 +39,7 @@ describe('\'diffHtml\'', function () {
                 removed: undefined
             } ],
 
-            out = '\n...\n' + 'texttexttexttexttext'.grey + '!'.green + 'Text'.grey + '!'.green + 'texttexttexttext'.grey;
+            out = '\n...\n' + 'texttexttexttexttext'.grey + '!'.inverse.green + 'Text'.grey + '!'.inverse.green + 'texttexttexttext'.grey;
 
         diffLoger.getDiffText(inp).must.be.eql(out);
     });
@@ -68,7 +68,7 @@ describe('\'diffHtml\'', function () {
                 removed: true
             } ],
 
-            out = '\n' + 'texttexttexttexttexttexttexttexttexttexttext'.green + 'ololoololoololoololoololoololoololoololoolol'.red;
+            out = '\n' + 'texttexttexttexttexttexttexttexttexttexttext'.inverse.green + 'ololoololoololoololoololoololoololoololoolol'.inverse.red;
 
         diffLoger.getDiffText(inp).must.be.eql(out);
     });
@@ -89,7 +89,7 @@ describe('\'diffHtml\'', function () {
                 removed: undefined
             } ],
 
-            out = '\n' + 'texttexttext'.grey + 'text'.red + 'texttexttexttext'.grey;
+            out = '\n' + 'texttexttext'.grey + 'text'.inverse.red + 'texttexttexttext'.grey;
 
         diffLoger.getDiffText(inp).must.be.eql(out);
     });
@@ -126,7 +126,7 @@ describe('\'diffHtml\'', function () {
                 removed: undefined
             } ],
 
-            out = '\n...\n' + 'texttexttexttexttext'.grey + 'text'.red + 'texttexttexttexttext'.grey + '\n...\n' + 'texttexttexttexttext'.grey + '!'.green + 'text'.grey + '!'.green + 'texttexttexttexttext'.grey;
+            out = '\n...\n' + 'texttexttexttexttext'.grey + 'text'.inverse.red + 'texttexttexttexttext'.grey + '\n...\n' + 'texttexttexttexttext'.grey + '!'.inverse.green + 'text'.grey + '!'.inverse.green + 'texttexttexttexttext'.grey;
 
         diffLoger.getDiffText(inp).must.be.eql(out);
     });
