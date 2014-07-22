@@ -52,7 +52,7 @@ $ npm install html-differ -g
 **html-differ.diffHtml**<br>
 **@param** *String* - the 1-st ```html-code```<br>
 **@param** *String* - the 2-nd ```html-code```<br>
-**@returns** *{Array of objects}* - see [here](https://github.com/kpdecker/jsdiff#examples)
+**@returns** *{Array of objects}* - see [here](https://github.com/kpdecker/jsdiff#change-objects)
 
 **html-differ.isEqual**<br>
 This method has the same parameters as the previous one, but returns ```Boolean```.
@@ -63,12 +63,12 @@ This method has the same parameters as the previous one, but returns ```Boolean`
 **@param** *{Object}* - the result of the work of the method ```html-differ.diffHtml```<br>
 **@param** *{Object}* - options:<br>
 * the number of characters before the diff and after it<br>
-(for example, ```charsAroundDiff: 20```, default - ```20```, optional parameter)<br>
+(for example, ```charsAroundDiff: 40```, default: ```40```)<br>
 
 **@returns** *{String}* - diffs
 
 **diff-logger.log**<br>
-Pretty logging of diffs. Red text should be removed from the first html relative to the second one, green text should be added.<br>
+Pretty logging of diffs.<br>
 This method has the same parameters as the previous one.
 
 ####Example####
@@ -95,9 +95,9 @@ var diff = htmlDiffer.diffHtml(html1, html2);
 
 var isEqual = htmlDiffer.isEqual(html1, html2);
 
-var res = diffLogger.getDiffText(diff, { charsAroundDiff: 20 });
+var res = diffLogger.getDiffText(diff, { charsAroundDiff: 40 });
 
-diffLogger.log(diff, { charsAroundDiff: 20 });
+diffLogger.log(diff, { charsAroundDiff: 40 });
 ```
 
 where ```options``` is the ```Object```:
@@ -123,7 +123,7 @@ Options for BEM are predefined:
 
 * ```ignoreWhitespace: true```
 
-* ```charsAroundDiff: 20```
+* ```charsAroundDiff: 40```
 
 
 ###As a program###
@@ -131,7 +131,6 @@ Options for BEM are predefined:
 ```bash
 $ html-differ --help
 Compares two html-files
-Red text should be removed from the first html relative to the second one, green text should be added
 
 Usage:
   html-differ [OPTIONS] [ARGS]
@@ -152,7 +151,7 @@ Arguments:
 ```bash
 $ bin/html-differ path/to/html1 path/to/html2
 
-$ bin/html-differ --config=path/to/config path/to/html1 path/to/html2 --chars-around-diff=20
+$ bin/html-differ --config=path/to/config path/to/html1 path/to/html2 --chars-around-diff=40
 ```
 
 ####Configuration file###
