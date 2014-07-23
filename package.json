@@ -30,13 +30,13 @@
   "dependencies": {
     "vow": "0.4.3",
     "vow-fs": "0.3.1",
-    "htmlparser": "1.7.7",
     "htmlparser-to-html": "0.0.5",
     "coa": "0.4.0",
     "diff": "1.0.8",
     "colors": "0.6.2",
     "lodash": "2.4.1",
-    "istanbul": "0.3.0"
+    "istanbul": "0.3.0",
+    "htmlparser2": "3.7.3"
   },
   "devDependencies": {
     "mocha": "1.18.2",
