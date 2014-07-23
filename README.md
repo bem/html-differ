@@ -84,7 +84,6 @@ var html1 = fs.readFileSync('1.html', 'utf-8'),
 var options = {
     ignoreHtmlAttrs: [],
     compareHtmlAttrsAsJSON: [],
-    verbose: true,
     ignoreWhitespace: true,
     bem: false
 }
@@ -106,9 +105,7 @@ where ```options``` is the ```Object```:
 
 * ```compareHtmlAttrsAsJSON: [ Array ]``` - sets what respective attributes' content will be compared as ```JSONs```, not as ```Strings```
 
-* ```verbose: Boolean``` - see [here](https://github.com/tautologistics/node-htmlparser#option-verbose)
-
-* ```ignoreWhitespace: Boolean``` - see [here](https://github.com/tautologistics/node-htmlparser#option-ignorewhitespace)
+* ```ignoreWhitespace: Boolean``` - if is set ```true```, ```html-differ``` will consider all groups of ```spaces```, ```new lines```, ```tabs``` as one ```space```
 
 * ```bem: Boolean``` - predefined options for BEM
 
@@ -118,10 +115,6 @@ Options for BEM are predefined:
 * ```ignoreHtmlAttrs: ['id', 'for']```
 
 * ```compareHtmlAttrsAsJSON: ['data-bem', 'onclick', 'ondblclick']```
-
-* ```verbose: true```
-
-* ```ignoreWhitespace: true```
 
 * ```charsAroundDiff: 40```
 
@@ -139,7 +132,7 @@ Options:
   -h, --help : Help
   -v, --version : Shows the version number
   --config=CONFIG : Path to configuration JSON-file
-  --chars-around-diff=CHARSAROUNDDIFF : The number of characters around the diff
+  --chars-around-diff=CHARSAROUNDDIFF : The number of characters around the diff (default: 40)
 
 Arguments:
   PATH1 : Path to the 1-st html-file (required)
@@ -162,7 +155,6 @@ Study the following ```config.json```:
 {
     "ignoreHtmlAttrs": [],
     "compareHtmlAttrsAsJSON": [],
-    "verbose": true,
     "ignoreWhitespace": true,
     "bem": false
 }

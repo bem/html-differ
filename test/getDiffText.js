@@ -12,7 +12,7 @@ describe('\'diffHtml\'', function () {
                 removed: undefined
             } ];
 
-        diffLoger.getDiffText(inp, { charsAroundDiff: 20 } ).must.be.equal('');
+        diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.equal('');
     });
 
     it('must return a diff string', function () {
@@ -41,7 +41,7 @@ describe('\'diffHtml\'', function () {
 
             out = '\n...\n' + 'texttexttexttexttext'.grey + '!'.inverse.green + 'Text'.grey + '!'.inverse.green + 'texttexttexttext'.grey;
 
-        diffLoger.getDiffText(inp, { charsAroundDiff: 20 } ).must.be.eql(out);
+        diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
     });
 
     it('must consider negative value of \'charsAroundDiff\' option', function () {
@@ -51,7 +51,7 @@ describe('\'diffHtml\'', function () {
                 removed: undefined
             } ];
 
-        diffLoger.getDiffText(inp, { charsAroundDiff: -5 } ).must.be.equal('');
+        diffLoger.getDiffText(inp, { charsAroundDiff: -5 }).must.be.equal('');
     });
 
 
@@ -70,7 +70,7 @@ describe('\'diffHtml\'', function () {
 
             out = '\n' + 'texttexttexttexttexttexttexttexttexttexttext'.inverse.green + 'ololoololoololoololoololoololoololoololoolol'.inverse.red;
 
-        diffLoger.getDiffText(inp, { charsAroundDiff: 20 } ).must.be.eql(out);
+        diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
     });
 
     it('must return a diff on the beginning of the input', function () {
@@ -128,7 +128,7 @@ describe('\'diffHtml\'', function () {
 
             out = '\n...\n' + 'texttexttexttexttext'.grey + 'text'.inverse.red + 'texttexttexttexttext'.grey + '\n...\n' + 'texttexttexttexttext'.grey + '!'.inverse.green + 'text'.grey + '!'.inverse.green + 'texttexttexttexttext'.grey;
 
-        diffLoger.getDiffText(inp, { charsAroundDiff: 20 } ).must.be.eql(out);
+        diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
     });
 
 });
