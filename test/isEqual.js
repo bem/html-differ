@@ -61,7 +61,7 @@ describe('\'isEqual\'', function () {
     });
 
     it('must ignore space characters', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreWhitespaces: true }),
+        var htmlDiffer = new HtmlDiffer({ ignoreWhitespace: true }),
 
             files = readFiles('7.html', '_7.html');
 
