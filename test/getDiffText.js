@@ -38,7 +38,6 @@ describe('\'diffHtml\'', function () {
                 added: undefined,
                 removed: undefined
             } ],
-
             out = '\n...\n' + 'texttexttexttexttext'.grey + '!'.inverse.green + 'Text'.grey + '!'.inverse.green + 'texttexttexttext'.grey;
 
         diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
@@ -67,7 +66,6 @@ describe('\'diffHtml\'', function () {
                 added: false,
                 removed: true
             } ],
-
             out = '\n' + 'texttexttexttexttexttexttexttexttexttexttext'.inverse.green + 'ololoololoololoololoololoololoololoololoolol'.inverse.red;
 
         diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
@@ -88,7 +86,6 @@ describe('\'diffHtml\'', function () {
                 added: undefined,
                 removed: undefined
             } ],
-
             out = '\n' + 'texttexttext'.grey + 'text'.inverse.red + 'texttexttexttext'.grey;
 
         diffLoger.getDiffText(inp).must.be.eql(out);
@@ -125,7 +122,6 @@ describe('\'diffHtml\'', function () {
                 added: undefined,
                 removed: undefined
             } ],
-
             out = '\n...\n' + 'texttexttexttexttext'.grey + 'text'.inverse.red + 'texttexttexttexttext'.grey + '\n...\n' + 'texttexttexttexttext'.grey + '!'.inverse.green + 'text'.grey + '!'.inverse.green + 'texttexttexttexttext'.grey;
 
         diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
