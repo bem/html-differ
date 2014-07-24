@@ -84,4 +84,12 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
+    it('must ignore html comments', function() {
+        var htmlDiffer = new HtmlDiffer(),
+
+            files = readFiles('10.html', '_10.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
 });
