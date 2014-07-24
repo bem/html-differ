@@ -18,7 +18,7 @@ describe('\'diffHtml\'', function () {
             files = readFiles('3.html', '_3.html'),
 
             res = [ {
-                value: '<html> <head> <title>Test</title> </head> <body> <label for="">label for input</label> <input id=""> </body> </html> ',
+                value: '<html><head><title>Test</title></head><body><label for="">label for input</label><input id=""></body></html>',
                 added: undefined,
                 removed: undefined
             } ];
