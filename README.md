@@ -63,7 +63,7 @@ $ npm install html-differ -g
 **@param** *{Array of objects}* - the result of the work of the method `html-differ.diffHtml`<br>
 **@param** *{Object}* - options:<br>
 
-* `charsAroundDiff: Number` - the number of characters before and after the diff result of two `HTML` codes (default: `40`).
+* `charsAroundDiff: Number` - the number of characters around the diff result between two `HTML` codes (default: `40`).
 
 **@returns** *{String}* - diffs
 
@@ -71,7 +71,7 @@ $ npm install html-differ -g
 **@param** *{Array of objects}* - the result of the work of the method `html-differ.diffHtml`<br>
 **@param** *{Object}* - options:<br>
 
-* `charsAroundDiff: Number` - the number of characters before and after the diff result of two `HTML` codes (default: `40`).
+* `charsAroundDiff: Number` - the number of characters around the diff result between two `HTML` codes (default: `40`).
 
 **@returns** - pretty logging of diffs:
 
