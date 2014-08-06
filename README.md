@@ -4,36 +4,57 @@
 
 ## The comparison algorithm
 
-`html-differ` compares `HTML` codes using the following criteria:
+`HTML` codes are compared as **browsers** do, to be more exact `html-differ` compares `HTML` codes using the following criteria:
 
-1. Two respective lists of attributes are considered to be equivalent even if they are specified in different order.
-2. Two respective attributes `class` are considered to be equivalent if they refer to the same groups of `CSS` styles.
+* Two respective lists of attributes are considered to be equivalent even if they are specified in different order.
 
 For example, the following two code samples will be considered to be equivalent:
 
 ```html
-<html>
-<head>
-<title>Test</title>
-</head>
-<body>
-   <label>label for input</label>
-   <input id="random" class="ab bc cd" tabIndex="1">
-</body>
-</html>
+<span id="blah" class="ololo" tabIndex="1">Text</span>
 ```
 
 ```html
-<html>
-<head>
-<title>Test</title>
-</head>
-<body>
-   <label>label for input</label>
-   <input class=" cd  ab bc" tabIndex="1" id="random">
-</body>
-</html>
+<span tabIndex="1" id="blah" class="ololo">Text</span>
 ```
+
+* Two respective attributes `class` are considered to be equivalent if they refer to the same groups of `CSS` styles.
+
+For example, the following two code samples will be considered to be equivalent:
+
+```html
+<span class="ab bc cd">Text</span>
+```
+
+```html
+<span class=" cd  ab bc">Text</span>
+```
+
+* From the list of the same tag's attributes, the attrubute which goes the first will be taken for comparison, others will be ignored.
+
+For example, the following two code samples will be considered to be equivalent:
+
+```html
+<span id="blah" id="ololo">Text</span>
+```
+
+```html
+<span id="blah">Text</span>
+```
+
+* Closing tags are not compared.
+
+For example, the following two code samples will be considered to be equivalent:
+
+```html
+<span>Text</span>
+```
+
+```html
+<span>Text</spane>
+```
+
+**CAUTION!** `html-differ` does not check the validity of `HTML` codes, but compares them using the above shown criteria and specified options (see the list of possible options in the [usage](https://github.com/bem/html-differ#usage)).
 
 ## Install
 
@@ -222,7 +243,7 @@ Sets predefined options for `BEM` (default: `false`).
 
 ```bash
 $ html-differ --help
-Compares two HTML files
+Compares two HTML codes
 
 Usage:
   html-differ [OPTIONS] [ARGS]
