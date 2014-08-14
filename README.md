@@ -4,7 +4,7 @@
 
 ## The comparison algorithm
 
-`HTML` codes are compared as **browsers** do, to be more exact `html-differ` compares `HTML` codes using the following criteria:
+`HTML` codes will be considered to be equivalent if they are equivalent for **browsers**, to be more exact `html-differ` compares `HTML` codes using the following criteria:
 
 * Two respective lists of attributes are considered to be equivalent even if they are specified in different order.
 
@@ -238,6 +238,7 @@ Sets predefined options for `BEM` (default: `false`).
 * `ignoreHtmlAttrs: ['id', 'for']`
 * `compareHtmlAttrsAsJSON: ['data-bem', 'onclick', 'ondblclick']`
 
+**CAUTION!** If `bem` option is set to `true`, other declarations of `ignoreHtmlAttrs` and `compareHtmlAttrsAsJSON` options will be ignored.
 
 ###As a program###
 
