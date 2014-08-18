@@ -22,11 +22,6 @@
     "type": "git",
     "url": "git://github.com/bem/html-differ.git"
   },
-  "scripts": {
-    "test": "npm run func-test && npm run cover",
-    "func-test": "mocha test",
-    "cover": "istanbul cover _mocha -- test"
-  },
   "dependencies": {
     "vow": "0.4.3",
     "vow-fs": "0.3.1",
@@ -35,12 +30,20 @@
     "diff": "1.0.8",
     "colors": "0.6.2",
     "lodash": "2.4.1",
-    "istanbul": "0.3.0",
     "htmlparser2": "3.7.3"
   },
   "devDependencies": {
     "mocha": "1.18.2",
-    "must": "0.11.0"
+    "must": "0.11.0",
+    "istanbul": "0.3.0",
+    "jshint": "2.5.3",
+    "jscs": "1.5.9"
+  },
+  "scripts": {
+    "test": "npm run lint && npm run func-test && npm run cover",
+    "lint": "jshint . && jscs -c .jscs.js .",
+    "func-test": "mocha test",
+    "cover": "istanbul cover _mocha -- test"
   },
   "engines": {
     "node": ">=0.8.0",
