@@ -3,9 +3,7 @@ var diffLoger = require('../lib/diff-logger');
 require('colors');
 
 describe('\'diffHtml\'', function () {
-
     it('must return an empty string', function () {
-
         var inp = [ {
                 value: 'text',
                 added: undefined,
@@ -16,7 +14,6 @@ describe('\'diffHtml\'', function () {
     });
 
     it('must return a diff string', function () {
-
         var inp = [ {
                 value: 'texttexttexttexttexttexttexttexttexttexttext',
                 added: undefined,
@@ -38,7 +35,8 @@ describe('\'diffHtml\'', function () {
                 added: undefined,
                 removed: undefined
             } ],
-            out = '\n...\n' + 'texttexttexttexttext'.grey + '!'.inverse.green + 'Text'.grey + '!'.inverse.green + 'texttexttexttext'.grey;
+            out = '\n...\n' + 'texttexttexttexttext'.grey + '!'.inverse.green + 'Text'.grey + '!'.inverse.green +
+                'texttexttexttext'.grey;
 
         diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
     });
@@ -53,10 +51,7 @@ describe('\'diffHtml\'', function () {
         diffLoger.getDiffText(inp, { charsAroundDiff: -5 }).must.be.equal('');
     });
 
-
-
     it('must return a diff when there is nothing else in the input', function () {
-
         var inp = [ {
                 value: 'texttexttexttexttexttexttexttexttexttexttext',
                 added: true,
@@ -66,13 +61,13 @@ describe('\'diffHtml\'', function () {
                 added: false,
                 removed: true
             } ],
-            out = '\n' + 'texttexttexttexttexttexttexttexttexttexttext'.inverse.green + 'ololoololoololoololoololoololoololoololoolol'.inverse.red;
+            out = '\n' + 'texttexttexttexttexttexttexttexttexttexttext'.inverse.green +
+                'ololoololoololoololoololoololoololoololoolol'.inverse.red;
 
         diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
     });
 
     it('must return a diff on the beginning of the input', function () {
-
         var inp = [ {
                 value: 'texttexttext',
                 added: undefined,
@@ -92,7 +87,6 @@ describe('\'diffHtml\'', function () {
     });
 
     it('must return several diffs', function () {
-
         var inp = [ {
                 value: 'texttexttexttexttexttexttexttexttexttexttext',
                 added: undefined,
@@ -122,9 +116,10 @@ describe('\'diffHtml\'', function () {
                 added: undefined,
                 removed: undefined
             } ],
-            out = '\n...\n' + 'texttexttexttexttext'.grey + 'text'.inverse.red + 'texttexttexttexttext'.grey + '\n...\n' + 'texttexttexttexttext'.grey + '!'.inverse.green + 'text'.grey + '!'.inverse.green + 'texttexttexttexttext'.grey;
+            out = '\n...\n' + 'texttexttexttexttext'.grey + 'text'.inverse.red +
+                'texttexttexttexttext'.grey + '\n...\n' + 'texttexttexttexttext'.grey +
+                    '!'.inverse.green + 'text'.grey + '!'.inverse.green + 'texttexttexttexttext'.grey;
 
         diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
     });
-
 });
