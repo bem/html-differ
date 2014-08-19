@@ -1,27 +1,16 @@
-var fs = require('fs'),
-    HtmlDiffer = require('../lib/index').HtmlDiffer;
-
-function readFiles(f1, f2) {
-    var files = {};
-
-    files.html1 = fs.readFileSync('test/fixtures/' + f1, 'utf-8');
-    files.html2 = fs.readFileSync('test/fixtures/' + f2, 'utf-8');
-
-    return files;
-}
+var HtmlDiffer = require('../lib/index').HtmlDiffer;
 
 describe('\'diffHtml\'', function () {
-
     it('must set options', function () {
         var htmlDiffer = new HtmlDiffer({ ignoreHtmlAttrs: ['id', 'for'], ignoreWhitespaces: true }),
-            files = readFiles('3.html', '_3.html'),
+            first = '<label for="random">label for input</label><input id="random">',
+            second = '<label for="sfsdfksdf">label for input</label><input id="sfsdfksdf">',
             res = [ {
-                value: '<html><head><title>Test</title></head><body><label for="">label for input</label><input id=""></body></html>',
+                value: '<label for="">label for input</label><input id="">',
                 added: undefined,
                 removed: undefined
             } ];
 
-        htmlDiffer.diffHtml(files.html1, files.html2).must.be.eql(res);
+        htmlDiffer.diffHtml(first, second).must.be.eql(res);
     });
-
 });

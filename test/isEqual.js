@@ -11,7 +11,6 @@ function readFiles(f1, f2) {
 }
 
 describe('\'isEqual\'', function () {
-
     it('must be equal', function () {
         var htmlDiffer = new HtmlDiffer(),
             files = readFiles('1.html', '_1.html');
@@ -68,18 +67,17 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must work \'bem\' option', function() {
+    it('must work \'bem\' option', function () {
         var htmlDiffer = new HtmlDiffer({ bem: true }),
             files = readFiles('9.html', '_9.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must ignore html comments', function() {
+    it('must ignore html comments', function () {
         var htmlDiffer = new HtmlDiffer(),
             files = readFiles('10.html', '_10.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
-
 });
