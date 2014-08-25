@@ -22,7 +22,6 @@ module.exports = {
     disallowSpacesInsideParentheses: true,
     requireSpacesInsideObjectBrackets: 'all',
     disallowQuotedKeysInObjects: 'allButReserved',
-    disallowDanglingUnderscores: true,
     disallowSpaceAfterObjectKeys: true,
     requireCommaBeforeLineBreak: true,
     requireOperatorBeforeLineBreak: true,
@@ -39,7 +38,6 @@ module.exports = {
         mark: '\'',
         escape: true
     },
-    validateIndentation: 4,
     disallowMixedSpacesAndTabs: true,
     disallowTrailingWhitespace: true,
     disallowKeywordsOnNewLine: ['else', 'catch'],
