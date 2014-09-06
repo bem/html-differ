@@ -67,8 +67,8 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must work \'bem\' option', function () {
-        var htmlDiffer = new HtmlDiffer({ bem: true }),
+    it('must work \'bem\' preset', function () {
+        var htmlDiffer = new HtmlDiffer('bem'),
             files = readFiles('9.html', '_9.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
