@@ -25,8 +25,8 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
     });
 
-    it('must ignore html attrs', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreHtmlAttrs: ['id', 'for'] }),
+    it('must ignore attributes', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreAttributes: ['id', 'for'] }),
             files = readFiles('3.html', '_3.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
@@ -39,16 +39,23 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must sort attrs', function () {
+    it('must sort attributes', function () {
         var htmlDiffer = new HtmlDiffer(),
             files = readFiles('5.html', '_5.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must sort content of attrs', function () {
+    it('must sort content of attributes', function () {
         var htmlDiffer = new HtmlDiffer({ compareHtmlAttrsAsJSON: [ 'a', 'b' ] }),
             files = readFiles('6.html', '_6.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must sort \'onclick\' and \'ondblclick\' content', function () {
+        var htmlDiffer = new HtmlDiffer({ compareHtmlAttrsAsJSON: [ 'onclick', 'ondblclick' ] }),
+            files = readFiles('8.html', '_8.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
@@ -56,13 +63,6 @@ describe('\'isEqual\'', function () {
     it('must ignore space characters', function () {
         var htmlDiffer = new HtmlDiffer({ ignoreWhitespaces: true }),
             files = readFiles('7.html', '_7.html');
-
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
-
-    it('must sort \'onclick\' and \'ondblclick\' attrs content', function () {
-        var htmlDiffer = new HtmlDiffer({ compareHtmlAttrsAsJSON: [ 'onclick', 'ondblclick' ] }),
-            files = readFiles('8.html', '_8.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
