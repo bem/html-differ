@@ -46,15 +46,15 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must sort content of attributes', function () {
-        var htmlDiffer = new HtmlDiffer({ compareHtmlAttrsAsJSON: [ 'a', 'b' ] }),
+    it('must sort content of attributes as JSON', function () {
+        var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: [ 'a', 'b' ] }),
             files = readFiles('6.html', '_6.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must sort \'onclick\' and \'ondblclick\' content', function () {
-        var htmlDiffer = new HtmlDiffer({ compareHtmlAttrsAsJSON: [ 'onclick', 'ondblclick' ] }),
+    it('must sort \'onclick\' and \'ondblclick\' content as JSON', function () {
+        var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: [ 'onclick', 'ondblclick' ] }),
             files = readFiles('8.html', '_8.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
