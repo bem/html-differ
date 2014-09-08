@@ -25,8 +25,8 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
     });
 
-    it('must ignore html attrs', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreHtmlAttrs: ['id', 'for'] }),
+    it('must ignore attributes', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreAttributes: ['id', 'for'] }),
             files = readFiles('3.html', '_3.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
@@ -39,16 +39,23 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must sort attrs', function () {
+    it('must sort attributes', function () {
         var htmlDiffer = new HtmlDiffer(),
             files = readFiles('5.html', '_5.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must sort content of attrs', function () {
-        var htmlDiffer = new HtmlDiffer({ compareHtmlAttrsAsJSON: [ 'a', 'b' ] }),
+    it('must sort content of attributes as JSON', function () {
+        var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: [ 'a', 'b' ] }),
             files = readFiles('6.html', '_6.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must sort \'onclick\' and \'ondblclick\' content as JSON', function () {
+        var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: [ 'onclick', 'ondblclick' ] }),
+            files = readFiles('8.html', '_8.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
@@ -60,13 +67,6 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must sort \'onclick\' and \'ondblclick\' attrs content', function () {
-        var htmlDiffer = new HtmlDiffer({ compareHtmlAttrsAsJSON: [ 'onclick', 'ondblclick' ] }),
-            files = readFiles('8.html', '_8.html');
-
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
-
     it('must work \'bem\' preset', function () {
         var htmlDiffer = new HtmlDiffer('bem'),
             files = readFiles('9.html', '_9.html');
@@ -74,7 +74,7 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must ignore html comments', function () {
+    it('must ignore comments', function () {
         var htmlDiffer = new HtmlDiffer(),
             files = readFiles('10.html', '_10.html');
 
