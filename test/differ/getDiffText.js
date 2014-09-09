@@ -1,4 +1,4 @@
-var diffLoger = require('../lib/diff-logger');
+var diffLoger = require('../../lib/diff-logger');
 
 require('colors');
 

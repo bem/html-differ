@@ -1,4 +1,4 @@
-var HtmlDiffer = require('../lib/index').HtmlDiffer;
+var HtmlDiffer = require('../../lib/index').HtmlDiffer;
 
 describe('\'diffHtml\'', function () {
     it('must set options', function () {

@@ -1,11 +1,11 @@
 var fs = require('fs'),
-    HtmlDiffer = require('../lib/index').HtmlDiffer;
+    HtmlDiffer = require('../../lib/index').HtmlDiffer;
 
 function readFiles(f1, f2) {
     var files = {};
 
-    files.html1 = fs.readFileSync('test/fixtures/' + f1, 'utf-8');
-    files.html2 = fs.readFileSync('test/fixtures/' + f2, 'utf-8');
+    files.html1 = fs.readFileSync('test/differ/fixtures/' + f1, 'utf-8');
+    files.html2 = fs.readFileSync('test/differ/fixtures/' + f2, 'utf-8');
 
     return files;
 }
@@ -77,6 +77,13 @@ describe('\'isEqual\'', function () {
     it('must ignore comments', function () {
         var htmlDiffer = new HtmlDiffer(),
             files = readFiles('10.html', '_10.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must consider uppercase and lowercase declarations in \'doctype\' to be equal', function () {
+        var htmlDiffer = new HtmlDiffer(),
+            files = readFiles('11.html', '_11.html');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
