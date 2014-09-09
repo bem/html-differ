@@ -94,4 +94,18 @@ describe('\'isEqual\'', function () {
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
+
+    it('must ignore duplicate attributes', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: true }),
+            files = readFiles('13.html', '_13.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must not ignore duplicate attributes', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: false }),
+            files = readFiles('13.html', '_13.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
+    });
 });
