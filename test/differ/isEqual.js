@@ -87,4 +87,11 @@ describe('\'isEqual\'', function () {
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
+
+    it('must ignore closing tags', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreClosingTags: true }),
+            files = readFiles('12.html', '_12.html');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
 });
