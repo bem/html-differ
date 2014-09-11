@@ -1,40 +1,40 @@
-var serializer = require('../../lib/serializer');
+var serialize = require('../../lib/serialize');
 
-describe('\'serializer\'', function () {
+describe('\'serialize\'', function () {
     it('must serialize empty doctype', function () {
         var output = '<!DOCTYPE>';
 
-        serializer.doctype('', null, null).must.be.equal(output);
+        serialize.doctype('', null, null).must.be.equal(output);
     });
 
     it('must serialize doctype without \'publicId\' and \'systemId\'', function () {
         var output = '<!DOCTYPE HTML>';
 
-        serializer.doctype('HTML', null, null).must.be.equal(output);
+        serialize.doctype('HTML', null, null).must.be.equal(output);
     });
 
     it('must serialize doctype with \'publicId\' and \'systemId\'', function () {
         var output = '<!DOCTYPE HTML PUBLIC "_PUBLIC" "_SYSTEM">';
 
-        serializer.doctype('html', '_PUBLIC', '_SYSTEM').must.be.equal(output);
+        serialize.doctype('html', '_PUBLIC', '_SYSTEM').must.be.equal(output);
     });
 
     it('must serialize doctype with \'publicId\'', function () {
         var output = '<!DOCTYPE HTML PUBLIC "_PUBLIC">';
 
-        serializer.doctype('html', '_PUBLIC', null).must.be.equal(output);
+        serialize.doctype('html', '_PUBLIC', null).must.be.equal(output);
     });
 
     it('must serialize doctype with \'systemId\'', function () {
         var output = '<!DOCTYPE HTML SYSTEM "_SYSTEM">';
 
-        serializer.doctype('html', null, '_SYSTEM').must.be.equal(output);
+        serialize.doctype('html', null, '_SYSTEM').must.be.equal(output);
     });
 
     it('must serialize start tag without attributes', function () {
         var output = '<blah>';
 
-        serializer.startTag('blah', [], false).must.be.equal(output);
+        serialize.startTag('blah', [], false).must.be.equal(output);
     });
 
     it('must serialize start tag with attributes', function () {
@@ -45,30 +45,30 @@ describe('\'serializer\'', function () {
             ],
             output = '<blah id="1" id="2" class=" a b c">';
 
-        serializer.startTag('blah', attrs, false).must.be.equal(output);
+        serialize.startTag('blah', attrs, false).must.be.equal(output);
     });
 
     it('must serialize self closing start tag', function () {
         var output = '<blah/>';
 
-        serializer.startTag('blah', [], true).must.be.equal(output);
+        serialize.startTag('blah', [], true).must.be.equal(output);
     });
 
     it('must serialize end tag', function () {
         var output = '</blah>';
 
-        serializer.endTag('blah').must.be.equal(output);
+        serialize.endTag('blah').must.be.equal(output);
     });
 
     it('must serialize text', function () {
         var output = '\nblah\t&quot;';
 
-        serializer.text('\nblah\t&quot;').must.be.equal(output);
+        serialize.text('\nblah\t&quot;').must.be.equal(output);
     });
 
     it('must serialize comments', function () {
         var output = '<!-- blah -->';
 
-        serializer.comment(' blah ').must.be.equal(output);
+        serialize.comment(' blah ').must.be.equal(output);
     });
 });

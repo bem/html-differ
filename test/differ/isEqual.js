@@ -1,11 +1,11 @@
 var fs = require('fs'),
     HtmlDiffer = require('../../lib/index').HtmlDiffer;
 
-function readFiles(f1, f2) {
+function readFiles(f) {
     var files = {};
 
-    files.html1 = fs.readFileSync('test/differ/fixtures/' + f1, 'utf-8');
-    files.html2 = fs.readFileSync('test/differ/fixtures/' + f2, 'utf-8');
+    files.html1 = fs.readFileSync('test/differ/fixtures/input/' + f + '.html', 'utf-8');
+    files.html2 = fs.readFileSync('test/differ/fixtures/output/' + f + '.html', 'utf-8');
 
     return files;
 }
@@ -13,99 +13,99 @@ function readFiles(f1, f2) {
 describe('\'isEqual\'', function () {
     it('must be equal', function () {
         var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('1.html', '_1.html');
+            files = readFiles('equal');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
     it('must be not equal', function () {
         var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('2.html', '_2.html');
+            files = readFiles('not-equal');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
     });
 
-    it('must ignore attributes', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreAttributes: ['id', 'for'] }),
-            files = readFiles('3.html', '_3.html');
-
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
-
-    it('must sort classes', function () {
+    it('must consider uppercase and lowercase declarations in \'doctype\' to be equal', function () {
         var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('4.html', '_4.html');
+            files = readFiles('doctype');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
     it('must sort attributes', function () {
         var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('5.html', '_5.html');
+            files = readFiles('sort-attributes');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must sort content of attributes as JSON', function () {
+    it('must sort classes\' values', function () {
+        var htmlDiffer = new HtmlDiffer(),
+            files = readFiles('sort-classes');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must sort values of attributes as JSON', function () {
         var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: [ 'a', 'b' ] }),
-            files = readFiles('6.html', '_6.html');
+            files = readFiles('sort-values-in-json-format');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must sort \'onclick\' and \'ondblclick\' content as JSON', function () {
+    it('must sort values of attributes \'onclick\' and \'ondblclick\' as JSON', function () {
         var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: [ 'onclick', 'ondblclick' ] }),
-            files = readFiles('8.html', '_8.html');
+            files = readFiles('onclick-and-ondblclick');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must ignore space characters', function () {
+    it('must work option \'ignoreAttributes\'', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreAttributes: ['id', 'for'] }),
+            files = readFiles('ignore-attributes');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must work option \'ignoreWhitespaces\'', function () {
         var htmlDiffer = new HtmlDiffer({ ignoreWhitespaces: true }),
-            files = readFiles('7.html', '_7.html');
+            files = readFiles('ignore-whitespaces');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must work \'bem\' preset', function () {
-        var htmlDiffer = new HtmlDiffer('bem'),
-            files = readFiles('9.html', '_9.html');
-
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
-
-    it('must ignore comments', function () {
+    it('must work option \'ignoreComments\'', function () {
         var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('10.html', '_10.html');
+            files = readFiles('ignore-comments');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must consider uppercase and lowercase declarations in \'doctype\' to be equal', function () {
-        var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('11.html', '_11.html');
-
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
-
-    it('must ignore closing tags', function () {
+    it('must work option \'ignoreClosingTags\'', function () {
         var htmlDiffer = new HtmlDiffer({ ignoreClosingTags: true }),
-            files = readFiles('12.html', '_12.html');
+            files = readFiles('ignore-closing-tags');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must ignore duplicate attributes', function () {
+    it('must work option \'ignoreDuplicateAttributes\'', function () {
         var htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: true }),
-            files = readFiles('13.html', '_13.html');
+            files = readFiles('ignore-duplicate-attributes');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
     it('must not ignore duplicate attributes', function () {
         var htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: false }),
-            files = readFiles('13.html', '_13.html');
+            files = readFiles('ignore-duplicate-attributes');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
+    });
+
+    it('must work preset \'bem\'', function () {
+        var htmlDiffer = new HtmlDiffer('bem'),
+            files = readFiles('bem-preset');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 });
