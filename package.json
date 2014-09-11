@@ -41,9 +41,9 @@
   "scripts": {
     "test": "npm run lint && npm run unit-test && npm run func-test && npm run cover",
     "lint": "jshint . && jscs -c .jscs.js .",
-    "func-test": "mocha test/differ",
+    "func-test": "mocha test/diff",
     "unit-test": "mocha test/unit",
-    "cover": "istanbul cover _mocha -- test/unit test/differ"
+    "cover": "istanbul cover _mocha -- test/unit test/diff"
   },
   "engines": {
     "node": ">=0.8.0",

@@ -4,8 +4,8 @@ var fs = require('fs'),
 function readFiles(f) {
     var files = {};
 
-    files.html1 = fs.readFileSync('test/differ/fixtures/input/' + f + '.html', 'utf-8');
-    files.html2 = fs.readFileSync('test/differ/fixtures/output/' + f + '.html', 'utf-8');
+    files.html1 = fs.readFileSync('test/diff/fixtures/first/' + f + '.html', 'utf-8');
+    files.html2 = fs.readFileSync('test/diff/fixtures/second/' + f + '.html', 'utf-8');
 
     return files;
 }

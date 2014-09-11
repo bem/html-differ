@@ -20,6 +20,7 @@ describe('\'utils\'', function () {
                 { name: 'z', value: 'a' },
                 { name: 'z', value: 'a' }
             ];
+
         utils.sortAttrs(input).must.be.eql(output);
     });
 
