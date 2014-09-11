@@ -1,4 +1,4 @@
-var utils = require('../../lib/utils');
+var utils = require('../../lib/utils/utils');
 
 describe('\'utils\'', function () {
     it('must sort attributes in alphabetical order', function () {

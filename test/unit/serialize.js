@@ -1,4 +1,4 @@
-var serialize = require('../../lib/serialize');
+var serialize = require('../../lib/utils/serialize');
 
 describe('\'serialize\'', function () {
     it('must serialize empty doctype', function () {
