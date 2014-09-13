@@ -81,9 +81,9 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
-    it('must work option \'ignoreClosingTags\'', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreClosingTags: true }),
-            files = readFiles('ignore-closing-tags');
+    it('must work option \'ignoreEndTags\'', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreEndTags: true }),
+            files = readFiles('ignore-end-tags');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
