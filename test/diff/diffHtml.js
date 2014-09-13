@@ -1,8 +1,8 @@
-var HtmlDiffer = require('../lib/index').HtmlDiffer;
+var HtmlDiffer = require('../../lib/index').HtmlDiffer;
 
 describe('\'diffHtml\'', function () {
     it('must set options', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreHtmlAttrs: ['id', 'for'], ignoreWhitespaces: true }),
+        var htmlDiffer = new HtmlDiffer({ ignoreAttributes: ['id', 'for'], ignoreWhitespaces: true }),
             first = '<label for="random">label for input</label><input id="random">',
             second = '<label for="sfsdfksdf">label for input</label><input id="sfsdfksdf">',
             res = [ {
