@@ -40,7 +40,12 @@ describe('\'utils\'', function () {
     });
 
     it('must sort attributes\' values which are in JSON format', function () {
-        var input = [
+        var options = [
+                'a',
+                { name: 'onclick', isFunction: true },
+                { name: 'ondblclick', isFunction: true }
+            ],
+            input = [
                 { name: 'a', value: '{"b":{"b":"b","a":"a"},"a":"a"}' },
                 { name: 'a', value: '{"a":"b","b":"a"}' },
                 { name: 'onclick', value: 'return {"b":{"b":"b","a":"a"},"a":"a"}' },
@@ -55,7 +60,7 @@ describe('\'utils\'', function () {
                 { name: 'c', value: '{"c":"c"}' }
             ];
 
-        utils.sortAttrsValues(input, ['a', 'onclick', 'ondblclick']).must.be.eql(output);
+        utils.sortAttrsValues(input, options).must.be.eql(output);
     });
 
     it('must remove attributes\' values', function () {
