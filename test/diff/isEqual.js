@@ -1,0 +1,117 @@
+var fs = require('fs'),
+    HtmlDiffer = require('../../lib/index').HtmlDiffer;
+
+function readFiles(f) {
+    var files = {};
+
+    files.html1 = fs.readFileSync('test/diff/fixtures/first/' + f + '.html', 'utf-8');
+    files.html2 = fs.readFileSync('test/diff/fixtures/second/' + f + '.html', 'utf-8');
+
+    return files;
+}
+
+describe('\'isEqual\'', function () {
+    it('must be equal', function () {
+        var htmlDiffer = new HtmlDiffer(),
+            files = readFiles('equal');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must be not equal', function () {
+        var htmlDiffer = new HtmlDiffer(),
+            files = readFiles('not-equal');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
+    });
+
+    it('must consider uppercase and lowercase declarations in \'doctype\' to be equal', function () {
+        var htmlDiffer = new HtmlDiffer(),
+            files = readFiles('doctype');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must sort attributes', function () {
+        var htmlDiffer = new HtmlDiffer(),
+            files = readFiles('sort-attributes');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must sort classes\' values', function () {
+        var htmlDiffer = new HtmlDiffer(),
+            files = readFiles('sort-classes');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must sort values of attributes as JSON when the content is not a function', function () {
+        var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: [ 'a', { name: 'b', isFunction: false }] }),
+            files = readFiles('sort-values-in-json-format');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must sort values of attributes as JSON when the content is a function', function () {
+        var options = {
+                compareAttributesAsJSON: [
+                    { name: 'onclick', isFunction: true },
+                    { name: 'ondblclick', isFunction: true }
+                ]
+            },
+            htmlDiffer = new HtmlDiffer(options),
+            files = readFiles('sort-functions-in-json-format');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must work option \'ignoreAttributes\'', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreAttributes: ['id', 'for'] }),
+            files = readFiles('ignore-attributes');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must work option \'ignoreWhitespaces\'', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreWhitespaces: true }),
+            files = readFiles('ignore-whitespaces');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must work option \'ignoreComments\'', function () {
+        var htmlDiffer = new HtmlDiffer(),
+            files = readFiles('ignore-comments');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must work option \'ignoreEndTags\'', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreEndTags: true }),
+            files = readFiles('ignore-end-tags');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must work option \'ignoreDuplicateAttributes\'', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: true }),
+            files = readFiles('ignore-duplicate-attributes');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must not ignore duplicate attributes', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: false }),
+            files = readFiles('ignore-duplicate-attributes');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
+    });
+
+    it('must work \'bem\' preset', function () {
+        var htmlDiffer = new HtmlDiffer('bem'),
+            files = readFiles('bem-preset');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+});

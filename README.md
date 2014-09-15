@@ -1,10 +1,33 @@
 # html-differ [![Build Status](https://travis-ci.org/bem/html-differ.svg)](https://travis-ci.org/bem/html-differ) [![Coverage Status](https://img.shields.io/coveralls/bem/html-differ.svg)](https://coveralls.io/r/bem/html-differ?branch=master) [![Dependency Status](https://david-dm.org/bem/html-differ.svg)](https://david-dm.org/bem/html-differ) [![devDependency Status](https://david-dm.org/bem/html-differ/dev-status.svg)](https://david-dm.org/bem/html-differ#info=devDependencies)
 
-Сompares two `HTML` codes.
+Сompares two HTML codes.
 
 ## The comparison algorithm
 
-`HTML` codes will be considered to be equivalent if they are equivalent for **browsers**, to be more exact `html-differ` compares `HTML` codes using the following criteria:
+**html-differ** compares HTML codes using the following criteria:
+
+* `<!DOCTYPE>` declarations are case-insensitive, so the following two code samples will be considered to be equivalent:
+
+```html
+<!DOCTYPE HTML PUBLIC "_PUBLIC" "_SYSTEM">
+```
+
+```html
+<!doctype html public "_PUBLIC" "_SYSTEM">
+```
+
+* Whitespaces (spaces, tabs, new lines etc.) inside start and end tags are ignored during the comparison.
+
+For example, the following two code samples will be considered to be equivalent:
+
+```html
+<span id="1"></span>
+```
+
+```html
+<span id=
+    "1"    ></span   >
+```
 
 * Two respective lists of attributes are considered to be equivalent even if they are specified in different order.
 
@@ -18,7 +41,7 @@ For example, the following two code samples will be considered to be equivalent:
 <span tabIndex="1" id="blah" class="ololo">Text</span>
 ```
 
-* Two respective attributes `class` are considered to be equivalent if they refer to the same groups of `CSS` styles.
+* Two respective attributes `class` are considered to be equivalent if they refer to the same groups of CSS styles.
 
 For example, the following two code samples will be considered to be equivalent:
 
@@ -30,31 +53,8 @@ For example, the following two code samples will be considered to be equivalent:
 <span class=" cd  ab bc">Text</span>
 ```
 
-* From the list of the same tag's attributes, the attrubute which goes the first will be taken for comparison, others will be ignored.
-
-For example, the following two code samples will be considered to be equivalent:
-
-```html
-<span id="blah" id="ololo">Text</span>
-```
-
-```html
-<span id="blah">Text</span>
-```
-
-* Closing tags are not compared.
-
-For example, the following two code samples will be considered to be equivalent:
-
-```html
-<span>Text</span>
-```
-
-```html
-<span>Text</spane>
-```
-
-**CAUTION!** `html-differ` does not check the validity of `HTML` codes, but compares them using the above shown criteria and specified options (see the list of possible options in the [usage](https://github.com/bem/html-differ#usage)).
+**CAUTION!**<br>
+**html-differ** does not check the validity of HTML codes, but compares them using the above shown criteria and specified options (see the list of possible options in the [API](https://github.com/bem/html-differ#api)).
 
 ## Install
 
@@ -62,75 +62,18 @@ For example, the following two code samples will be considered to be equivalent:
 $ npm install html-differ -g
 ```
 
-## Usage
+## API
 
-###As a js-module###
-
-####html-differ####
-
-**html-differ.diffHtml**<br>
-**@param** *{String}* - the 1-st `HTML` code<br>
-**@param** *{String}* - the 2-nd `HTML` code<br>
-**@returns** *{Array of objects}* - [array with diffs](https://github.com/kpdecker/jsdiff#change-objects) between `HTML` codes
-
-**html-differ.isEqual**<br>
-**@param** *{String}* - the 1-st `HTML` code<br>
-**@param** *{String}* - the 2-nd `HTML` code<br>
-**@returns** *{Boolean}*
-
-####diff-logger####
-
-**diff-logger.getDiffText**<br>
-**@param** *{Array of objects}* - the result of the work of the method `html-differ.diffHtml`<br>
-**@param** *{Object}* - options:<br>
-
-* `charsAroundDiff: Number` - the number of characters around the diff result between two `HTML` codes (default: `40`).
-
-**@returns** *{String}* - diffs
-
-**diff-logger.log**<br>
-**@param** *{Array of objects}* - the result of the work of the method `html-differ.diffHtml`<br>
-**@param** *{Object}* - options:<br>
-
-* `charsAroundDiff: Number` - the number of characters around the diff result between two `HTML` codes (default: `40`).
-
-**@returns** - pretty logging of diffs:
-
-<img src='https://cloud.githubusercontent.com/assets/6376693/3648928/a6b9d48a-110d-11e4-8a07-d9b156145017.png'/>
-
-
-**Example**
+###HtmlDiffer###
 
 ```js
-var fs = require('fs'),
-    HtmlDiffer = require('html-differ').HtmlDiffer,
-    diffLogger = require('html-differ/lib/diff-logger');
-
-var html1 = fs.readFileSync('1.html', 'utf-8'),
-    html2 = fs.readFileSync('2.html', 'utf-8');
-
-var options = {
-    ignoreHtmlAttrs: [],
-    compareHtmlAttrsAsJSON: [],
-    ignoreWhitespaces: true,
-    ignoreHtmlComments: true,
-    bem: false
-}
-
-var htmlDiffer = new HtmlDiffer(options);
-
-var diff = htmlDiffer.diffHtml(html1, html2);
-
-var isEqual = htmlDiffer.isEqual(html1, html2);
-
-var res = diffLogger.getDiffText(diff, { charsAroundDiff: 40 });
-
-diffLogger.log(diff, { charsAroundDiff: 40 });
+var HtmlDiffer = require('html-differ').HtmlDiffer,
+    htmlDiffer = new HtmlDiffer(options);
 ```
 
-Where `options` is the `Object`:
+where `options` is an object:
 
-* **ignoreHtmlAttrs: [ Array ]**
+* **ignoreAttributes: [ Array ]**
 
 Sets what kind of respective attributes' content will be ignored during the comparison (default: `[]`).
 
@@ -138,33 +81,39 @@ Sets what kind of respective attributes' content will be ignored during the comp
 The following two code samples will be considered to be equivalent:
 
 ```html
-<label for="random">label for input</label>
+<label for="random">Text</label>
 <input id="random">
 ```
 
 ```html
-<label for="sfsdfksdf">label for input</label>
+<label for="sfsdfksdf">Text</label>
 <input id="sfsdfksdf">
 ```
 
-* **compareHtmlAttrsAsJSON: [ Array ]**
+* **compareAttributesAsJSON: [ Array ]**
 
-Sets what kind of respective attributes' content will be compared as `JSON` objects, but not as strings (default: `[]`).
+Sets what kind of respective attributes' content will be compared as JSON objects, but not as strings (default: `[]`).
 
-**Example**: `['onclick']`<br>
+**Example**: `[{ name: 'data', isFunction: false }, { name: 'onclick', isFunction: true }]`<br>
 The following two code samples will be considered to be equivalent:
 
 ```html
-<div onclick='return {"bla":{"first":"ololo","second":"trololo"}}'></div>
+<div data='{"bla":{"first":"ololo","second":"trololo"}}'></div>
+<span onclick='return {"aaa":"bbb","bbb":"aaa"}'></span>
 ```
 
 ```html
-<div onclick='return {"bla":{"second":"trololo","first":"ololo"}}'></div>
+<div data='{"bla":{"second":"trololo","first":"ololo"}}'></div>
+<span onclick='return {"bbb":"aaa","aaa":"bbb"}'></span>
 ```
+
+**REMARK!**<br>
+The first element of the array could be written in a short form as string:<br>
+`['data', { name: 'onclick', isFunction: true }]`.
 
 * **ignoreWhitespaces: Boolean**
 
-Makes `html-differ` ignore whitespaces (spaces, tabs, new lines etc.) during the comparison (default: `true`).
+Makes **html-differ** ignore whitespaces (spaces, tabs, new lines etc.) during the comparison (default: `true`).
 
 **Example**: `true`<br>
 The following two code samples will be considered to be equivalent:
@@ -176,8 +125,8 @@ The following two code samples will be considered to be equivalent:
 ```html
  <html>
  Text   Text
-<head        lang     ="en">
-    <title                        >               </title>
+<head lang="en">
+    <title>               </title>
 
 
             </head>
@@ -194,9 +143,9 @@ The following two code samples will be considered to be equivalent:
 
 ```
 
-* **ignoreHtmlComments: Boolean**
+* **ignoreComments: Boolean**
 
-Makes `html-differ` ignore `HTML` comments during the comparison (default: `true`).
+Makes **html-differ** ignore HTML comments during the comparison (default: `true`).
 
 **Example**: `true`<br>
 The following two code samples will be considered to be equivalent:
@@ -229,18 +178,132 @@ Text
 </html>
 ```
 
-* **bem: Boolean**
+* **ignoreEndTags: Boolean**
 
-Sets predefined options for `BEM` (default: `false`).
+Makes **html-differ** ignore end tags during the comparison (default: `false`).
 
-**Example**: `true`
+**Example**: `true`<br>
+The following two code samples will be considered to be equivalent:
 
-* `ignoreHtmlAttrs: ['id', 'for']`
-* `compareHtmlAttrsAsJSON: ['data-bem', 'onclick', 'ondblclick']`
+```html
+<span>Text</span>
+```
 
-**CAUTION!** If `bem` option is set to `true`, other declarations of `ignoreHtmlAttrs` and `compareHtmlAttrsAsJSON` options will be ignored.
+```html
+<span>Text</spane>
+```
 
-###As a program###
+* **ignoreDuplicateAttributes: Boolean**
+
+Makes **html-differ** ignore tags' duplicate attributes during the comparison.<br>
+From the list of the same tag's attributes, the attribute which goes the first will be taken for comparison, others will be ignored (default: `false`).
+
+**Example**: `true`<br>
+For example, the following two code samples will be considered to be equivalent:
+
+```html
+<span id="blah" id="ololo">Text</span>
+```
+
+```html
+<span id="blah">Text</span>
+```
+
+**BEM preset**
+
+You can set predefined options for [BEM](http://bem.info/) using the _preset_:
+
+```js
+var HtmlDiffer = require('html-differ').HtmlDiffer,
+    htmlDiffer = new HtmlDiffer('bem');
+```
+
+The options wiil be predefined:
+
+```js
+{
+    ignoreAttributes: ['id', 'for'],
+    compareAttributesAsJSON: [
+        'data-bem',
+        { name: 'onclick', isFunction: true },
+        { name: 'ondblclick', isFunction: true }
+    ],
+    ignoreWhitespaces: true,
+    ignoreComments: true,
+    ignoreEndTags: false,
+    ignoreDuplicateAttributes: false
+}
+```
+
+####Methods####
+
+**htmlDiffer.diffHtml**<br>
+**@param** *{String}* - the 1-st HTML code<br>
+**@param** *{String}* - the 2-nd HTML code<br>
+**@returns** *{Array of objects}* - [array with diffs](https://github.com/kpdecker/jsdiff#change-objects) between HTML codes
+
+**htmlDiffer.isEqual**<br>
+**@param** *{String}* - the 1-st HTML code<br>
+**@param** *{String}* - the 2-nd HTML code<br>
+**@returns** *{Boolean}*
+
+
+###Logger###
+
+```js
+var logger = require('html-differ/lib/logger');
+```
+
+####Methods####
+
+**logger.getDiffText**<br>
+**@param** *{Array of objects}* - the result of the work of the method **htmlDiffer.diffHtml**<br>
+**@param** *{Object}* - options:<br>
+
+* **charsAroundDiff: Number** - the number of characters around the diff result between two HTML codes (default: `40`).
+
+**@returns** *{String}*
+
+**logger.logDiffText**<br>
+**@param** *{Array of objects}* - the result of the work of the method **htmlDiffer.diffHtml**<br>
+**@param** *{Object}* - options:<br>
+
+* **charsAroundDiff: Number** - the number of characters around the diff result between two HTML codes (default: `40`).
+
+**@returns** - pretty logging of diffs:
+
+<img src='https://cloud.githubusercontent.com/assets/6376693/3648928/a6b9d48a-110d-11e4-8a07-d9b156145017.png'/>
+
+
+###Example###
+
+```js
+var fs = require('fs'),
+    HtmlDiffer = require('html-differ').HtmlDiffer,
+    logger = require('html-differ/lib/logger');
+
+var html1 = fs.readFileSync('1.html', 'utf-8'),
+    html2 = fs.readFileSync('2.html', 'utf-8');
+
+var options = {
+        ignoreAttributes: [],
+        compareAttributesAsJSON: [],
+        ignoreWhitespaces: true,
+        ignoreComments: true,
+        ignoreEndTags: false,
+        ignoreDuplicateAttributes: false
+    };
+
+var htmlDiffer = new HtmlDiffer(options);
+
+var diff = htmlDiffer.diffHtml(html1, html2),
+    isEqual = htmlDiffer.isEqual(html1, html2),
+    res = logger.getDiffText(diff, { charsAroundDiff: 40 });
+
+logger.logDiffText(diff, { charsAroundDiff: 40 });
+```
+
+##Usage as a program##
 
 ```bash
 $ html-differ --help
@@ -253,6 +316,7 @@ Options:
   -h, --help : Help
   -v, --version : Shows the version number
   --config=CONFIG : Path to configuration JSON file
+  --bem : Uses predefined options for BEM
   --chars-around-diff=CHARSAROUNDDIFF : The number of characters around the diff (default: 40)
 
 Arguments:
@@ -260,25 +324,28 @@ Arguments:
   PATH2 : Path to the 2-nd HTML file (required)
 ```
 
-**Example**
+###Example###
 
 ```bash
-$ bin/html-differ path/to/html1 path/to/html2
+$ html-differ path/to/html1 path/to/html2
 
-$ bin/html-differ --config=path/to/config --chars-around-diff=40 path/to/html1 path/to/html2
+$ html-differ --config=path/to/config --chars-around-diff=40 path/to/html1 path/to/html2
+
+$ html-differ --bem path/to/html1 path/to/html2
 ```
 
-####Configuration file###
+###Configuration file##
 
-Look at the following `config.json` file:
+Study the following `config.json` file:
 
 ```js
 {
-    "ignoreHtmlAttrs": [],
-    "compareHtmlAttrsAsJSON": [],
+    "ignoreAttributes": [],
+    "compareAttributesAsJSON": [],
     "ignoreWhitespaces": true,
-    "ignoreHtmlComments": true,
-    "bem": false
+    "ignoreComments": true,
+    "ignoreEndTags": false,
+    "ignoreDuplicateAttributes": false
 }
 ```
 
