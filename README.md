@@ -1,10 +1,10 @@
 # html-differ [![Build Status](https://travis-ci.org/bem/html-differ.svg)](https://travis-ci.org/bem/html-differ) [![Coverage Status](https://img.shields.io/coveralls/bem/html-differ.svg)](https://coveralls.io/r/bem/html-differ?branch=master) [![Dependency Status](https://david-dm.org/bem/html-differ.svg)](https://david-dm.org/bem/html-differ) [![devDependency Status](https://david-dm.org/bem/html-differ/dev-status.svg)](https://david-dm.org/bem/html-differ#info=devDependencies)
 
-Сompares two HTML codes.
+Сompares two HTML.
 
 ## The comparison algorithm
 
-**html-differ** compares HTML codes using the following criteria:
+**html-differ** compares HTML using the following criteria:
 
 * `<!DOCTYPE>` declarations are case-insensitive, so the following two code samples will be considered to be equivalent:
 
@@ -54,7 +54,7 @@ For example, the following two code samples will be considered to be equivalent:
 ```
 
 **CAUTION!**<br>
-**html-differ** does not check the validity of HTML codes, but compares them using the above shown criteria and specified options (see the list of possible options in the [API](https://github.com/bem/html-differ#api)).
+**html-differ** does not check the validity of HTML, but compares them using the above shown criteria and specified options (see the list of possible options in the [API](https://github.com/bem/html-differ#api)).
 
 ## Install
 
@@ -240,7 +240,7 @@ The options wiil be predefined:
 **htmlDiffer.diffHtml**<br>
 **@param** *{String}* - the 1-st HTML code<br>
 **@param** *{String}* - the 2-nd HTML code<br>
-**@returns** *{Array of objects}* - [array with diffs](https://github.com/kpdecker/jsdiff#change-objects) between HTML codes
+**@returns** *{Array of objects}* - [array with diffs](https://github.com/kpdecker/jsdiff#change-objects) between HTML
 
 **htmlDiffer.isEqual**<br>
 **@param** *{String}* - the 1-st HTML code<br>
@@ -260,7 +260,7 @@ var logger = require('html-differ/lib/logger');
 **@param** *{Array of objects}* - the result of the work of the method **htmlDiffer.diffHtml**<br>
 **@param** *{Object}* - options:<br>
 
-* **charsAroundDiff: Number** - the number of characters around the diff result between two HTML codes (default: `40`).
+* **charsAroundDiff: Number** - the number of characters around the diff result between two HTML (default: `40`).
 
 **@returns** *{String}*
 
@@ -268,7 +268,7 @@ var logger = require('html-differ/lib/logger');
 **@param** *{Array of objects}* - the result of the work of the method **htmlDiffer.diffHtml**<br>
 **@param** *{Object}* - options:<br>
 
-* **charsAroundDiff: Number** - the number of characters around the diff result between two HTML codes (default: `40`).
+* **charsAroundDiff: Number** - the number of characters around the diff result between two HTML (default: `40`).
 
 **@returns** - pretty logging of diffs:
 
@@ -307,7 +307,7 @@ logger.logDiffText(diff, { charsAroundDiff: 40 });
 
 ```bash
 $ html-differ --help
-Compares two HTML codes
+Compares two HTML
 
 Usage:
   html-differ [OPTIONS] [ARGS]
