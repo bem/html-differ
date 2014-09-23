@@ -346,7 +346,3 @@ $ html-differ --bem путь/к/html1 путь/к/html2
     "ignoreDuplicateAttributes": false
 }
 ```
-
-## Лицензия
-
-[Лицензия MIT](https://ru.wikipedia.org/wiki/Лицензия_MIT)

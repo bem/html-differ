@@ -348,7 +348,3 @@ Study the following `config.json` file:
     "ignoreDuplicateAttributes": false
 }
 ```
-
-## License
-
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
