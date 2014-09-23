@@ -1,12 +1,12 @@
 # html-differ [![Build Status](https://travis-ci.org/bem/html-differ.svg)](https://travis-ci.org/bem/html-differ) [![Coverage Status](https://img.shields.io/coveralls/bem/html-differ.svg)](https://coveralls.io/r/bem/html-differ?branch=master) [![Dependency Status](https://david-dm.org/bem/html-differ.svg)](https://david-dm.org/bem/html-differ) [![devDependency Status](https://david-dm.org/bem/html-differ/dev-status.svg)](https://david-dm.org/bem/html-differ#info=devDependencies)
 
-Сравнивает два HTML-кода.
+Сравнивает два HTML.
 
 ## Алгоритм сравнения
 
-**html-differ** сравнивает HTML-коды по следующим критериям:
+**html-differ** сравнивает HTML по следующим критериям:
 
-* Декларации `<!DOCTYPE>` не чувствителны к регистру, поэтому следующие два кода будут считаться эквивалентными:
+* Декларации `<!DOCTYPE>` не чувствителны к регистру, поэтому следующие два HTML будут считаться эквивалентными:
 
 ```html
 <!DOCTYPE HTML PUBLIC "_PUBLIC" "_SYSTEM">
@@ -18,7 +18,7 @@
 
 * Пробельные символы (пробелы, табуляция, переводы строк и т. д.) внутри открывающих и закрывающих тэгов игнорируются при сравнении.
 
-Например, cледующие два кода будут считаться эквивалентными:
+Например, cледующие два HTML будут считаться эквивалентными:
 
 ```html
 <span id="1"></span>
@@ -31,7 +31,7 @@
 
 * Два соответствующих списка атрибутов считаются эквивалентными, даже если они записаны в разном порядке.
 
-Например, cледующие два кода будут считаться эквивалентными:
+Например, cледующие два HTML будут считаться эквивалентными:
 
 ```html
 <span id="blah" class="ololo" tabIndex="1">Text</span>
@@ -43,7 +43,7 @@
 
 * Два соответствующих атрибута `class` считаются эквивалентными, если они ссылаются на одни и те же группы CSS-стилей.
 
-Например, cледующие два кода будут считаться эквивалентными:
+Например, cледующие два HTML будут считаться эквивалентными:
 
 ```html
 <span class="ab bc cd">Text</span>
@@ -54,7 +54,7 @@
 ```
 
 **ВНИМАНИЕ!**<br>
-**html-differ** не проверяет валидность HTML-кодов, а сравнивает их по вышеуказанным критериям и задынным опциям (смотрите список возможных опций в [API](https://github.com/bem/html-differ/blob/master/README.ru.md#api)).
+**html-differ** не проверяет валидность HTML, а сравнивает их по вышеуказанным критериям и задынным опциям (смотрите список возможных опций в [API](https://github.com/bem/html-differ/blob/master/README.ru.md#api)).
 
 ## Установка
 
@@ -78,7 +78,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 Устанавливает, значения каких атрибутов следует игнорировать при сравнении (по умолчанию: `[]`).
 
 **Пример**: `['id', 'for']`<br>
-Следующие два кода будут считаться эквивалентными:
+Следующие два HTML будут считаться эквивалентными:
 
 ```html
 <label for="random">Text</label>
@@ -95,7 +95,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 Устанавливает, значения каких атрибутов следует сравнивать как JSON-объекты, а не как строки (по умолчанию: `[]`).
 
 **Пример**: `[{ name: 'data', isFunction: false }, { name: 'onclick', isFunction: true }]`<br>
-Следующие два кода будут считаться эквивалентными:
+Следующие два HTML будут считаться эквивалентными:
 
 ```html
 <div data='{"bla":{"first":"ololo","second":"trololo"}}'></div>
@@ -116,7 +116,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 **html-differ** будет игнорировать пробельные символы (пробелы, табуляция, переводы строк и т. д.) при сравнении (по умолчанию: `true`).
 
 **Пример**: `true`<br>
-Следующие два кода будут считаться эквивалентными:
+Следующие два HTML будут считаться эквивалентными:
 
 ```html
 <html>Text Text<head lang="en"><title></title></head><body>Text</body></html>
@@ -148,7 +148,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 **html-differ** будет игнорировать HTML-комментарии при сравнении (по умолчанию: `true`).
 
 **Пример**: `true`<br>
-Следующие два кода будут считаться эквивалентными:
+Следующие два HTML будут считаться эквивалентными:
 
 ```html
 <!DOCTYPE html>
@@ -183,7 +183,7 @@ Text
 **html-differ** будет игнорировать закрывающие тэги при сравнении (по умолчанию: `false`).
 
 **Пример**: `true`<br>
-Следующие два кода будут считаться эквивалентными:
+Следующие два HTML будут считаться эквивалентными:
 
 ```html
 <span>Text</span>
@@ -199,7 +199,7 @@ Text
 Из списка одинаковых атрибутов тэга, для сравнения будет взят тот, который идет первым, остальные будут проигнорированы (по умолчанию: `false`).
 
 **Пример**: `true`<br>
-Следующие два кода будут считаться эквивалентными:
+Следующие два HTML будут считаться эквивалентными:
 
 ```html
 <span id="blah" id="ololo">Text</span>
@@ -238,13 +238,13 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 ####Методы####
 
 **htmlDiffer.diffHtml**<br>
-**@param** *{String}* - 1-й HTML-код<br>
-**@param** *{String}* - 2-й HTML-код<br>
-**@returns** *{Array of objects}* - [массив с отличиями](https://github.com/kpdecker/jsdiff#change-objects) между HTML-кодами
+**@param** *{String}* - 1-й HTML<br>
+**@param** *{String}* - 2-й HTML<br>
+**@returns** *{Array of objects}* - [массив с отличиями](https://github.com/kpdecker/jsdiff#change-objects) между HTML
 
 **htmlDiffer.isEqual**<br>
-**@param** *{String}* - 1-й HTML-код<br>
-**@param** *{String}* - 2-й HTML-код<br>
+**@param** *{String}* - 1-й HTML<br>
+**@param** *{String}* - 2-й HTML<br>
 **@returns** *{Boolean}*
 
 ###Logger###
@@ -259,7 +259,7 @@ var logger = require('html-differ/lib/logger');
 **@param** *{Array of objects}* - результат работы метода **htmlDiffer.diffHtml**<br>
 **@param** *{Object}* - опции:<br>
 
-* **charsAroundDiff: Number** - количество символов перед отличием между HTML-кодами и после него (по умолчанию: `40`)
+* **charsAroundDiff: Number** - количество символов перед отличием между HTML и после него (по умолчанию: `40`)
 
 **@returns** *{String}*
 
@@ -267,7 +267,7 @@ var logger = require('html-differ/lib/logger');
 **@param** *{Array of objects}* - результат работы метода **htmlDiffer.diffHtml**<br>
 **@param** *{Object}* - опции:<br>
 
-* **charsAroundDiff: Number** - количество символов перед отличием между HTML-кодами и после него (по умолчанию: `40`)
+* **charsAroundDiff: Number** - количество символов перед отличием между HTML и после него (по умолчанию: `40`)
 
 **@returns** - вывод отличий:
 
@@ -305,7 +305,7 @@ logger.logDiffText(diff, { charsAroundDiff: 40 });
 
 ```bash
 $ html-differ --help
-Сравнивает два HTML-кода
+Сравнивает два HTML
 
 Использование:
   html-differ [ОПЦИИ] [АРГУМЕНТЫ]
