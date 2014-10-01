@@ -47,8 +47,15 @@ describe('\'isEqual\'', function () {
     });
 
     it('must sort values of attributes as JSON when the content is not a function', function () {
-        var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: [ 'a', { name: 'b', isFunction: false }] }),
+        var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: ['a', { name: 'b', isFunction: false }] }),
             files = readFiles('sort-values-in-json-format');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must handle invalid JSON', function () {
+        var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: ['data-bem'] }),
+            files = readFiles('invalid-json');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
@@ -62,6 +69,14 @@ describe('\'isEqual\'', function () {
             },
             htmlDiffer = new HtmlDiffer(options),
             files = readFiles('sort-functions-in-json-format');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must handle invalid function', function () {
+        var options = { compareAttributesAsJSON: [{ name: 'onclick', isFunction: true }] },
+            htmlDiffer = new HtmlDiffer(options),
+            files = readFiles('invalid-function');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
