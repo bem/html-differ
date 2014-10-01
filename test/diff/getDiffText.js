@@ -2,7 +2,7 @@ var diffLoger = require('../../lib/logger');
 
 require('colors');
 
-describe('\'diffHtml\'', function () {
+describe('\'getDiffText\'', function () {
     it('must return an empty string', function () {
         var inp = [ {
                 value: 'text',

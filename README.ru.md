@@ -92,7 +92,8 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 
 * **compareAttributesAsJSON: [ Array ]**
 
-Устанавливает, значения каких атрибутов следует сравнивать как JSON-объекты, а не как строки (по умолчанию: `[]`).
+Устанавливает, значения каких атрибутов следует сравнивать как JSON-объекты, а не как строки (по умолчанию: `[]`).<br>
+В тех случаях, когда в качестве значения атрибута выступает некорректный JSON или это значение нельзя обернуть в функцию, то оно будет сравниваться как `undefined`.
 
 **Пример**: `[{ name: 'data', isFunction: false }, { name: 'onclick', isFunction: true }]`<br>
 Следующие два HTML будут считаться эквивалентными:
@@ -100,11 +101,17 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 ```html
 <div data='{"bla":{"first":"ololo","second":"trololo"}}'></div>
 <span onclick='return {"aaa":"bbb","bbb":"aaa"}'></span>
+
+<button data='REALLY BAD JSON'></button>
+<button onclick='REALLY BAD FUNCTION'></button>
 ```
 
 ```html
 <div data='{"bla":{"second":"trololo","first":"ololo"}}'></div>
 <span onclick='return {"bbb":"aaa","aaa":"bbb"}'></span>
+
+<button data='undefined'></button>
+<button onclick='undefined'></button>
 ```
 
 **ПРИМЕЧАНИЕ!**<br>

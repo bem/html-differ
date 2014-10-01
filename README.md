@@ -92,7 +92,8 @@ The following two code samples will be considered to be equivalent:
 
 * **compareAttributesAsJSON: [ Array ]**
 
-Sets what kind of respective attributes' content will be compared as JSON objects, but not as strings (default: `[]`).
+Sets what kind of respective attributes' content will be compared as JSON objects, but not as strings (default: `[]`).<br>
+In cases when the value of the attribute is an invalid JSON or can not be wrapped into a function, it will be compared as `undefined`.
 
 **Example**: `[{ name: 'data', isFunction: false }, { name: 'onclick', isFunction: true }]`<br>
 The following two code samples will be considered to be equivalent:
@@ -100,11 +101,17 @@ The following two code samples will be considered to be equivalent:
 ```html
 <div data='{"bla":{"first":"ololo","second":"trololo"}}'></div>
 <span onclick='return {"aaa":"bbb","bbb":"aaa"}'></span>
+
+<button data='REALLY BAD JSON'></button>
+<button onclick='REALLY BAD FUNCTION'></button>
 ```
 
 ```html
 <div data='{"bla":{"second":"trololo","first":"ololo"}}'></div>
 <span onclick='return {"bbb":"aaa","aaa":"bbb"}'></span>
+
+<button data='undefined'></button>
+<button onclick='undefined'></button>
 ```
 
 **REMARK!**<br>
