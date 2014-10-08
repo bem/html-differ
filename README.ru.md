@@ -229,7 +229,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 
 ```js
 {
-    ignoreAttributes: ['id', 'for'],
+    ignoreAttributes: ['id', 'for', 'aria-labelledby', 'aria-describedby'],
     compareAttributesAsJSON: [
         'data-bem',
         { name: 'onclick', isFunction: true },
