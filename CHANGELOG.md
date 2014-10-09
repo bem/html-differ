@@ -1,6 +1,16 @@
 History of changes
 ==================
 
+1.0.2
+-----
+
+* _BEM preset_ was changed. Attributes `aria-labelledby` and `aria-describedby` were added to option **ignoreAttributes**.
+
+1.0.1
+-----
+
+* Fixed crash with option `compareAttributesAsJSON` concerning the invalid input ([issue106](https://github.com/bem/html-differ/issues/106)).
+
 1.0.0
 -----
 

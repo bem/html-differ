@@ -1,6 +1,17 @@
 История изменений
 ==================
 
+1.0.2
+-----
+
+* Изменен _БЭМ-пресет_. В опцию **ignoreAttributes** добавлены атрибуты `aria-labelledby` и `aria-describedby`.
+
+
+1.0.1
+-----
+
+* Исправлена ошибка в опции `compareAttributesAsJSON`, возникающая при некоректных входных данных ([issue106](https://github.com/bem/html-differ/issues/106)).
+
 1.0.0
 -----
 
@@ -23,7 +34,7 @@
 
  * Добавлена опция **ignoreHtmlComments**.
  * Добавлена [русская документация](https://github.com/bem/html-differ/blob/master/README.ru.md).
- * Опция ignoreWhitespace переименована в **ignoreWhitespaces**.
+ * Опция **ignoreWhitespace** переименована в **ignoreWhitespaces**.
  * Значение опции **charsAroundDiff** по умолчанию теперь равно `40`.
  * Удалена опция **verbose**.
  * Вывод отличий теперь похож на тот, который использует [mocha](https://github.com/visionmedia/mocha).
