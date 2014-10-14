@@ -1,6 +1,11 @@
 History of changes
 ==================
 
+1.0.3
+-----
+
+* Improved tokenization of input and serialization of attributes' values ([PR110](https://github.com/bem/html-differ/pull/110)).
+
 1.0.2
 -----
 
