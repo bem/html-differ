@@ -1,6 +1,11 @@
 History of changes
 ==================
 
+1.0.4
+-----
+
+* Improved tokenization of input for better logging of differences ([PR111](https://github.com/bem/html-differ/pull/111)).
+
 1.0.3
 -----
 
