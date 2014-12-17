@@ -1,6 +1,11 @@
 History of changes
 ==================
 
+1.0.5
+-----
+
+* Removed unnecessary files from `npm`.
+
 1.0.4
 -----
 
