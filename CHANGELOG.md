@@ -1,6 +1,11 @@
 History of changes
 ==================
 
+1.0.6
+-----
+
+* Fixed _BEM preset_, set option **ignoreComments** to `false`.
+
 1.0.5
 -----
 
