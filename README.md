@@ -225,7 +225,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
     htmlDiffer = new HtmlDiffer('bem');
 ```
 
-The options wiil be predefined:
+The options will be predefined:
 
 ```js
 {
@@ -236,7 +236,7 @@ The options wiil be predefined:
         { name: 'ondblclick', isFunction: true }
     ],
     ignoreWhitespaces: true,
-    ignoreComments: true,
+    ignoreComments: false,
     ignoreEndTags: false,
     ignoreDuplicateAttributes: false
 }
