@@ -236,7 +236,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
         { name: 'ondblclick', isFunction: true }
     ],
     ignoreWhitespaces: true,
-    ignoreComments: true,
+    ignoreComments: false,
     ignoreEndTags: false,
     ignoreDuplicateAttributes: false
 }
