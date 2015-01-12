@@ -1,6 +1,12 @@
 History of changes
 ==================
 
+1.0.7
+-----
+
+* Updated `keywords` in `package.json`.
+* Added file `.npmignore`.
+
 1.0.6
 -----
 
