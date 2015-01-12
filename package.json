@@ -4,8 +4,12 @@
   "description": "Compares two HTML",
   "keywords": [
     "html-differ",
+    "html-diff",
+    "htmldiffer",
+    "htmldiff",
     "html",
-    "differ"
+    "differ",
+    "diff"
   ],
   "homepage": "https://github.com/bem/html-differ",
   "bugs": "https://github.com/bem/html-differ/issues",
