@@ -154,6 +154,10 @@ The following two code samples will be considered to be equivalent:
 
 Makes **html-differ** ignore HTML comments during the comparison (default: `true`).
 
+**REMARK!**<br>
+Does not ignore [conditional comments](http://en.wikipedia.org/wiki/Conditional_comment).
+
+
 **Example**: `true`<br>
 The following two code samples will be considered to be equivalent:
 
@@ -163,10 +167,15 @@ The following two code samples will be considered to be equivalent:
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title><!-- comments2 --></title>
+    <!--[if IE]>
+        <link rel="stylesheet" type="text/css" href="all-ie-only.css" />
+    <![endif]-->
+    <!--[if !IE]><!-->
+        <link href="non-ie.css" rel="stylesheet">
+    <!--<![endif]-->
 </head>
 <body>
-Text<!-- comments3 -->
+Text<!-- comments2 -->
 </body>
 </html>
 ```
@@ -177,7 +186,12 @@ Text<!-- comments3 -->
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <!--[if IE]>
+        <link href="all-ie-only.css" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+    <!--[if !IE]><!-->
+        <link href="non-ie.css" rel="stylesheet">
+    <!--<![endif]-->
 </head>
 <body>
 Text
@@ -236,7 +250,7 @@ The options will be predefined:
         { name: 'ondblclick', isFunction: true }
     ],
     ignoreWhitespaces: true,
-    ignoreComments: false,
+    ignoreComments: true,
     ignoreEndTags: false,
     ignoreDuplicateAttributes: false
 }
