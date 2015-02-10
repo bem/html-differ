@@ -1,6 +1,12 @@
 History of changes
 ==================
 
+1.0.8
+-----
+
+* _Сonfitional comments_ are not ignored regardless of the value of option **ignoreComments** (see [#4]).
+* Changed _BEM preset_, set option **ignoreComments** to `true`.
+
 1.0.7
 -----
 
@@ -20,12 +26,12 @@ History of changes
 1.0.4
 -----
 
-* Improved tokenization of input for better logging of differences ([PR111](https://github.com/bem/html-differ/pull/111)).
+* Improved tokenization of input for better logging of differences (see [#3]).
 
 1.0.3
 -----
 
-* Improved tokenization of input and serialization of attributes' values ([PR110](https://github.com/bem/html-differ/pull/110)).
+* Improved tokenization of input and serialization of attributes' values (see [#2]).
 
 1.0.2
 -----
@@ -35,7 +41,7 @@ History of changes
 1.0.1
 -----
 
-* Fixed crash with option `compareAttributesAsJSON` concerning the invalid input ([issue106](https://github.com/bem/html-differ/issues/106)).
+* Fixed crash with option `compareAttributesAsJSON` concerning the invalid input (see [#1]).
 
 1.0.0
 -----
@@ -73,3 +79,8 @@ History of changes
  * Added **getDiffText** method to **logger**.
  * Added testing of code coverage and dependencies status.
  * Added JSDocs.
+
+[#1]: https://github.com/bem/html-differ/issues/106
+[#2]: https://github.com/bem/html-differ/pull/110
+[#3]: https://github.com/bem/html-differ/pull/111
+[#4]: https://github.com/bem/html-differ/issues/116
