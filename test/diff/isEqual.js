@@ -102,6 +102,13 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
 
+    it('must does NOT work option \'ignoreComments\'', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreComments: false }),
+            files = readFiles('ignore-comments-false');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
     it('must work option \'ignoreEndTags\'', function () {
         var htmlDiffer = new HtmlDiffer({ ignoreEndTags: true }),
             files = readFiles('ignore-end-tags');

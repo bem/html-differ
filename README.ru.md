@@ -154,6 +154,9 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 
 **html-differ** будет игнорировать HTML-комментарии при сравнении (по умолчанию: `true`).
 
+**ПРИМЕЧАНИЕ!**<br>
+[Условные комментарии](https://ru.wikipedia.org/wiki/Условный_комментарий) не игнорируются.
+
 **Пример**: `true`<br>
 Следующие два HTML будут считаться эквивалентными:
 
@@ -163,10 +166,15 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title><!-- comments2 --></title>
+    <!--[if IE]>
+        <link rel="stylesheet" type="text/css" href="all-ie-only.css" />
+    <![endif]-->
+    <!--[if !IE]><!-->
+        <link href="non-ie.css" rel="stylesheet">
+    <!--<![endif]-->
 </head>
 <body>
-Text<!-- comments3 -->
+Text<!-- comments2 -->
 </body>
 </html>
 ```
@@ -177,7 +185,12 @@ Text<!-- comments3 -->
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <!--[if IE]>
+        <link href="all-ie-only.css" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+    <!--[if !IE]><!-->
+        <link href="non-ie.css" rel="stylesheet">
+    <!--<![endif]-->
 </head>
 <body>
 Text
@@ -236,7 +249,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
         { name: 'ondblclick', isFunction: true }
     ],
     ignoreWhitespaces: true,
-    ignoreComments: false,
+    ignoreComments: true,
     ignoreEndTags: false,
     ignoreDuplicateAttributes: false
 }
