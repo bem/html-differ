@@ -71,7 +71,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
     htmlDiffer = new HtmlDiffer(options);
 ```
 
-Где `options` – это объект:
+где `options` – это объект:
 
 * **ignoreAttributes: [ Array ]**
 
@@ -366,3 +366,33 @@ $ html-differ --bem путь/к/html1 путь/к/html2
     "ignoreDuplicateAttributes": false
 }
 ```
+
+## Маски
+
+**html-differ** поддерживает использование _масок_ в HTML.
+
+Например, следующие два HTML будут считаться эквивалентными:
+
+```html
+<div id="{{[a-z]*\s\d+}}">
+```
+
+```html
+<div id="text 12345">
+```
+
+### Синтаксис
+
+Для записи _масок_ в **html-differ** используется следующий синтаксис:
+
+```js
+{{RegExp}}
+```
+
+где:
+
+* `{{` – открывающий идентификатор _маски_.
+
+* `RegExp` – регулярное выражение для сопоставления с соответствующим значением в сравниваемом HTML. Имеет такой же синтаксис как и регулярные выражения в JavaScript, записанные в _literal notation_.
+
+* `}}` – закрывающий идентификатор _маски_.
