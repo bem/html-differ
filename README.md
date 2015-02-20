@@ -369,3 +369,33 @@ Study the following `config.json` file:
     "ignoreDuplicateAttributes": false
 }
 ```
+
+## Masks
+
+**html-differ** supports handling of _masks_ in HTML.
+
+For example, the following two code samples will be considered to be equivalent:
+
+```html
+<div id="{{[a-z]*\s\d+}}">
+```
+
+```html
+<div id="text 12345">
+```
+
+### Syntax
+
+_Masks_ in **html-differ** have the following syntax:
+
+```js
+{{RegExp}}
+```
+
+where:
+
+* `{{` – opening identifier of the _mask_.
+
+* `RegExp` – regular expression for matching with the corresponding value in another HTML. The syntax is similar to regular expressions in JavaScript written in a literal notation.
+
+* `}}` – closing identifier of the _mask_.
