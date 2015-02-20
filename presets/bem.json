@@ -1,0 +1,8 @@
+{
+    "ignoreAttributes": ["id", "for", "aria-labelledby", "aria-describedby"],
+    "compareAttributesAsJSON": [
+        "data-bem",
+        { "name": "onclick", "isFunction": true },
+        { "name": "ondblclick", "isFunction": true }
+    ]
+}
