@@ -1,6 +1,11 @@
 History of changes
 ==================
 
+1.1.0
+-----
+
+* Added supporting of _masks_ in HTML (see [#5]).
+
 1.0.8
 -----
 
@@ -84,3 +89,4 @@ History of changes
 [#2]: https://github.com/bem/html-differ/pull/110
 [#3]: https://github.com/bem/html-differ/pull/111
 [#4]: https://github.com/bem/html-differ/issues/116
+[#5]: https://github.com/bem/html-differ#masks

@@ -1,6 +1,11 @@
 История изменений
 =================
 
+1.1.0
+-----
+
+* Добавлена поддержка _масок_ в HTML (подробнее [#5]).
+
 1.0.8
 -----
 
@@ -84,3 +89,5 @@
 [#2]: https://github.com/bem/html-differ/pull/110
 [#3]: https://github.com/bem/html-differ/pull/111
 [#4]: https://github.com/bem/html-differ/issues/116
+[#5]: https://github.com/bem/html-differ/blob/master/README.ru.md#%D0%9C%D0%B0%D1%81%D0%BA%D0%B8
+
