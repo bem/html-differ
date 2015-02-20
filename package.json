@@ -39,8 +39,8 @@
     "mocha": "1.18.2",
     "must": "0.11.0",
     "istanbul": "0.3.0",
-    "jshint": "2.5.3",
-    "jscs": "1.5.9"
+    "jshint": "2.6.0",
+    "jscs": "1.11.3"
   },
   "scripts": {
     "test": "npm run lint && npm run unit-test && npm run func-test && npm run cover",
