@@ -143,4 +143,11 @@ describe('\'isEqual\'', function () {
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
+
+    it('must not be equal by mask {{RegExp}}', function () {
+        var htmlDiffer = new HtmlDiffer(),
+            files = readFiles('mask-false');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
+    });
 });
