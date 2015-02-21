@@ -29,6 +29,7 @@ Compares two HTML.
   * [Configuration file](#configuration-file)
 * [Masks](#masks)
   * [Syntax](#syntax)
+  * [Screening](#screening)
 
 <!-- TOC END -->
 
@@ -94,7 +95,7 @@ $ npm install html-differ
 
 ## API
 
-###HtmlDiffer###
+### HtmlDiffer
 
 ```js
 var HtmlDiffer = require('html-differ').HtmlDiffer,
@@ -103,9 +104,9 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 
 where `options` is an object.
 
-####Options####
+#### Options
 
-#####ignoreAttributes: [Array]#####
+##### ignoreAttributes: [Array]
 
 Sets what kind of respective attributes' content will be ignored during the comparison (default: `[]`).
 
@@ -122,7 +123,7 @@ The following two code samples will be considered to be equivalent:
 <input id="sfsdfksdf">
 ```
 
-#####compareAttributesAsJSON: [Array]#####
+##### compareAttributesAsJSON: [Array]
 
 Sets what kind of respective attributes' content will be compared as JSON objects, but not as strings (default: `[]`).<br>
 In cases when the value of the attribute is an invalid JSON or can not be wrapped into a function, it will be compared as `undefined`.
@@ -150,7 +151,7 @@ The following two code samples will be considered to be equivalent:
 The first element of the array could be written in a short form as string:<br>
 `['data', { name: 'onclick', isFunction: true }]`.
 
-#####ignoreWhitespaces: Boolean#####
+##### ignoreWhitespaces: Boolean
 
 Makes **html-differ** ignore whitespaces (spaces, tabs, new lines etc.) during the comparison (default: `true`).
 
@@ -182,7 +183,7 @@ The following two code samples will be considered to be equivalent:
 
 ```
 
-#####ignoreComments: Boolean#####
+##### ignoreComments: Boolean
 
 Makes **html-differ** ignore HTML comments during the comparison (default: `true`).
 
@@ -231,7 +232,7 @@ Text
 </html>
 ```
 
-#####ignoreEndTags: Boolean#####
+##### ignoreEndTags: Boolean
 
 Makes **html-differ** ignore end tags during the comparison (default: `false`).
 
@@ -246,7 +247,7 @@ The following two code samples will be considered to be equivalent:
 <span>Text</spane>
 ```
 
-#####ignoreDuplicateAttributes: Boolean#####
+##### ignoreDuplicateAttributes: Boolean
 
 Makes **html-differ** ignore tags' duplicate attributes during the comparison.<br>
 From the list of the same tag's attributes, the attribute which goes the first will be taken for comparison, others will be ignored (default: `false`).
@@ -262,12 +263,12 @@ For example, the following two code samples will be considered to be equivalent:
 <span id="blah">Text</span>
 ```
 
-####Presets####
+#### Presets
 
 * [bem](https://github.com/bem/html-differ/blob/master/presets/bem.json) - sets predefined options for [BEM](http://bem.info/).
 
 
-#####Usage#####
+##### Usage
 
 Passing of a preset via the constructor:
 
@@ -283,28 +284,31 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
     htmlDiffer = new HtmlDiffer({ preset: 'bem', ignoreAttributes: [] });
 ```
 
-####Methods####
+#### Methods
 
-#####htmlDiffer.diffHtml#####
+##### htmlDiffer.diffHtml
+
 **@param** *{String}* - the 1-st HTML code<br>
 **@param** *{String}* - the 2-nd HTML code<br>
 **@returns** *{Array of objects}* - [array with diffs](https://github.com/kpdecker/jsdiff#change-objects) between HTML
 
-#####htmlDiffer.isEqual#####
+##### htmlDiffer.isEqual
+
 **@param** *{String}* - the 1-st HTML code<br>
 **@param** *{String}* - the 2-nd HTML code<br>
 **@returns** *{Boolean}*
 
 
-###Logger###
+### Logger
 
 ```js
 var logger = require('html-differ/lib/logger');
 ```
 
-####Methods####
+#### Methods
 
-#####logger.getDiffText#####
+##### logger.getDiffText
+
 **@param** *{Array of objects}* - the result of the work of the method [htmlDiffer.diffHtml](https://github.com/bem/html-differ/tree/master#htmldifferdiffhtml)<br>
 **@param** *{Object}* - options:<br>
 
@@ -312,7 +316,7 @@ var logger = require('html-differ/lib/logger');
 
 **@returns** *{String}*
 
-#####logger.logDiffText#####
+##### logger.logDiffText
 **@param** *{Array of objects}* - the result of the work of the method [htmlDiffer.diffHtml](https://github.com/bem/html-differ/tree/master#htmldifferdiffhtml)<br>
 **@param** *{Object}* - options:<br>
 
@@ -323,7 +327,7 @@ var logger = require('html-differ/lib/logger');
 <img src='https://cloud.githubusercontent.com/assets/6376693/3648928/a6b9d48a-110d-11e4-8a07-d9b156145017.png'/>
 
 
-###Example###
+### Example
 
 ```js
 var fs = require('fs'),
@@ -351,7 +355,7 @@ var diff = htmlDiffer.diffHtml(html1, html2),
 logger.logDiffText(diff, { charsAroundDiff: 40 });
 ```
 
-##Usage as a program##
+## Usage as a program
 
 ```bash
 $ html-differ --help
@@ -373,7 +377,7 @@ Arguments:
   PATH2 : Path to the 2-nd HTML file (required)
 ```
 
-###Example###
+### Example
 
 ```bash
 $ html-differ path/to/html1 path/to/html2
@@ -383,7 +387,7 @@ $ html-differ --config=path/to/config --chars-around-diff=40 path/to/html1 path/
 $ html-differ --preset=bem path/to/html1 path/to/html2
 ```
 
-###Configuration file##
+### Configuration file
 
 Study the following file `config.json`:
 
@@ -427,3 +431,29 @@ where:
 * `RegExp` – regular expression for matching with the corresponding value in another HTML. The syntax is similar to regular expressions in JavaScript written in a literal notation.
 
 * `}}` – closing identifier of the _mask_.
+
+### Screening
+
+The rules of screening of symbols are similar to the rules which are used in regular expressions in JavaScript written in a literal notation.
+
+For example, the following two code samples will be considered to be equivalent:
+
+```html
+<div id="{{\d\.\d}}">
+```
+
+```html
+<div id="1.1">
+```
+
+If you want to use `{{` or `}}` inside a mask, you should screen both curly braces, i.e. `\{\}` or `\}\}`.
+
+For example, the following two code samples will be considered to be equivalent:
+
+```html
+<div class="{{a\{\{b\}\}c}}">
+```
+
+```html
+<div class="a{{b}}c">
+```
