@@ -1,6 +1,18 @@
 History of changes
 ==================
 
+1.3.0
+-----
+
+* **bem** option was declared as _deprecated_. **preset** option should be used instead.
+* Added the ability of redefinition of _presets_.
+* Fixed bug in handling of _masks_ in HTML.
+
+1.2.0
+-----
+
+* BROKEN.
+
 1.1.0
 -----
 
