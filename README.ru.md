@@ -2,6 +2,36 @@
 
 Сравнивает два HTML.
 
+<!-- TOC -->
+* [Алгоритм сравнения](#Алгоритм-сравнения)
+* [Установка](#Установка)
+* [API](#api)
+  * [HtmlDiffer](#htmldiffer)
+    * [Опции](#Опции)
+      * [ignoreAttributes: [Array]](#ignoreattributes-array)
+      * [compareAttributesAsJSON: [Array]](#compareattributesasjson-array)
+      * [ignoreWhitespaces: Boolean](#ignorewhitespaces-boolean)
+      * [ignoreComments: Boolean](#ignorecomments-boolean)
+      * [ignoreEndTags: Boolean](#ignoreendtags-boolean)
+      * [ignoreDuplicateAttributes: Boolean](#ignoreduplicateattributes-boolean)
+    * [Пресеты](#Пресеты)
+      * [Использование](#Использование)
+    * [Методы](#Методы)
+      * [htmlDiffer.diffHtml](#htmldifferdiffhtml)
+      * [htmlDiffer.isEqual](#htmldifferisequal)
+  * [Logger](#logger)
+    * [Методы](#Методы-1)
+      * [logger.getDiffText](#loggergetdifftext)
+      * [logger.logDiffText](#loggerlogdifftext)
+  * [Пример](#Пример)
+* [Использование в качестве программы](#Использование-в-качестве-программы)
+  * [Пример](#Пример-1)
+  * [Конфигурационный файл](#Конфигурационный-файл)
+* [Маски](#Маски)
+  * [Синтаксис](#Синтаксис)
+
+<!-- TOC END -->
+
 ## Алгоритм сравнения
 
 **html-differ** сравнивает HTML по следующим критериям:
@@ -54,12 +84,12 @@
 ```
 
 **ВНИМАНИЕ!**<br>
-**html-differ** не проверяет валидность HTML, а сравнивает их по вышеуказанным критериям и заданным опциям (смотрите список возможных опций в [API](https://github.com/bem/html-differ/blob/master/README.ru.md#api)).
+**html-differ** не проверяет валидность HTML, а сравнивает их по вышеуказанным критериям и заданным опциям (смотрите список возможных [опций](https://github.com/bem/html-differ/blob/master/README.ru.md#%D0%9E%D0%BF%D1%86%D0%B8%D0%B8)).
 
 ## Установка
 
 ```bash
-$ npm install html-differ -g
+$ npm install html-differ
 ```
 
 ## API
@@ -71,9 +101,11 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
     htmlDiffer = new HtmlDiffer(options);
 ```
 
-где `options` – это объект:
+где `options` – это объект.
 
-* **ignoreAttributes: [ Array ]**
+####Опции####
+
+#####ignoreAttributes: [Array]#####
 
 Устанавливает, значения каких атрибутов следует игнорировать при сравнении (по умолчанию: `[]`).
 
@@ -90,7 +122,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 <input id="sfsdfksdf">
 ```
 
-* **compareAttributesAsJSON: [ Array ]**
+#####compareAttributesAsJSON: [Array]#####
 
 Устанавливает, значения каких атрибутов следует сравнивать как JSON-объекты, а не как строки (по умолчанию: `[]`).<br>
 В тех случаях, когда в качестве значения атрибута выступает некорректный JSON или это значение нельзя обернуть в функцию, то оно будет сравниваться как `undefined`.
@@ -118,7 +150,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 Первый элемент массива мог быть записан в короткой форме в качестве строки:<br>
 `['data', { name: 'onclick', isFunction: true }]`.
 
-* **ignoreWhitespaces: Boolean**
+#####ignoreWhitespaces: Boolean#####
 
 **html-differ** будет игнорировать пробельные символы (пробелы, табуляция, переводы строк и т. д.) при сравнении (по умолчанию: `true`).
 
@@ -150,7 +182,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 
 ```
 
-* **ignoreComments: Boolean**
+#####ignoreComments: Boolean#####
 
 **html-differ** будет игнорировать HTML-комментарии при сравнении (по умолчанию: `true`).
 
@@ -198,7 +230,7 @@ Text
 </html>
 ```
 
-* **ignoreEndTags: Boolean**
+#####ignoreEndTags: Boolean#####
 
 **html-differ** будет игнорировать закрывающие тэги при сравнении (по умолчанию: `false`).
 
@@ -213,7 +245,7 @@ Text
 <span>Text</spane>
 ```
 
-* **ignoreDuplicateAttributes: Boolean**
+#####ignoreDuplicateAttributes: Boolean#####
 
 **html-differ** будет игнорировать повторяющиеся атрибуты.<br>
 Из списка одинаковых атрибутов тэга, для сравнения будет взят тот, который идет первым, остальные будут проигнорированы (по умолчанию: `false`).
@@ -229,40 +261,35 @@ Text
 <span id="blah">Text</span>
 ```
 
-**БЭМ-пресет**
+####Пресеты####
 
-Вы можете установить предопределенные опции для [БЭМ](http://ru.bem.info/) с помощью _пресета_:
+* [bem](https://github.com/bem/html-differ/blob/master/presets/bem.json) - уставливает предопределенные опции для [БЭМ](http://ru.bem.info/).
+
+
+#####Использование#####
+
+Передача пресета конструктору:
 
 ```js
 var HtmlDiffer = require('html-differ').HtmlDiffer,
     htmlDiffer = new HtmlDiffer('bem');
 ```
 
-Опции будут предопределены:
+Переопределение пресета через конструктор:
 
 ```js
-{
-    ignoreAttributes: ['id', 'for', 'aria-labelledby', 'aria-describedby'],
-    compareAttributesAsJSON: [
-        'data-bem',
-        { name: 'onclick', isFunction: true },
-        { name: 'ondblclick', isFunction: true }
-    ],
-    ignoreWhitespaces: true,
-    ignoreComments: true,
-    ignoreEndTags: false,
-    ignoreDuplicateAttributes: false
-}
+var HtmlDiffer = require('html-differ').HtmlDiffer,
+    htmlDiffer = new HtmlDiffer({ preset: 'bem', ignoreAttributes: [] });
 ```
 
 ####Методы####
 
-**htmlDiffer.diffHtml**<br>
+#####htmlDiffer.diffHtml#####
 **@param** *{String}* - 1-й HTML<br>
 **@param** *{String}* - 2-й HTML<br>
 **@returns** *{Array of objects}* - [массив с отличиями](https://github.com/kpdecker/jsdiff#change-objects) между HTML
 
-**htmlDiffer.isEqual**<br>
+#####htmlDiffer.isEqual#####
 **@param** *{String}* - 1-й HTML<br>
 **@param** *{String}* - 2-й HTML<br>
 **@returns** *{Boolean}*
@@ -275,16 +302,16 @@ var logger = require('html-differ/lib/logger');
 
 ####Методы####
 
-**logger.getDiffText**<br>
-**@param** *{Array of objects}* - результат работы метода **htmlDiffer.diffHtml**<br>
+#####logger.getDiffText#####
+**@param** *{Array of objects}* - результат работы метода [htmlDiffer.diffHtml](https://github.com/bem/html-differ/blob/master/README.ru.md#htmldifferdiffhtml)<br>
 **@param** *{Object}* - опции:<br>
 
 * **charsAroundDiff: Number** - количество символов перед отличием между HTML и после него (по умолчанию: `40`)
 
 **@returns** *{String}*
 
-**logger.logDiffText**<br>
-**@param** *{Array of objects}* - результат работы метода **htmlDiffer.diffHtml**<br>
+#####logger.logDiffText#####
+**@param** *{Array of objects}* - результат работы метода [htmlDiffer.diffHtml](https://github.com/bem/html-differ/blob/master/README.ru.md#htmldifferdiffhtml)<br>
 **@param** *{Object}* - опции:<br>
 
 * **charsAroundDiff: Number** - количество символов перед отличием между HTML и после него (по умолчанию: `40`)
@@ -334,7 +361,8 @@ $ html-differ --help
   -h, --help : Помощь
   -v, --version : Показывает номер версии
   --config=CONFIG : Путь к конфигурационному JSON-файлу
-  --bem : Использует предопределенные опции для БЭМ
+  --bem : Использует предопределенные опции для БЭМ (устаревшая опция)
+  -p PRESET, --preset=PRESET : Имя пресета
   --chars-around-diff=CHARSAROUNDDIFF : Количество символов перед отличием и после него (по умолчанию: 40)
 
 Аргументы:
@@ -349,7 +377,7 @@ $ html-differ путь/к/html1 путь/к/html2
 
 $ html-differ --config=путь/к/конфигу --chars-around-diff=40 путь/к/html1 путь/к/html2
 
-$ html-differ --bem путь/к/html1 путь/к/html2
+$ html-differ --preset=bem путь/к/html1 путь/к/html2
 ```
 
 ###Конфигурационный файл###
