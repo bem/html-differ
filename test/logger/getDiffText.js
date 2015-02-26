@@ -1,6 +1,8 @@
-var diffLoger = require('../../lib/logger');
-
-require('colors');
+var chalk = require('chalk'),
+    inverseGreen = chalk.green.inverse,
+    inverseRed = chalk.red.inverse,
+    grey = chalk.grey,
+    diffLoger = require('../../lib/logger');
 
 describe('\'getDiffText\'', function () {
     it('must return an empty string', function () {
@@ -35,8 +37,8 @@ describe('\'getDiffText\'', function () {
                 added: undefined,
                 removed: undefined
             }],
-            out = '\n...\n' + 'texttexttexttexttext'.grey + '!'.inverse.green + 'Text'.grey + '!'.inverse.green +
-                'texttexttexttext'.grey;
+            out = '\n...\n' + grey('texttexttexttexttext') + inverseGreen('!') + grey('Text') + inverseGreen('!') +
+                grey('texttexttexttext');
 
         diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
     });
@@ -61,8 +63,8 @@ describe('\'getDiffText\'', function () {
                 added: false,
                 removed: true
             }],
-            out = '\n' + 'texttexttexttexttexttexttexttexttexttexttext'.inverse.green +
-                'ololoololoololoololoololoololoololoololoolol'.inverse.red;
+            out = '\n' + inverseGreen('texttexttexttexttexttexttexttexttexttexttext') +
+                inverseRed('ololoololoololoololoololoololoololoololoolol');
 
         diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
     });
@@ -81,7 +83,7 @@ describe('\'getDiffText\'', function () {
                 added: undefined,
                 removed: undefined
             }],
-            out = '\n' + 'texttexttext'.grey + 'text'.inverse.red + 'texttexttexttext'.grey;
+            out = '\n' + grey('texttexttext') + inverseRed('text') + grey('texttexttexttext');
 
         diffLoger.getDiffText(inp).must.be.eql(out);
     });
@@ -112,13 +114,13 @@ describe('\'getDiffText\'', function () {
                 added: true,
                 removed: false
             }, {
-                value: 'texttexttexttexttext',
+                value: 'texttexttexttexttexttexttexttexttexttext',
                 added: undefined,
                 removed: undefined
             }],
-            out = '\n...\n' + 'texttexttexttexttext'.grey + 'text'.inverse.red +
-                'texttexttexttexttext'.grey + '\n...\n' + 'texttexttexttexttext'.grey +
-                    '!'.inverse.green + 'text'.grey + '!'.inverse.green + 'texttexttexttexttext'.grey;
+            out = '\n...\n' + grey('texttexttexttexttext') + inverseRed('text') +
+                grey('texttexttexttexttext') + '\n...\n' + grey('texttexttexttexttext') +
+                    inverseGreen('!') + grey('text') + inverseGreen('!') + grey('texttexttexttexttext');
 
         diffLoger.getDiffText(inp, { charsAroundDiff: 20 }).must.be.eql(out);
     });
