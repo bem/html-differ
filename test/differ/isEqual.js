@@ -1,13 +1,19 @@
 var fs = require('fs'),
+    path = require('path'),
+    fixturesPath = path.join(__dirname, 'fixtures'),
     HtmlDiffer = require('../../lib/index').HtmlDiffer;
 
-function readFiles(f) {
-    var files = {};
+/**
+ * @param {String} basename
+ * @returns {Object}
+ */
+function readFiles(basename) {
+    var fileName = basename + '.html';
 
-    files.html1 = fs.readFileSync('test/diff/fixtures/first/' + f + '.html', 'utf-8');
-    files.html2 = fs.readFileSync('test/diff/fixtures/second/' + f + '.html', 'utf-8');
-
-    return files;
+    return {
+        html1: fs.readFileSync(path.join(fixturesPath, 'first', fileName), 'utf-8'),
+        html2: fs.readFileSync(path.join(fixturesPath, 'second', fileName), 'utf-8')
+    };
 }
 
 describe('\'isEqual\'', function () {
