@@ -3,33 +3,33 @@
 Сравнивает два HTML.
 
 <!-- TOC -->
-* [Алгоритм сравнения](#Алгоритм-сравнения)
-* [Установка](#Установка)
-* [API](#api)
-  * [HtmlDiffer](#htmldiffer)
-    * [Опции](#Опции)
-      * [ignoreAttributes: [Array]](#ignoreattributes-array)
-      * [compareAttributesAsJSON: [Array]](#compareattributesasjson-array)
-      * [ignoreWhitespaces: Boolean](#ignorewhitespaces-boolean)
-      * [ignoreComments: Boolean](#ignorecomments-boolean)
-      * [ignoreEndTags: Boolean](#ignoreendtags-boolean)
-      * [ignoreDuplicateAttributes: Boolean](#ignoreduplicateattributes-boolean)
-    * [Пресеты](#Пресеты)
-      * [Использование](#Использование)
-    * [Методы](#Методы)
-      * [htmlDiffer.diffHtml](#htmldifferdiffhtml)
-      * [htmlDiffer.isEqual](#htmldifferisequal)
-  * [Logger](#logger)
-    * [Методы](#Методы-1)
-      * [logger.getDiffText](#loggergetdifftext)
-      * [logger.logDiffText](#loggerlogdifftext)
-  * [Пример](#Пример)
-* [Использование в качестве программы](#Использование-в-качестве-программы)
-  * [Пример](#Пример-1)
-  * [Конфигурационный файл](#Конфигурационный-файл)
-* [Маски](#Маски)
-  * [Синтаксис](#Синтаксис)
-  * [Экранирование](#Экранирование)
+- [Алгоритм сравнения](#Алгоритм-сравнения)
+- [Установка](#Установка)
+- [API](#api)
+  - [HtmlDiffer](#htmldiffer)
+    - [Опции](#Опции)
+      - [ignoreAttributes](#ignoreattributes-array)
+      - [compareAttributesAsJSON](#compareattributesasjson-array)
+      - [ignoreWhitespaces](#ignorewhitespaces-boolean)
+      - [ignoreComments](#ignorecomments-boolean)
+      - [ignoreEndTags](#ignoreendtags-boolean)
+      - [ignoreDuplicateAttributes](#ignoreduplicateattributes-boolean)
+    - [Пресеты](#Пресеты)
+      - [Использование](#Использование)
+    - [Методы](#Методы)
+      - [htmlDiffer.diffHtml](#htmldifferdiffhtml)
+      - [htmlDiffer.isEqual](#htmldifferisequal)
+  - [Logger](#logger)
+    - [Методы](#Методы-1)
+      - [logger.getDiffText](#loggergetdifftext)
+      - [logger.logDiffText](#loggerlogdifftext)
+  - [Пример](#Пример)
+- [Использование в качестве программы](#Использование-в-качестве-программы)
+  - [Пример](#Пример-1)
+  - [Конфигурационный файл](#Конфигурационный-файл)
+- [Маски](#Маски)
+  - [Синтаксис](#Синтаксис)
+  - [Экранирование](#Экранирование)
 
 <!-- TOC END -->
 
@@ -106,6 +106,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 
 #### Опции
 
+<!-- TOC:display:ignoreAttributes -->
 ##### ignoreAttributes: [Array]
 
 Устанавливает, значения каких атрибутов следует игнорировать при сравнении (по умолчанию: `[]`).
@@ -123,6 +124,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 <input id="sfsdfksdf">
 ```
 
+<!-- TOC:display:compareAttributesAsJSON -->
 ##### compareAttributesAsJSON: [Array]
 
 Устанавливает, значения каких атрибутов следует сравнивать как JSON-объекты, а не как строки (по умолчанию: `[]`).<br>
@@ -151,6 +153,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 Первый элемент массива мог быть записан в короткой форме в качестве строки:<br>
 `['data', { name: 'onclick', isFunction: true }]`.
 
+<!-- TOC:display:ignoreWhitespaces -->
 ##### ignoreWhitespaces: Boolean
 
 **html-differ** будет игнорировать пробельные символы (пробелы, табуляция, переводы строк и т. д.) при сравнении (по умолчанию: `true`).
@@ -183,6 +186,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 
 ```
 
+<!-- TOC:display:ignoreComments -->
 ##### ignoreComments: Boolean
 
 **html-differ** будет игнорировать HTML-комментарии при сравнении (по умолчанию: `true`).
@@ -231,6 +235,7 @@ Text
 </html>
 ```
 
+<!-- TOC:display:ignoreEndTags -->
 ##### ignoreEndTags: Boolean
 
 **html-differ** будет игнорировать закрывающие тэги при сравнении (по умолчанию: `false`).
@@ -246,6 +251,7 @@ Text
 <span>Text</spane>
 ```
 
+<!-- TOC:display:ignoreDuplicateAttributes -->
 ##### ignoreDuplicateAttributes: Boolean
 
 **html-differ** будет игнорировать повторяющиеся атрибуты.<br>

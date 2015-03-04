@@ -3,33 +3,33 @@
 Compares two HTML.
 
 <!-- TOC -->
-* [The comparison algorithm](#the-comparison-algorithm)
-* [Install](#install)
-* [API](#api)
-  * [HtmlDiffer](#htmldiffer)
-    * [Options](#options)
-      * [ignoreAttributes: [Array]](#ignoreattributes-array)
-      * [compareAttributesAsJSON: [Array]](#compareattributesasjson-array)
-      * [ignoreWhitespaces: Boolean](#ignorewhitespaces-boolean)
-      * [ignoreComments: Boolean](#ignorecomments-boolean)
-      * [ignoreEndTags: Boolean](#ignoreendtags-boolean)
-      * [ignoreDuplicateAttributes: Boolean](#ignoreduplicateattributes-boolean)
-    * [Presets](#presets)
-      * [Usage](#usage)
-    * [Methods](#methods)
-      * [htmlDiffer.diffHtml](#htmldifferdiffhtml)
-      * [htmlDiffer.isEqual](#htmldifferisequal)
-  * [Logger](#logger)
-    * [Methods](#methods-1)
-      * [logger.getDiffText](#loggergetdifftext)
-      * [logger.logDiffText](#loggerlogdifftext)
-  * [Example](#example)
-* [Usage as a program](#usage-as-a-program)
-  * [Example](#example-1)
-  * [Configuration file](#configuration-file)
-* [Masks](#masks)
-  * [Syntax](#syntax)
-  * [Screening](#screening)
+- [The comparison algorithm](#the-comparison-algorithm)
+- [Install](#install)
+- [API](#api)
+  - [HtmlDiffer](#htmldiffer)
+    - [Options](#options)
+      - [ignoreAttributes](#ignoreattributes-array)
+      - [compareAttributesAsJSON](#compareattributesasjson-array)
+      - [ignoreWhitespaces](#ignorewhitespaces-boolean)
+      - [ignoreComments](#ignorecomments-boolean)
+      - [ignoreEndTags](#ignoreendtags-boolean)
+      - [ignoreDuplicateAttributes](#ignoreduplicateattributes-boolean)
+    - [Presets](#presets)
+      - [Usage](#usage)
+    - [Methods](#methods)
+      - [htmlDiffer.diffHtml](#htmldifferdiffhtml)
+      - [htmlDiffer.isEqual](#htmldifferisequal)
+  - [Logger](#logger)
+    - [Methods](#methods-1)
+      - [logger.getDiffText](#loggergetdifftext)
+      - [logger.logDiffText](#loggerlogdifftext)
+  - [Example](#example)
+- [Usage as a program](#usage-as-a-program)
+  - [Example](#example-1)
+  - [Configuration file](#configuration-file)
+- [Masks](#masks)
+  - [Syntax](#syntax)
+  - [Screening](#screening)
 
 <!-- TOC END -->
 
@@ -106,6 +106,7 @@ where `options` is an object.
 
 #### Options
 
+<!-- TOC:display:ignoreAttributes -->
 ##### ignoreAttributes: [Array]
 
 Sets what kind of respective attributes' content will be ignored during the comparison (default: `[]`).
@@ -123,6 +124,7 @@ The following two code samples will be considered to be equivalent:
 <input id="sfsdfksdf">
 ```
 
+<!-- TOC:display:compareAttributesAsJSON -->
 ##### compareAttributesAsJSON: [Array]
 
 Sets what kind of respective attributes' content will be compared as JSON objects, but not as strings (default: `[]`).<br>
@@ -151,6 +153,7 @@ The following two code samples will be considered to be equivalent:
 The first element of the array could be written in a short form as string:<br>
 `['data', { name: 'onclick', isFunction: true }]`.
 
+<!-- TOC:display:ignoreWhitespaces -->
 ##### ignoreWhitespaces: Boolean
 
 Makes **html-differ** ignore whitespaces (spaces, tabs, new lines etc.) during the comparison (default: `true`).
@@ -183,6 +186,7 @@ The following two code samples will be considered to be equivalent:
 
 ```
 
+<!-- TOC:display:ignoreComments -->
 ##### ignoreComments: Boolean
 
 Makes **html-differ** ignore HTML comments during the comparison (default: `true`).
@@ -232,6 +236,7 @@ Text
 </html>
 ```
 
+<!-- TOC:display:ignoreEndTags -->
 ##### ignoreEndTags: Boolean
 
 Makes **html-differ** ignore end tags during the comparison (default: `false`).
@@ -247,6 +252,7 @@ The following two code samples will be considered to be equivalent:
 <span>Text</spane>
 ```
 
+<!-- TOC:display:ignoreDuplicateAttributes -->
 ##### ignoreDuplicateAttributes: Boolean
 
 Makes **html-differ** ignore tags' duplicate attributes during the comparison.<br>
