@@ -16,12 +16,12 @@ History of changes
 1.1.0
 -----
 
-* Added supporting of _masks_ in HTML (see [#5]).
+* Added supporting of [masks](https://github.com/bem/html-differ#masks) in HTML.
 
 1.0.8
 -----
 
-* _Сonditional comments_ are not ignored regardless of the value of option **ignoreComments** (see [#4]).
+* _Сonditional comments_ are not ignored regardless of the value of option **ignoreComments** (see [#116]).
 * Changed _BEM preset_, set option **ignoreComments** to `true`.
 
 1.0.7
@@ -43,12 +43,12 @@ History of changes
 1.0.4
 -----
 
-* Improved tokenization of input for better logging of differences (see [#3]).
+* Improved tokenization of input for better logging of differences (see [#111]).
 
 1.0.3
 -----
 
-* Improved tokenization of input and serialization of attributes' values (see [#2]).
+* Improved tokenization of input and serialization of attributes' values (see [#110]).
 
 1.0.2
 -----
@@ -58,7 +58,7 @@ History of changes
 1.0.1
 -----
 
-* Fixed crash with option `compareAttributesAsJSON` concerning the invalid input (see [#1]).
+* Fixed crash with option `compareAttributesAsJSON` concerning the invalid input (see [#106]).
 
 1.0.0
 -----
@@ -97,8 +97,7 @@ History of changes
  * Added testing of code coverage and dependencies status.
  * Added JSDocs.
 
-[#1]: https://github.com/bem/html-differ/issues/106
-[#2]: https://github.com/bem/html-differ/pull/110
-[#3]: https://github.com/bem/html-differ/pull/111
-[#4]: https://github.com/bem/html-differ/issues/116
-[#5]: https://github.com/bem/html-differ#masks
+[#106]: https://github.com/bem/html-differ/issues/106
+[#110]: https://github.com/bem/html-differ/pull/110
+[#111]: https://github.com/bem/html-differ/pull/111
+[#116]: https://github.com/bem/html-differ/issues/116
