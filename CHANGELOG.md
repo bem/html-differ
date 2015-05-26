@@ -1,6 +1,11 @@
 History of changes
 ==================
 
+1.3.1
+-----
+
+* Improved tokenization of input for better logging of differences.
+
 1.3.0
 -----
 
