@@ -1,11 +1,10 @@
 {
     "bitwise": true,
     "eqeqeq": true,
-    "es3": true,
     "forin": true,
     "freeze": true,
     "immed": true,
-    "latedef": "nofucn",
+    "latedef": "nofunc",
     "noarg": true,
     "noempty": true,
     "nonbsp": true,
@@ -15,10 +14,6 @@
 
     "browser": true,
     "node": true,
-
-    "globals": {
-        "modules": false
-    },
 
     "expr": true,
     "sub": true
