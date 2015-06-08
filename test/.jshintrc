@@ -1,11 +1,10 @@
 {
     "bitwise": true,
-    "curly": true,
     "eqeqeq": true,
     "forin": true,
     "freeze": true,
     "immed": true,
-    "latedef": "nofucn",
+    "latedef": "nofunc",
     "noarg": true,
     "noempty": true,
     "nonbsp": true,
@@ -15,11 +14,7 @@
 
     "browser": true,
     "node": true,
-
-    "globals": {
-        "describe": false,
-        "it": false
-    },
+    "mocha": true,
 
     "expr": true,
     "sub": true
