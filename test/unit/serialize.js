@@ -63,7 +63,7 @@ describe('\'serialize\'', function () {
     it('must serialize text', function () {
         var output = '\nblah\t&quot;';
 
-        serialize.text('\nblah\t&quot;').must.be.equal(output);
+        serialize.text('\nblah\t"').must.be.equal(output);
     });
 
     it('must serialize comments', function () {
