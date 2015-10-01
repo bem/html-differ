@@ -1,6 +1,11 @@
 История изменений
 =================
 
+1.3.2
+-----
+
+* Исправлена ошибка при сравнении экранированного текста (подробнее [#131]).
+
 1.3.1
 -----
 
@@ -102,6 +107,7 @@
  * Добавлено тестирование покрытия кода и статуса зависимостей.
  * Добавлены JSDocs.
 
+[#131]: https://github.com/bem/html-differ/issues/131
 [#106]: https://github.com/bem/html-differ/issues/106
 [#110]: https://github.com/bem/html-differ/pull/110
 [#111]: https://github.com/bem/html-differ/pull/111

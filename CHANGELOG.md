@@ -1,6 +1,11 @@
 History of changes
 ==================
 
+1.3.2
+-----
+
+* Fixed the bug with comparison of screened text (see [#131]).
+
 1.3.1
 -----
 
@@ -102,6 +107,7 @@ History of changes
  * Added testing of code coverage and dependencies status.
  * Added JSDocs.
 
+[#131]: https://github.com/bem/html-differ/issues/131
 [#106]: https://github.com/bem/html-differ/issues/106
 [#110]: https://github.com/bem/html-differ/pull/110
 [#111]: https://github.com/bem/html-differ/pull/111
