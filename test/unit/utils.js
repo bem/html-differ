@@ -29,11 +29,13 @@ describe('\'utils\'', function () {
                 { name: 'class', value: ' b c a' },
                 { name: 'blah', value: 'b c a' },
                 { name: 'class', value: '' },
+                { name: 'class', value: 'a a a' }
             ],
             output = [
                 { name: 'class', value: 'a b c' },
                 { name: 'blah', value: 'b c a' },
-                { name: 'class', value: '' }
+                { name: 'class', value: '' },
+                { name: 'class', value: 'a' }
             ];
 
         utils.sortCssClasses(input).must.be.eql(output);
