@@ -81,7 +81,7 @@ For example, the following two code samples will be considered to be equivalent:
 ```
 
 ```html
-<span class=" cd  ab bc">Text</span>
+<span class=" cd  ab bc bc">Text</span>
 ```
 
 **CAUTION!**<br>

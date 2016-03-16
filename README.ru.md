@@ -81,7 +81,7 @@
 ```
 
 ```html
-<span class=" cd  ab bc">Text</span>
+<span class=" cd  ab bc bc">Text</span>
 ```
 
 **ВНИМАНИЕ!**<br>
