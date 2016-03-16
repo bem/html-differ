@@ -1,6 +1,12 @@
 History of changes
 ==================
 
+1.3.3
+-----
+
+* Fixed the bug with comparison of duplicate `css` classes (see [#138]).
+* Added supporting of `node@0.12.x` and `node@4.x`.
+
 1.3.2
 -----
 
@@ -107,6 +113,7 @@ History of changes
  * Added testing of code coverage and dependencies status.
  * Added JSDocs.
 
+[#138]: https://github.com/bem/html-differ/issues/138
 [#131]: https://github.com/bem/html-differ/issues/131
 [#106]: https://github.com/bem/html-differ/issues/106
 [#110]: https://github.com/bem/html-differ/pull/110
