@@ -1,6 +1,12 @@
 История изменений
 =================
 
+1.3.3
+-----
+
+* Исправлена ошибка при сравнении повторяющихся `css` классов (подробнее [#138]).
+* Добавлена поддержка `node@0.12.x` и `node@4.x`.
+
 1.3.2
 -----
 
@@ -107,6 +113,7 @@
  * Добавлено тестирование покрытия кода и статуса зависимостей.
  * Добавлены JSDocs.
 
+[#138]: https://github.com/bem/html-differ/issues/138
 [#131]: https://github.com/bem/html-differ/issues/131
 [#106]: https://github.com/bem/html-differ/issues/106
 [#110]: https://github.com/bem/html-differ/pull/110
