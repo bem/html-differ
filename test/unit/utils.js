@@ -65,6 +65,23 @@ describe('\'utils\'', function () {
         utils.sortAttrsValues(input, options).must.be.eql(output);
     });
 
+    it('must correctly sort attributes\' values which are objects inside arrays', function () {
+        var options = [
+                'a',
+                { name: 'onclick', isFunction: true }
+            ],
+            input = [
+                { name: 'a', value: '{"a":[{"b":"b","a":"a"}]}' },
+                { name: 'onclick', value: 'return {"a":[{"b":"b","a":"a"}]}' }
+            ],
+            output = [
+                { name: 'a', value: '{"a":[{"a":"a","b":"b"}]}' },
+                { name: 'onclick', value: 'return {"a":[{"a":"a","b":"b"}]}' }
+            ];
+
+        utils.sortAttrsValues(input, options).must.be.eql(output);
+    });
+
     it('must remove attributes\' values', function () {
         var input = [
                 { name: 'a', value: 'a' },
