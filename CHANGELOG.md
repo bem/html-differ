@@ -1,6 +1,11 @@
 History of changes
 ==================
 
+1.3.4
+-----
+
+* Fixed option [compareAttributesAsJSON](https://github.com/bem/html-differ/tree/v1.3.4#compareattributesasjson-array) (see [#142]).
+
 1.3.3
 -----
 
@@ -113,6 +118,7 @@ History of changes
  * Added testing of code coverage and dependencies status.
  * Added JSDocs.
 
+[#142]: https://github.com/bem/html-differ/pull/142
 [#138]: https://github.com/bem/html-differ/issues/138
 [#131]: https://github.com/bem/html-differ/issues/131
 [#106]: https://github.com/bem/html-differ/issues/106

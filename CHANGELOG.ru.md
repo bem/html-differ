@@ -1,6 +1,11 @@
 История изменений
 =================
 
+1.3.4
+-----
+
+* Исправлена работа опции [compareAttributesAsJSON](https://github.com/bem/html-differ/blob/v1.3.4/README.ru.md#compareattributesasjson-array) (подробнее [#142]).
+
 1.3.3
 -----
 
@@ -113,6 +118,7 @@
  * Добавлено тестирование покрытия кода и статуса зависимостей.
  * Добавлены JSDocs.
 
+[#142]: https://github.com/bem/html-differ/pull/142
 [#138]: https://github.com/bem/html-differ/issues/138
 [#131]: https://github.com/bem/html-differ/issues/131
 [#106]: https://github.com/bem/html-differ/issues/106
