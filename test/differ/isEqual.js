@@ -158,7 +158,7 @@ describe('\'isEqual\'', function () {
     });
 
     it('must ignore self closing slash', function () {
-        var htmlDiffer = new HtmlDiffer(),
+        var htmlDiffer = new HtmlDiffer({ ignoreSelfClosingSlash: true }),
             files = readFiles('strip-self-closing-slash');
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
