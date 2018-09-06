@@ -3,12 +3,3 @@ language: node_js
 node_js:
   - "lts/*"
   - "node"
-
-env:
-  global:
-    - GH_REF: github.com/markedjs/html-differ.git
-    - ISTANBUL_COVERAGE: true
-
-after_success:
-  - npm i coveralls
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
