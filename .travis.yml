@@ -1,13 +1,12 @@
 language: node_js
 
 node_js:
-  - "0.10"
-  - "0.12"
-  - "4"
+  - "lts/*"
+  - "node"
 
 env:
   global:
-    - GH_REF: github.com/bem/html-differ.git
+    - GH_REF: github.com/markedjs/html-differ.git
     - ISTANBUL_COVERAGE: true
 
 after_success:
