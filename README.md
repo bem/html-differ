@@ -17,7 +17,7 @@ Compares two HTML.
       - [ignoreComments](#ignorecomments-boolean)
       - [ignoreEndTags](#ignoreendtags-boolean)
       - [ignoreDuplicateAttributes](#ignoreduplicateattributes-boolean)
-      - [ignoreSelfClosingSlash](#ignoreSelfClosingSlash-boolean)
+      - [ignoreSelfClosingSlash](#ignoreselfclosingslash-boolean)
     - [Presets](#presets)
       - [Usage](#usage)
     - [Methods](#methods)

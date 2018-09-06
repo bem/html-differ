@@ -17,7 +17,7 @@
       - [ignoreComments](#ignorecomments-boolean)
       - [ignoreEndTags](#ignoreendtags-boolean)
       - [ignoreDuplicateAttributes](#ignoreduplicateattributes-boolean)
-      - [ignoreSelfClosingSlash](#ignoreSelfClosingSlash-boolean)
+      - [ignoreSelfClosingSlash](#ignoreselfclosingslash-boolean)
     - [Пресеты](#Пресеты)
       - [Использование](#Использование)
     - [Методы](#Методы)
