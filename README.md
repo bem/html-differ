@@ -1,4 +1,7 @@
-# html-differ [![Build Status](https://travis-ci.org/bem/html-differ.svg)](https://travis-ci.org/bem/html-differ) [![Coverage Status](https://img.shields.io/coveralls/bem/html-differ.svg)](https://coveralls.io/r/bem/html-differ?branch=master) [![Dependency Status](https://david-dm.org/bem/html-differ.svg)](https://david-dm.org/bem/html-differ) [![devDependency Status](https://david-dm.org/bem/html-differ/dev-status.svg)](https://david-dm.org/bem/html-differ#info=devDependencies)
+# html-differ
+[![Build Status](https://travis-ci.org/markedjs/html-differ.svg)](https://travis-ci.org/markedjs/html-differ)
+[![Dependency Status](https://david-dm.org/markedjs/html-differ.svg)](https://david-dm.org/markedjs/html-differ)
+[![devDependency Status](https://david-dm.org/markedjs/html-differ/dev-status.svg)](https://david-dm.org/markedjs/html-differ#info=devDependencies)
 
 Compares two HTML.
 
@@ -14,6 +17,7 @@ Compares two HTML.
       - [ignoreComments](#ignorecomments-boolean)
       - [ignoreEndTags](#ignoreendtags-boolean)
       - [ignoreDuplicateAttributes](#ignoreduplicateattributes-boolean)
+      - [ignoreSelfClosingSlash](#ignoreSelfClosingSlash-boolean)
     - [Presets](#presets)
       - [Usage](#usage)
     - [Methods](#methods)
@@ -85,7 +89,7 @@ For example, the following two code samples will be considered to be equivalent:
 ```
 
 **CAUTION!**<br>
-**html-differ** does not check the validity of HTML, but compares them using the above shown criteria and specified options (see the list of possible [options](https://github.com/bem/html-differ/tree/master#options)).
+**html-differ** does not check the validity of HTML, but compares them using the above shown criteria and specified options (see the list of possible [options](https://github.com/markedjs/html-differ/tree/master#options)).
 
 ## Install
 
@@ -269,9 +273,25 @@ For example, the following two code samples will be considered to be equivalent:
 <span id="blah">Text</span>
 ```
 
+<!-- TOC:display:ignoreSelfClosingSlash -->
+##### ignoreSelfClosingSlash: Boolean
+
+Makes **html-differ** ignore tags' self closing slash during the comparison (default: `false`).
+
+**Example**: `true`<br>
+For example, the following two code samples will be considered to be equivalent:
+
+```html
+<img src="blah.jpg" />
+```
+
+```html
+<img src="blah.jpg">
+```
+
 #### Presets
 
-* [bem](https://github.com/bem/html-differ/blob/master/presets/bem.json) - sets predefined options for [BEM](http://bem.info/).
+* [bem](https://github.com/markedjs/html-differ/blob/master/presets/bem.json) - sets predefined options for [BEM](http://bem.info/).
 
 
 ##### Usage
@@ -315,7 +335,7 @@ var logger = require('html-differ/lib/logger');
 
 ##### logger.getDiffText
 
-**@param** *{Array of objects}* - the result of the work of the method [htmlDiffer.diffHtml](https://github.com/bem/html-differ/tree/master#htmldifferdiffhtml)<br>
+**@param** *{Array of objects}* - the result of the work of the method [htmlDiffer.diffHtml](https://github.com/markedjs/html-differ/tree/master#htmldifferdiffhtml)<br>
 **@param** *{Object}* - options:<br>
 
 * **charsAroundDiff: Number** - the number of characters around the diff result between two HTML (default: `40`).
@@ -323,7 +343,7 @@ var logger = require('html-differ/lib/logger');
 **@returns** *{String}*
 
 ##### logger.logDiffText
-**@param** *{Array of objects}* - the result of the work of the method [htmlDiffer.diffHtml](https://github.com/bem/html-differ/tree/master#htmldifferdiffhtml)<br>
+**@param** *{Array of objects}* - the result of the work of the method [htmlDiffer.diffHtml](https://github.com/markedjs/html-differ/tree/master#htmldifferdiffhtml)<br>
 **@param** *{Object}* - options:<br>
 
 * **charsAroundDiff: Number** - the number of characters around the diff result between two HTML (default: `40`).

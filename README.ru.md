@@ -1,4 +1,7 @@
-# html-differ [![Build Status](https://travis-ci.org/bem/html-differ.svg)](https://travis-ci.org/bem/html-differ) [![Coverage Status](https://img.shields.io/coveralls/bem/html-differ.svg)](https://coveralls.io/r/bem/html-differ?branch=master) [![Dependency Status](https://david-dm.org/bem/html-differ.svg)](https://david-dm.org/bem/html-differ) [![devDependency Status](https://david-dm.org/bem/html-differ/dev-status.svg)](https://david-dm.org/bem/html-differ#info=devDependencies)
+# html-differ
+[![Build Status](https://travis-ci.org/markedjs/html-differ.svg)](https://travis-ci.org/markedjs/html-differ)
+[![Dependency Status](https://david-dm.org/markedjs/html-differ.svg)](https://david-dm.org/markedjs/html-differ)
+[![devDependency Status](https://david-dm.org/markedjs/html-differ/dev-status.svg)](https://david-dm.org/markedjs/html-differ#info=devDependencies)
 
 Сравнивает два HTML.
 
@@ -14,6 +17,7 @@
       - [ignoreComments](#ignorecomments-boolean)
       - [ignoreEndTags](#ignoreendtags-boolean)
       - [ignoreDuplicateAttributes](#ignoreduplicateattributes-boolean)
+      - [ignoreSelfClosingSlash](#ignoreSelfClosingSlash-boolean)
     - [Пресеты](#Пресеты)
       - [Использование](#Использование)
     - [Методы](#Методы)
@@ -85,7 +89,7 @@
 ```
 
 **ВНИМАНИЕ!**<br>
-**html-differ** не проверяет валидность HTML, а сравнивает их по вышеуказанным критериям и заданным опциям (смотрите список возможных [опций](https://github.com/bem/html-differ/blob/master/README.ru.md#%D0%9E%D0%BF%D1%86%D0%B8%D0%B8)).
+**html-differ** не проверяет валидность HTML, а сравнивает их по вышеуказанным критериям и заданным опциям (смотрите список возможных [опций](https://github.com/markedjs/html-differ/blob/master/README.ru.md#%D0%9E%D0%BF%D1%86%D0%B8%D0%B8)).
 
 ## Установка
 
@@ -268,9 +272,25 @@ Text
 <span id="blah">Text</span>
 ```
 
+<!-- TOC:display:ignoreSelfClosingSlash -->
+##### ignoreSelfClosingSlash: Boolean
+
+**html-differ** игнорировать теги самозакрывающихся тегов во время сравнения (по умолчанию: `false`).
+
+**Пример**: `true`<br>
+Следующие два HTML будут считаться эквивалентными:
+
+```html
+<img src="blah.jpg" />
+```
+
+```html
+<img src="blah.jpg">
+```
+
 #### Пресеты
 
-* [bem](https://github.com/bem/html-differ/blob/master/presets/bem.json) - уставливает предопределенные опции для [БЭМ](http://ru.bem.info/).
+* [bem](https://github.com/markedjs/html-differ/blob/master/presets/bem.json) - уставливает предопределенные опции для [БЭМ](http://ru.bem.info/).
 
 
 ##### Использование
@@ -313,7 +333,7 @@ var logger = require('html-differ/lib/logger');
 
 ##### logger.getDiffText
 
-**@param** *{Array of objects}* - результат работы метода [htmlDiffer.diffHtml](https://github.com/bem/html-differ/blob/master/README.ru.md#htmldifferdiffhtml)<br>
+**@param** *{Array of objects}* - результат работы метода [htmlDiffer.diffHtml](https://github.com/markedjs/html-differ/blob/master/README.ru.md#htmldifferdiffhtml)<br>
 **@param** *{Object}* - опции:<br>
 
 * **charsAroundDiff: Number** - количество символов перед отличием между HTML и после него (по умолчанию: `40`)
@@ -322,7 +342,7 @@ var logger = require('html-differ/lib/logger');
 
 ##### logger.logDiffText
 
-**@param** *{Array of objects}* - результат работы метода [htmlDiffer.diffHtml](https://github.com/bem/html-differ/blob/master/README.ru.md#htmldifferdiffhtml)<br>
+**@param** *{Array of objects}* - результат работы метода [htmlDiffer.diffHtml](https://github.com/markedjs/html-differ/blob/master/README.ru.md#htmldifferdiffhtml)<br>
 **@param** *{Object}* - опции:<br>
 
 * **charsAroundDiff: Number** - количество символов перед отличием между HTML и после него (по умолчанию: `40`)
