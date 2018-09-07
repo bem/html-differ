@@ -1,7 +1,8 @@
 # html-differ
 [![Build Status](https://travis-ci.org/markedjs/html-differ.svg)](https://travis-ci.org/markedjs/html-differ)
+[![Install Size](https://packagephobia.now.sh/badge?p=@markedjs/html-differ)](https://packagephobia.now.sh/result?p=@markedjs/html-differ)
 [![Dependency Status](https://david-dm.org/markedjs/html-differ.svg)](https://david-dm.org/markedjs/html-differ)
-[![devDependency Status](https://david-dm.org/markedjs/html-differ/dev-status.svg)](https://david-dm.org/markedjs/html-differ#info=devDependencies)
+[![devDependency Status](https://david-dm.org/markedjs/html-differ/dev-status.svg)](https://david-dm.org/markedjs/html-differ?type=dev)
 
 Compares two HTML.
 
@@ -94,7 +95,7 @@ For example, the following two code samples will be considered to be equivalent:
 ## Install
 
 ```bash
-$ npm install html-differ
+$ npm install @markedjs/html-differ
 ```
 
 ## API
@@ -102,7 +103,7 @@ $ npm install html-differ
 ### HtmlDiffer
 
 ```js
-var HtmlDiffer = require('html-differ').HtmlDiffer,
+var HtmlDiffer = require('@markedjs/html-differ').HtmlDiffer,
     htmlDiffer = new HtmlDiffer(options);
 ```
 
@@ -299,14 +300,14 @@ For example, the following two code samples will be considered to be equivalent:
 Passing of a preset via the constructor:
 
 ```js
-var HtmlDiffer = require('html-differ').HtmlDiffer,
+var HtmlDiffer = require('@markedjs/html-differ').HtmlDiffer,
     htmlDiffer = new HtmlDiffer('bem');
 ```
 
 Redefinition of a preset via the constructor:
 
 ```js
-var HtmlDiffer = require('html-differ').HtmlDiffer,
+var HtmlDiffer = require('@markedjs/html-differ').HtmlDiffer,
     htmlDiffer = new HtmlDiffer({ preset: 'bem', ignoreAttributes: [] });
 ```
 
@@ -328,7 +329,7 @@ var HtmlDiffer = require('html-differ').HtmlDiffer,
 ### Logger
 
 ```js
-var logger = require('html-differ/lib/logger');
+var logger = require('@markedjs/html-differ/lib/logger');
 ```
 
 #### Methods
@@ -357,8 +358,8 @@ var logger = require('html-differ/lib/logger');
 
 ```js
 var fs = require('fs'),
-    HtmlDiffer = require('html-differ').HtmlDiffer,
-    logger = require('html-differ/lib/logger');
+    HtmlDiffer = require('@markedjs/html-differ').HtmlDiffer,
+    logger = require('@markedjs/html-differ/lib/logger');
 
 var html1 = fs.readFileSync('1.html', 'utf-8'),
     html2 = fs.readFileSync('2.html', 'utf-8');
