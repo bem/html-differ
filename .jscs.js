@@ -45,11 +45,14 @@ module.exports = {
     requireCapitalizedConstructors: true,
     safeContextKeyword: ['_this'],
     disallowYodaConditions: true,
-    validateJSDoc: {
+    requireSpaceAfterLineComment: true,
+    disallowNewlineBeforeBlockStatements: true,
+    plugins: [
+        'jscs-jsdoc'
+    ],
+    jsDoc: {
         checkParamNames: true,
         checkRedundantParams: true,
         requireParamTypes: true
-    },
-    requireSpaceAfterLineComment: true,
-    disallowNewlineBeforeBlockStatements: true
+    }
 };
