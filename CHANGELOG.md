@@ -1,6 +1,11 @@
 History of changes
 ==================
 
+2.0.1
+-----
+
+*   Update dependencies to prevent vulnerabilities (see [#9](https://github.com/markedjs/html-differ/pull/9))
+
 2.0.0
 -----
 
