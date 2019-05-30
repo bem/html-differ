@@ -14,6 +14,7 @@ Compares two HTML.
       - [ignoreComments](#ignorecomments-boolean)
       - [ignoreEndTags](#ignoreendtags-boolean)
       - [ignoreDuplicateAttributes](#ignoreduplicateattributes-boolean)
+      - [ignoreEmptyAttributes](#ignoreemptyattributes-boolean)
     - [Presets](#presets)
       - [Usage](#usage)
     - [Methods](#methods)
@@ -267,6 +268,38 @@ For example, the following two code samples will be considered to be equivalent:
 
 ```html
 <span id="blah">Text</span>
+```
+
+<!-- TOC:display:ignoreEmptyAttributes -->
+##### ignoreEmptyAttributes: Boolean
+
+Makes **html-differ** ignore tags' attributes with empty values during the comparison.<br>
+From the list of the same tag's attributes, the attributes which have empty values will be ignored (default: `false`).
+
+**Example**: `true`<br>
+For example, the following two code samples will be considered to be equivalent:
+
+```html
+<div style=""></div>
+```
+
+```html
+<div></div>
+```
+
+This option can also be used to completely ignore attributes specified by the `ignoreAttributes` option, even if they are present in one example, but not in the other.  
+
+**Example**: `ignoreAttributes: ['id', 'for'], ignoreEmptyAttributes: true`<br>
+For example, the following two code samples will be considered to be equivalent:
+
+```html
+<label for="random">label for input</label>
+<input id="random">
+```
+
+```html
+<label>label for input</label>
+<input>
 ```
 
 #### Presets

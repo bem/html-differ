@@ -136,6 +136,34 @@ describe('\'isEqual\'', function () {
         htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
     });
 
+    it('must work option \'ignoreEmptyAttributes\'', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreEmptyAttributes: true }),
+            files = readFiles('ignore-empty-attributes');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must not ignore empty attributes', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreEmptyAttributes: false }),
+            files = readFiles('ignore-empty-attributes');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
+    });
+
+    it('must work options \'ignoreAttributes\' and \'ignoreEmptyAttributes\'', function () {
+        var htmlDiffer = new HtmlDiffer({ ignoreAttributes: ['id', 'for'], ignoreEmptyAttributes: true }),
+            files = readFiles('ignore-attributes-empty');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
+    });
+
+    it('must not ignore attributes', function () {
+        var htmlDiffer = new HtmlDiffer({ }),
+            files = readFiles('ignore-attributes-empty');
+
+        htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
+    });
+
     it('must work \'bem\' preset', function () {
         var htmlDiffer = new HtmlDiffer('bem'),
             files = readFiles('bem-preset');
