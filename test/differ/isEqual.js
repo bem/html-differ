@@ -163,4 +163,12 @@ describe('\'isEqual\'', function () {
 
         htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
     });
+
+    it('must throw an error for invalid preset', function () {
+        function invalidPreset() {
+            return new HtmlDiffer({ preset: "invalid" });
+        }
+
+        invalidPreset.must.throw(Error);
+    });
 });
