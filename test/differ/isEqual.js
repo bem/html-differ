@@ -122,20 +122,6 @@ describe('\'isEqual\'', function() {
     (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
   });
 
-  it('must work option \'ignoreDuplicateAttributes\'', async function() {
-    const htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: true });
-    const files = readFiles('ignore-duplicate-attributes');
-
-    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
-  });
-
-  it('must not ignore duplicate attributes', async function() {
-    const htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: false });
-    const files = readFiles('ignore-duplicate-attributes');
-
-    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.false();
-  });
-
   it('must work \'bem\' preset', async function() {
     const htmlDiffer = new HtmlDiffer('bem');
     const files = readFiles('bem-preset');

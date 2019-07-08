@@ -16,7 +16,6 @@
       - [ignoreWhitespaces](#ignorewhitespaces-boolean)
       - [ignoreComments](#ignorecomments-boolean)
       - [ignoreEndTags](#ignoreendtags-boolean)
-      - [ignoreDuplicateAttributes](#ignoreduplicateattributes-boolean)
       - [ignoreSelfClosingSlash](#ignoreselfclosingslash-boolean)
     - [Пресеты](#Пресеты)
       - [Использование](#Использование)
@@ -255,23 +254,6 @@ Text
 <span>Text</spane>
 ```
 
-<!-- TOC:display:ignoreDuplicateAttributes -->
-##### ignoreDuplicateAttributes: Boolean
-
-**html-differ** будет игнорировать повторяющиеся атрибуты.<br>
-Из списка одинаковых атрибутов тэга, для сравнения будет взят тот, который идет первым, остальные будут проигнорированы (по умолчанию: `false`).
-
-**Пример**: `true`<br>
-Следующие два HTML будут считаться эквивалентными:
-
-```html
-<span id="blah" id="ololo">Text</span>
-```
-
-```html
-<span id="blah">Text</span>
-```
-
 <!-- TOC:display:ignoreSelfClosingSlash -->
 ##### ignoreSelfClosingSlash: Boolean
 
@@ -366,8 +348,7 @@ var options = {
         compareAttributesAsJSON: [],
         ignoreWhitespaces: true,
         ignoreComments: true,
-        ignoreEndTags: false,
-        ignoreDuplicateAttributes: false
+        ignoreEndTags: false
     };
 
 var htmlDiffer = new HtmlDiffer(options);
@@ -421,8 +402,7 @@ $ html-differ --preset=bem путь/к/html1 путь/к/html2
     "compareAttributesAsJSON": [],
     "ignoreWhitespaces": true,
     "ignoreComments": true,
-    "ignoreEndTags": false,
-    "ignoreDuplicateAttributes": false
+    "ignoreEndTags": false
 }
 ```
 

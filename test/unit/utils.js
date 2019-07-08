@@ -105,18 +105,4 @@ describe('\'utils\'', function() {
 
     utils.removeWhitespaces(input).must.be.eql(output);
   });
-
-  it('must remove duplicate attributes', function() {
-    const input = [
-        { name: 'a', value: 'a' },
-        { name: 'a', value: 'b' },
-        { name: 'b', value: 'a' }
-      ],
-      output = [
-        { name: 'a', value: 'a' },
-        { name: 'b', value: 'a' }
-      ];
-
-    utils.removeDuplicateAttributes(input).must.be.eql(output);
-  });
 });
