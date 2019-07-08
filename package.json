@@ -51,7 +51,7 @@
     "unit-test": "mocha test/unit",
     "func-test": "mocha test/differ",
     "logger-test": "mocha test/logger",
-    "cover": "nyc --reporter=lcov --reporter=text mocha test/unit test/differ test/logger"
+    "cover": "nyc --all --reporter=lcov --reporter=text mocha test/unit test/differ test/logger"
   },
   "engines": {
     "node": ">=0.8.0",
