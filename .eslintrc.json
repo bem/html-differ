@@ -1,31 +1,27 @@
 {
-  "env": {
-    "browser": true,
-    "node": true
-  },
-  "globals": {},
+  "extends": "standard",
+  "plugins": [
+    "standard"
+  ],
   "rules": {
-    "no-bitwise": 2,
-    "eqeqeq": 2,
-    "guard-for-in": 2,
-    "no-extend-native": 2,
-    "wrap-iife": [
-      2,
-      "any"
-    ],
-    "no-use-before-define": [
-      2,
-      {
-        "functions": false
-      }
-    ],
-    "no-caller": 2,
-    "no-empty": 2,
-    "no-irregular-whitespace": 2,
-    "no-new": 2,
-    "no-undef": 2,
-    "no-unused-vars": 2,
-    "no-unused-expressions": 0,
-    "dot-notation": 0
+    "semi": ["error", "always"],
+    "indent": ["error", 2, {
+      "SwitchCase": 1,
+      "VariableDeclarator": { "var": 2 },
+      "outerIIFEBody": 0
+    }],
+    "operator-linebreak": ["error", "before", { "overrides": { "=": "after" } }],
+    "space-before-function-paren": ["error", "never"],
+    "no-cond-assign": "off",
+    "no-useless-escape": "off",
+    "one-var": "off",
+    "no-control-regex": "off",
+
+    "prefer-const": "error",
+    "no-var": "error"
+  },
+  "env": {
+    "node": true,
+    "jasmine": true
   }
 }

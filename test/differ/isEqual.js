@@ -1,174 +1,174 @@
-var fs = require('fs'),
-    path = require('path'),
-    fixturesPath = path.join(__dirname, 'fixtures'),
-    HtmlDiffer = require('../../lib/index').HtmlDiffer;
+const fs = require('fs');
+const path = require('path');
+const fixturesPath = path.join(__dirname, 'fixtures');
+const HtmlDiffer = require('../../lib/index').HtmlDiffer;
 
 /**
  * @param {String} basename
  * @returns {Object}
  */
 function readFiles(basename) {
-    var fileName = basename + '.html';
+  const fileName = basename + '.html';
 
-    return {
-        html1: fs.readFileSync(path.join(fixturesPath, 'first', fileName), 'utf-8'),
-        html2: fs.readFileSync(path.join(fixturesPath, 'second', fileName), 'utf-8')
-    };
+  return {
+    html1: fs.readFileSync(path.join(fixturesPath, 'first', fileName), 'utf-8'),
+    html2: fs.readFileSync(path.join(fixturesPath, 'second', fileName), 'utf-8')
+  };
 }
 
-describe('\'isEqual\'', function () {
-    it('must be equal', function () {
-        var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('equal');
+describe('\'isEqual\'', function() {
+  it('must be equal', async function() {
+    const htmlDiffer = new HtmlDiffer();
+    const files = readFiles('equal');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must be not equal', function () {
-        var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('not-equal');
+  it('must be not equal', async function() {
+    const htmlDiffer = new HtmlDiffer();
+    const files = readFiles('not-equal');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.false();
+  });
 
-    it('must consider uppercase and lowercase declarations in \'doctype\' to be equal', function () {
-        var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('doctype');
+  it('must consider uppercase and lowercase declarations in \'doctype\' to be equal', async function() {
+    const htmlDiffer = new HtmlDiffer();
+    const files = readFiles('doctype');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must sort attributes', function () {
-        var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('sort-attributes');
+  it('must sort attributes', async function() {
+    const htmlDiffer = new HtmlDiffer();
+    const files = readFiles('sort-attributes');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must sort classes\' values', function () {
-        var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('sort-classes');
+  it('must sort classes\' values', async function() {
+    const htmlDiffer = new HtmlDiffer();
+    const files = readFiles('sort-classes');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must sort values of attributes as JSON when the content is not a function', function () {
-        var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: ['a', { name: 'b', isFunction: false }] }),
-            files = readFiles('sort-values-in-json-format');
+  it('must sort values of attributes as JSON when the content is not a function', async function() {
+    const htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: ['a', { name: 'b', isFunction: false }] });
+    const files = readFiles('sort-values-in-json-format');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must handle invalid JSON', function () {
-        var htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: ['data-bem'] }),
-            files = readFiles('invalid-json');
+  it('must handle invalid JSON', async function() {
+    const htmlDiffer = new HtmlDiffer({ compareAttributesAsJSON: ['data-bem'] });
+    const files = readFiles('invalid-json');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must sort values of attributes as JSON when the content is a function', function () {
-        var options = {
-                compareAttributesAsJSON: [
-                    { name: 'onclick', isFunction: true },
-                    { name: 'ondblclick', isFunction: true }
-                ]
-            },
-            htmlDiffer = new HtmlDiffer(options),
-            files = readFiles('sort-functions-in-json-format');
+  it('must sort values of attributes as JSON when the content is a function', async function() {
+    const options = {
+      compareAttributesAsJSON: [
+        { name: 'onclick', isFunction: true },
+        { name: 'ondblclick', isFunction: true }
+      ]
+    };
+    const htmlDiffer = new HtmlDiffer(options);
+    const files = readFiles('sort-functions-in-json-format');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must handle invalid function', function () {
-        var options = { compareAttributesAsJSON: [{ name: 'onclick', isFunction: true }] },
-            htmlDiffer = new HtmlDiffer(options),
-            files = readFiles('invalid-function');
+  it('must handle invalid function', async function() {
+    const options = { compareAttributesAsJSON: [{ name: 'onclick', isFunction: true }] };
+    const htmlDiffer = new HtmlDiffer(options);
+    const files = readFiles('invalid-function');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must work option \'ignoreAttributes\'', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreAttributes: ['id', 'for'] }),
-            files = readFiles('ignore-attributes');
+  it('must work option \'ignoreAttributes\'', async function() {
+    const htmlDiffer = new HtmlDiffer({ ignoreAttributes: ['id', 'for'] });
+    const files = readFiles('ignore-attributes');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must work option \'ignoreWhitespaces\'', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreWhitespaces: true }),
-            files = readFiles('ignore-whitespaces');
+  it('must work option \'ignoreWhitespaces\'', async function() {
+    const htmlDiffer = new HtmlDiffer({ ignoreWhitespaces: true });
+    const files = readFiles('ignore-whitespaces');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must work option \'ignoreComments\'', function () {
-        var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('ignore-comments');
+  it('must work option \'ignoreComments\'', async function() {
+    const htmlDiffer = new HtmlDiffer();
+    const files = readFiles('ignore-comments');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must does NOT work option \'ignoreComments\'', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreComments: false }),
-            files = readFiles('ignore-comments-false');
+  it('must does NOT work option \'ignoreComments\'', async function() {
+    const htmlDiffer = new HtmlDiffer({ ignoreComments: false });
+    const files = readFiles('ignore-comments-false');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must work option \'ignoreEndTags\'', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreEndTags: true }),
-            files = readFiles('ignore-end-tags');
+  it('must work option \'ignoreEndTags\'', async function() {
+    const htmlDiffer = new HtmlDiffer({ ignoreEndTags: true });
+    const files = readFiles('ignore-end-tags');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must work option \'ignoreDuplicateAttributes\'', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: true }),
-            files = readFiles('ignore-duplicate-attributes');
+  it('must work option \'ignoreDuplicateAttributes\'', async function() {
+    const htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: true });
+    const files = readFiles('ignore-duplicate-attributes');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must not ignore duplicate attributes', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: false }),
-            files = readFiles('ignore-duplicate-attributes');
+  it('must not ignore duplicate attributes', async function() {
+    const htmlDiffer = new HtmlDiffer({ ignoreDuplicateAttributes: false });
+    const files = readFiles('ignore-duplicate-attributes');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.false();
+  });
 
-    it('must work \'bem\' preset', function () {
-        var htmlDiffer = new HtmlDiffer('bem'),
-            files = readFiles('bem-preset');
+  it('must work \'bem\' preset', async function() {
+    const htmlDiffer = new HtmlDiffer('bem');
+    const files = readFiles('bem-preset');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must work mask {{RegExp}}', function () {
-        var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('mask');
+  it('must work mask {{RegExp}}', async function() {
+    const htmlDiffer = new HtmlDiffer();
+    const files = readFiles('mask');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must not be equal by mask {{RegExp}}', function () {
-        var htmlDiffer = new HtmlDiffer(),
-            files = readFiles('mask-false');
+  it('must not be equal by mask {{RegExp}}', async function() {
+    const htmlDiffer = new HtmlDiffer();
+    const files = readFiles('mask-false');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.false();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.false();
+  });
 
-    it('must ignore self closing slash', function () {
-        var htmlDiffer = new HtmlDiffer({ ignoreSelfClosingSlash: true }),
-            files = readFiles('strip-self-closing-slash');
+  it('must ignore self closing slash', async function() {
+    const htmlDiffer = new HtmlDiffer({ ignoreSelfClosingSlash: true });
+    const files = readFiles('strip-self-closing-slash');
 
-        htmlDiffer.isEqual(files.html1, files.html2).must.be.true();
-    });
+    (await htmlDiffer.isEqual(files.html1, files.html2)).must.be.true();
+  });
 
-    it('must throw an error for invalid preset', function () {
-        function invalidPreset() {
-            return new HtmlDiffer({ preset: "invalid" });
-        }
+  it('must throw an error for invalid preset', function() {
+    function invalidPreset() {
+      return new HtmlDiffer({ preset: 'invalid' });
+    }
 
-        invalidPreset.must.throw(Error);
-    });
+    invalidPreset.must.throw(Error);
+  });
 });
