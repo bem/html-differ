@@ -41,9 +41,9 @@
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
-    "istanbul": "0.4.5",
-    "mocha": "6.1.4",
-    "must": "0.13.4"
+    "mocha": "^6.1.4",
+    "must": "^0.13.4",
+    "nyc": "^14.1.1"
   },
   "scripts": {
     "test": "npm run lint && npm run unit-test && npm run func-test && npm run logger-test && npm run cover",
@@ -51,7 +51,7 @@
     "unit-test": "mocha test/unit",
     "func-test": "mocha test/differ",
     "logger-test": "mocha test/logger",
-    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- test/unit test/differ test/logger"
+    "cover": "nyc --reporter=lcov --reporter=text mocha test/unit test/differ test/logger"
   },
   "engines": {
     "node": ">=0.8.0",
