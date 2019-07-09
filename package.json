@@ -30,9 +30,7 @@
     "chalk": "^2.4.2",
     "coa": "^2.0.2",
     "diff": "^4.0.1",
-    "parse5-sax-parser": "^5.1.0",
-    "vow": "^0.4.20",
-    "vow-fs": "^0.3.6"
+    "parse5-sax-parser": "^5.1.0"
   },
   "devDependencies": {
     "eslint": "^6.0.1",
