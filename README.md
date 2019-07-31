@@ -299,13 +299,13 @@ var HtmlDiffer = require('@markedjs/html-differ').HtmlDiffer,
 
 **@param** *{String}* - the 1-st HTML code<br>
 **@param** *{String}* - the 2-nd HTML code<br>
-**@returns** *{Array of objects}* - [array with diffs](https://github.com/kpdecker/jsdiff#change-objects) between HTML
+**@returns** *Promise<{Array of objects}>* - [array with diffs](https://github.com/kpdecker/jsdiff#change-objects) between HTML
 
 ##### htmlDiffer.isEqual
 
 **@param** *{String}* - the 1-st HTML code<br>
 **@param** *{String}* - the 2-nd HTML code<br>
-**@returns** *{Boolean}*
+**@returns** *Promise<{Boolean}>*
 
 
 ### Logger
@@ -356,11 +356,15 @@ var options = {
 
 var htmlDiffer = new HtmlDiffer(options);
 
-var diff = htmlDiffer.diffHtml(html1, html2),
-    isEqual = htmlDiffer.isEqual(html1, html2),
-    res = logger.getDiffText(diff, { charsAroundDiff: 40 });
+async function run() {
+  const diff = await htmlDiffer.diffHtml(html1, html2);
+  const isEqual = await htmlDiffer.isEqual(html1, html2);
+  const res = logger.getDiffText(diff, { charsAroundDiff: 40 });
 
-logger.logDiffText(diff, { charsAroundDiff: 40 });
+  logger.logDiffText(diff, { charsAroundDiff: 40 });
+}
+
+run();
 ```
 
 ## Usage as a program
