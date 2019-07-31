@@ -29,17 +29,19 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "coa": "^2.0.2",
-    "diff": "1.3.2",
-    "lodash": "^4.17.11",
-    "parse5": "1.5.1",
-    "vow": "^0.4.20",
-    "vow-fs": "^0.3.6"
+    "diff": "^4.0.1",
+    "parse5-sax-parser": "^5.1.0"
   },
   "devDependencies": {
-    "mocha": "6.1.4",
-    "must": "0.13.4",
-    "istanbul": "0.4.5",
-    "eslint": "^6.0.1"
+    "eslint": "^6.0.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^6.1.4",
+    "must": "^0.13.4",
+    "nyc": "^14.1.1"
   },
   "scripts": {
     "test": "npm run lint && npm run unit-test && npm run func-test && npm run logger-test && npm run cover",
@@ -47,7 +49,7 @@
     "unit-test": "mocha test/unit",
     "func-test": "mocha test/differ",
     "logger-test": "mocha test/logger",
-    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- test/unit test/differ test/logger"
+    "cover": "nyc --all --reporter=lcov --reporter=text mocha test/unit test/differ test/logger"
   },
   "engines": {
     "node": ">=0.8.0",

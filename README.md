@@ -17,7 +17,6 @@ Compares two HTML.
       - [ignoreWhitespaces](#ignorewhitespaces-boolean)
       - [ignoreComments](#ignorecomments-boolean)
       - [ignoreEndTags](#ignoreendtags-boolean)
-      - [ignoreDuplicateAttributes](#ignoreduplicateattributes-boolean)
       - [ignoreSelfClosingSlash](#ignoreselfclosingslash-boolean)
     - [Presets](#presets)
       - [Usage](#usage)
@@ -257,23 +256,6 @@ The following two code samples will be considered to be equivalent:
 <span>Text</spane>
 ```
 
-<!-- TOC:display:ignoreDuplicateAttributes -->
-##### ignoreDuplicateAttributes: Boolean
-
-Makes **html-differ** ignore tags' duplicate attributes during the comparison.<br>
-From the list of the same tag's attributes, the attribute which goes the first will be taken for comparison, others will be ignored (default: `false`).
-
-**Example**: `true`<br>
-For example, the following two code samples will be considered to be equivalent:
-
-```html
-<span id="blah" id="ololo">Text</span>
-```
-
-```html
-<span id="blah">Text</span>
-```
-
 <!-- TOC:display:ignoreSelfClosingSlash -->
 ##### ignoreSelfClosingSlash: Boolean
 
@@ -369,8 +351,7 @@ var options = {
         compareAttributesAsJSON: [],
         ignoreWhitespaces: true,
         ignoreComments: true,
-        ignoreEndTags: false,
-        ignoreDuplicateAttributes: false
+        ignoreEndTags: false
     };
 
 var htmlDiffer = new HtmlDiffer(options);
@@ -424,8 +405,7 @@ Study the following file `config.json`:
     "compareAttributesAsJSON": [],
     "ignoreWhitespaces": true,
     "ignoreComments": true,
-    "ignoreEndTags": false,
-    "ignoreDuplicateAttributes": false
+    "ignoreEndTags": false
 }
 ```
 
