@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/markedjs/html-differ/compare/v3.0.0...v3.0.1) (2020-04-15)
+
+
+### Bug Fixes
+
+* **deps:** update deps and add semantic-release ([93ccb89](https://github.com/markedjs/html-differ/commit/93ccb893d5642bed48a06df5adad5d1c46b9226d))
+
 History of changes
 ==================
 
