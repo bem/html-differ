@@ -1,5 +1,5 @@
 # html-differ
-[![Build Status](https://travis-ci.org/markedjs/html-differ.svg)](https://travis-ci.org/markedjs/html-differ)
+[![Build Status](https://github.com/markedjs/html-differ/workflows/CI/badge.svg)](https://github.com/markedjs/html-differ/actions)
 [![Install Size](https://packagephobia.now.sh/badge?p=@markedjs/html-differ)](https://packagephobia.now.sh/result?p=@markedjs/html-differ)
 [![Dependency Status](https://david-dm.org/markedjs/html-differ.svg)](https://david-dm.org/markedjs/html-differ)
 [![devDependency Status](https://david-dm.org/markedjs/html-differ/dev-status.svg)](https://david-dm.org/markedjs/html-differ?type=dev)
