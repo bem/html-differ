@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/markedjs/html-differ/compare/v3.0.1...v3.0.2) (2020-04-28)
+
+
+### Bug Fixes
+
+* don't reorder attrs with the same name ([#14](https://github.com/markedjs/html-differ/issues/14)) ([f9706c8](https://github.com/markedjs/html-differ/commit/f9706c8705ea08987248df2059f97e60d0d5beaa))
+
 ## [3.0.1](https://github.com/markedjs/html-differ/compare/v3.0.0...v3.0.1) (2020-04-15)
 
 
