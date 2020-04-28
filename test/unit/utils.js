@@ -13,8 +13,8 @@ describe('\'utils\'', function() {
       ],
       output = [
         { name: 'a', value: 'z' },
-        { name: 'b', value: 'a' },
         { name: 'b', value: 'b' },
+        { name: 'b', value: 'a' },
         { name: 'b', value: 'c' },
         { name: 'c', value: 'c' },
         { name: 'z', value: 'a' },
