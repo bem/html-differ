@@ -1,4 +1,4 @@
-const serialize = require('../../lib/utils/serialize');
+import * as serialize from '../../lib/utils/serialize.js';
 
 describe('\'serialize\'', function() {
   it('must serialize empty doctype', function() {

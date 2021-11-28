@@ -1,8 +1,9 @@
-const chalk = require('chalk');
+import chalk from 'chalk';
+import * as diffLoger from '../../lib/logger.js';
+
 const inverseGreen = chalk.green.inverse;
 const inverseRed = chalk.red.inverse;
 const grey = chalk.grey;
-const diffLoger = require('../../lib/logger');
 
 describe('\'getDiffText\'', function() {
   it('must return an empty string', function() {

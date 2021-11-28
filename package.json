@@ -19,15 +19,16 @@
     "url": "https://github.com/eGavr"
   },
   "main": "./lib/index.js",
+  "type": "module",
   "bin": {
-    "html-differ": "./bin/html-differ"
+    "html-differ": "./bin/html-differ.js"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/markedjs/html-differ.git"
   },
   "dependencies": {
-    "chalk": "^4.1.0",
+    "chalk": "^5.0.0",
     "coa": "^2.0.2",
     "diff": "^5.0.0",
     "parse5-sax-parser": "^6.0.1"

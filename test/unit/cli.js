@@ -1,5 +1,8 @@
-const path = require('path');
-const cli = require('../../lib/cli');
+import path from 'path';
+import { fileURLToPath } from 'url';
+import * as cli from '../../lib/cli.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function run(...args) {
   return function() {

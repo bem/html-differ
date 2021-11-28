@@ -1,4 +1,4 @@
-const utils = require('../../lib/utils/utils');
+import * as utils from '../../lib/utils/utils.js';
 
 describe('\'utils\'', function() {
   it('must sort attributes in alphabetical order', function() {

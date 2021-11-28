@@ -1,9 +1,13 @@
-const fs = require('fs');
-const path = require('path');
-const util = require('util');
+import fs from 'fs';
+import path from 'path';
+import util from 'util';
+import { fileURLToPath } from 'url';
+import { HtmlDiffer } from '../../lib/index.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const readAsync = util.promisify(fs.readFile);
 const fixturesPath = path.join(__dirname, 'fixtures');
-const HtmlDiffer = require('../../lib/index').HtmlDiffer;
 
 /**
  * @param {String} basename
